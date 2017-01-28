@@ -1,0 +1,461 @@
+<section class="content-header">
+    <div class="row"> 
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Open New Current / Saving Accounts
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form"> 
+    <div class="row" data-ng-show="AOFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="accountOpening" ng-submit="submitForm(accountOpening.$valid)" novalidate action="" method="">  
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>  
+                <div class="box widget">
+                    <h4>
+	            		<span class="step-control"><b>1</b> of 5</span>
+	            		Select an account type to be opened
+	            	</h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Account Type <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="accountType" data-ng-model="AccountOpeningForm.accountType" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="CurrentAccount">Current Account</option>
+                                <option value="SavingsAccount">Savings Account</option>
+                            </select> 
+                            <p ng-show="accountOpening.accountType.$invalid && !accountOpening.accountType.$pristine" class="help-block error"></p> 
+                        </div>
+                    </div>
+                    <!--<div class="alert vb-alert">
+                        <p>
+                            The information available on our records for your existing selected reference bank account such as account title, operating instructions, branch, address/contact information, signature, language preferences and any other profile related information will be applied on your new account.
+                        </p>
+                        <ol>
+                            <li>It will take 2 working days to process your request.</li>
+                            <li>Your chequebok & debit card (if requested) for new generic account will be delivered to the branch (where your reference account is maintained) 2 working days after the new generic acount is opened.</li>
+                            <li>Minimum account opening deposit is {{vbCurrency}} 100.</li>
+                        </ol>
+                    </div>-->
+                </div>
+                <div class="box widget">
+                    <h4>
+	            		<span class="step-control"><b>2</b> of 5</span>
+	            		Select a reference account
+	            	</h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Account Number</th>
+                                        <th>Account Type</th>
+                                        <th>Currency</th>
+                                        <th>Branch</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Available Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="account in Accounts">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">  
+                                                <input type="radio" name="acccountslist" id="{{'object-'+$index}}" ng-model="selectedAccount.AccountId" value="{{account.AccountId}}" ng-change="onTaskSelect(account)" required />
+                                                <label for="{{'object-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Account Number">{{account.AccountNumber}}</td>
+                                        <td data-label="Account Type">{{account.AccountType}}</td>
+                                        <td data-label="Currency">{{account.AccountCurrency}}</td>
+                                        <td data-label="Branch">{{account.AccountBranch}}</td>
+                                        <td data-label="Status">{{account.AccountStatus}}</td>
+                                        <td data-label="" class="text-right">{{account.AccountAvailableBalance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+	            		<span class="step-control"><b>3</b> of 5</span>
+	            		Select currency and amount to be tranferred
+	            	</h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Currency <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="accountCurrency" data-ng-model="AccountOpeningForm.accountCurrency" required> 
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="GBP">GBP</option>
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                            <p ng-show="accountOpening.accountCurrency.$invalid && !accountOpening.accountCurrency.$pristine" class="help-block error">Please select a currency</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Amount <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="accountAmount" data-ng-model="AccountOpeningForm.accountAmount" vb-Amount required />
+                            <p ng-show="accountOpening.accountAmount.$invalid && !accountOpening.accountAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+	            		<span class="step-control"><b>4</b> of 5</span>
+	            		Enter the debit card details
+	            	</h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DCFacility">Debit Card Facility</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Yes" id="Yes" name="DebitCardFacility" data-ng-model="DebitCardFacility.selected" />
+                                <label for="Yes" class="radio">Yes</label>
+                                <input type="radio" value="No" id="No" name="DebitCardFacility" data-ng-model="DebitCardFacility.selected" />
+                                <label for="No" class="radio">No</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 NameOnCard">
+                            <label class="control-label" for="NameOnCard">Name to be embossed on the card</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 NameOnCard">
+                            <input type="text" class="form-control" placeholder="Enter your full name" name="accountName" data-ng-model="AccountOpeningForm.accountName" />
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DCOption">Debit Card Option</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="New Card" id="NewCard" name="DebitCardOptions" data-ng-model="DebitCardOptions.selected" />
+                                <label for="NewCard" class="radio">New Card</label>
+                                <input type="radio" value="Link to Existing Card" id="ExistingCard" name="DebitCardOptions" data-ng-model="DebitCardOptions.selected" />
+                                <label for="ExistingCard" class="radio">Link to Existing Card</label> 
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="alert vb-alert">
+                        <ol>
+                            <li>Maximum 25 characters.</li>
+                            <li>Name should be in English and as per passport titles such as Mr. / Mrs. / Ms. / Dr. / Prof. / Sheikh / Sheikha / H.E. / H.H. / are not allowed.</li>
+                            <li>Use of full stop permitted. No other special characters allowed.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+	            		<span class="step-control"><b>5</b> of 5</span>
+	            		Specify your e-statement preferences
+	            	</h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Frequency <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="accountFrequency" data-ng-model="AccountOpeningForm.accountFrequency" required> 
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                            <p ng-show="accountOpening.accountFrequency.$invalid && !accountOpening.accountFrequency.$pristine" class="help-block error">Please select account frequency</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Email <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="email" class="form-control" placeholder="Enter your email"  name="accountEmail" data-ng-model="AccountOpeningForm.accountEmail" required />
+                            <p ng-show="accountOpening.accountEmail.$invalid && !accountOpening.accountEmail.$pristine" class="help-block error">Please enter a valid email</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center"> 
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoAOConfirmation();" /> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="AOConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+	            		Please check the details provided
+	            	</h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountType}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference Account&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectAccountNumber.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountCurrency}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountAmount}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Debit Card Facility&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{DebitCardFacility.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Debit Card Option&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{DebitCardOptions.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 NameOnCard">
+                            <label class="control-label">Name on the Card&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 NameOnCard">
+                            <label class="label-detail">{{AccountOpeningForm.accountName}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Frquency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountFrequency}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Email&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountEmail}}</label>
+                        </div>
+                    </div> 
+                </div>
+                <div class="form-group-details text-center"> 
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackAOFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme"  data-ng-click="GoAOTC();" /> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="AOTermsConditions">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+                        Accept terms & conditions
+                    </h4>
+                    <div class="alert vb-alert" vbSlimscroll>
+                        <p>The opening of this account is subject to the terms and conditions of the Banking Services Agreement</p>
+                        </p>
+                        <h5>Current Account</h5>
+                        <ul>
+                            <li>Definition: It is an interest-free call deposit account that is governed by the rules of a loan with respect to the guarantee to repay an equal amount. It does not participate in investment profits nor bear risks.</li>
+                        </ul>
+                        <ul>
+                            <li>Person entitled to open a current account: Any person may open a current account if he/she is a British national or legally resident in the UK pursuant to the British Central Bank’s regulations and instructions.</li>
+                        </ul>
+                        <h5>Cheque Book</h5>
+                        <ol>
+                            <li>The customer shall take due care of his/her cheque book and shall assume full responsibility thereof. The customer may not give any of his/her cheques to third parties for using them.</li>
+                            <li>The Bank may refuse to issue a Cheque Book to any Customer without giving reasons.</li>
+                            <li>The customer shall write the cheques either in english or arabic languages; the bank shall not accept cheques written in other languages.</li>
+                            <li>The bank may refuse to pay the amount of the cheques drawn on the customer’s account if there is no sufficient funds even if the customer holds other account(s) with credit balance unless the customers authorizes the bank in writing to cover the amount of cheques, or any other withdrawals from any of his current or saving accounts with the bank.</li>
+                            <li>The bank may honor cheques or any other negotiable instruments drawn on the current account of the customer, even if this were to cause the account to be overdrawn. The customer undertakes to repay all the amounts due on his/her overdrawn account whenever the Bank request so.</li>
+                            <li>The bank may refuse to pay any payment orders or written cheques that are not written on bank’s forms without any responsibility whatsoever on the part of the Bank.</li>
+                        </ol>
+                        <h5>Stop Payment Orders</h5>
+                        <ul>
+                            <li>The instructions of the customer to stop the payment of cheques issued by him/her shall not oblige the Bank to do so unless such instructions fall within the scope of the applicable laws and regulations applicable in the United Kingdom.</li>
+                        </ul>
+                        <h5>Dormant Accounts</h5>
+                        <ul>
+                            <li>An account is considered to be dormant if no transaction is performed thereon for more than six months. In such case the Bank may refuse to debit the account, including cheques and payment orders or any other negotiable instruments. The customer shall be fully responsible for the consequences, claims, legal proceedings or a loss related thereto and acknowledges that the Bank shall not be liable in all cases; The customer shall approach the bank for reactivating or closing the account.</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Accepted" id="Accept" name="TermsConditions" data-ng-model="tcAccept" />
+                                <label for="Accept" class="radio">Accepted</label>
+                                <input type="radio" value="NotAccepted" id="NotAccept" name="TermsConditions" data-ng-model="tcAccept" />
+                                <label for="NotAccept" class="radio">Not Accepted</label>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">  
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-disabled="isAccepted('NotAccepted')" data-ng-click="GoAOReceipt()" /> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="AOReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your details has been sent successfully. Please note the below reference number for your records.</p> 
+                    <!--<p>Your Account opening request has been placed and will be processed as per our existing policy. In addition, please note the following:</p>
+                    <p>It will take 2 working days to process your request.</p>
+                    <p>You can check the status of your request through the “Internet Transaction History” option under the “Services” tab Once your account is opened, you will be able to view it under the “My Accounts” page.</p>
+                    <p>Please note the below reference number for your records</p>-->
+                </div> 
+                <div class="box widget" id="vbPrintable">
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Account Type</td>
+                                <td>: <strong>{{AccountOpeningForm.accountType}}</strong></td>
+                                <td class="text-left">Reference Account</td>
+                                <td>: <strong>{{selectAccountNumber.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Account Currency</td>
+                                <td>: <strong>{{AccountOpeningForm.accountCurrency}}</strong></td>
+                                <td class="text-left">Amount</td>
+                                <td>: <strong>{{AccountOpeningForm.accountAmount}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Debit Card Facility</td>
+                                <td>: <strong>{{DebitCardFacility.selected}}</strong></td>
+                                <td class="text-left">Debit Card Option</td>
+                                <td>: <strong>{{DebitCardOptions.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left NameOnCard">Name on the Card</td>
+                                <td class="NameOnCard">: <strong>{{AccountOpeningForm.accountName}}</strong></td>
+                                <td class="text-left">Frquency</td>
+                                <td>: <strong>{{AccountOpeningForm.accountFrequency}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Email</td>
+                                <td>: <strong>{{AccountOpeningForm.accountEmail}}</strong></td>
+                                <td class="text-left">Reference Number</td>
+                                <td>: <strong>VB1245852001</strong></td>
+                            </tr>
+                        </tbody> 
+                    </table>  
+                    <!--<div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountType}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference Account&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectAccountNumber}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountCurrency}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountAmount}}</label> 
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Debit Card Facility&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{DebitCardFacility.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Debit Card Option&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{DebitCardOptions.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Name on the Card&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountName}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Frquency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountFrequency}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Email&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AccountOpeningForm.accountEmail}}</label>
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">VB1245852001</label>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group-actions text-center hidden-xs hidden-sm hidden-md">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div> </form>
+        </div>
+    </div>
+</section>
+<script>
+    $(function(){ 
+        $('#Yes').on('click touchstart', function() {
+            setTimeout(function(){ 
+                $('.NameOnCard').removeClass('hide');
+            }, 100); 
+        });
+        $('#No').on('click touchstart', function() {
+            setTimeout(function(){ 
+                $('.NameOnCard').addClass('hide');
+            }, 100); 
+        });
+    });
+</script>

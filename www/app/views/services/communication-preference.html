@@ -1,0 +1,92 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Communication Preference
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method=""> 
+                <div class="alert  vb-alert vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! your communication preferences has been updated successfully.</p> 
+                </div>
+                <div class="box widget"> 
+                    <h4>
+                        Please update your preferences
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MobileNumber">Mobile Number</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+49 04 785 4578" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LandPhoneNumber">Land Phone Number</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+49 04 857 9652" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Email">Email</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="aandrews@mail.com" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountBalance">Automatic Account Balance</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="AccountBalance" id="Yes1" checked />
+                                <label for="Yes1" class="radio">Yes</label>
+                                <input type="radio" name="AccountBalance" id="No1" />
+                                <label for="No1" class="radio">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Automatic Account Statement</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="AccountStatement" id="Yes2" checked />
+                                <label for="Yes2" class="radio">Yes</label>
+                                <input type="radio" name="AccountStatement" id="No2" />
+                                <label for="No2" class="radio">No</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LastName">Preferred Communication Channel</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="CommunicationChannel" id="All" checked />
+                                <label for="All" class="radio">All</label>
+                                <input type="radio" name="CommunicationChannel" id="Mobile" />
+                                <label for="Mobile" class="radio">Mobile</label>
+                                <input type="radio" name="CommunicationChannel" id="Email" />
+                                <label for="Email" class="radio">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="SuccessMessageAction()" />
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>

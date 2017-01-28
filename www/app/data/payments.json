@@ -1,0 +1,143 @@
+{
+    "CustomerPayments": [{
+        "Beneficiaries": [{
+            "Chkbox": false,
+            "BeneficiaryName": "EWA - Munich Home 803",
+            "BeneficiaryACNumber": "1234567854655",
+            "BeneficiaryType": "EWA (Electricity & Water Authority)",
+            "DebitAmount": "",
+            "PayAmount": "0.00",
+            "Recurring": "No"
+        }, {
+            "Chkbox": true,
+            "BeneficiaryName": "My Personal Mobile",
+            "BeneficiaryACNumber": "0504571478",
+            "BeneficiaryType": "Postpaid",
+            "DebitAmount": "150.00",
+            "PayAmount": "150.00",
+            "Recurring": "No"
+        }, {
+            "Chkbox": true,
+            "BeneficiaryName": "My Official Mobile",
+            "BeneficiaryACNumber": "0557895641",
+            "BeneficiaryType": "Postpaid",
+            "DebitAmount": "100.00",
+            "PayAmount": "100.00",
+            "Recurring": "No"
+        }, {
+            "Chkbox": false,
+            "BeneficiaryName": "Internet - Munich Home",
+            "BeneficiaryACNumber": "1234567854655",
+            "BeneficiaryType": "Internet",
+            "DebitAmount": "",
+            "PayAmount": "0.00",
+            "Recurring": "No"
+        }]
+    }],
+
+    "FundTransfer": [{
+        "Beneficiaries": [{
+            "BeneficiaryId": "0",
+            "BeneficiaryName": "John Mathew",
+            "BeneficiaryACNumber": "031301548785",
+            "BeneficiaryCurrency": "Great British Pounds(GBP)",
+            "BeneficiaryType": "International",
+            "BeneficiaryEmail": "jmathew@mail.com", 
+            "BeneficiaryMobile": "+1 652 7856",
+            "BeneficiarySwiftCode": "EBILAEAD"
+        }, {
+            "BeneficiaryId": "1",
+            "BeneficiaryName": "Mary Fairchild",
+            "BeneficiaryACNumber": "031301548786",
+            "BeneficiaryCurrency": "EURO(EUR)",
+            "BeneficiaryType": "Domestic",
+            "BeneficiaryEmail": "mfairchild@mail.com",
+            "BeneficiaryMobile": "+1 52 785 9623",
+            "BeneficiarySwiftCode": "BLOMAEAD"
+        }, {
+            "BeneficiaryId": "2",
+            "BeneficiaryName": "Father",
+            "BeneficiaryACNumber": "031301548787",
+            "BeneficiaryCurrency": "Great British Pounds (GBP)",
+            "BeneficiaryType": "Domestic",
+            "BeneficiaryEmail": "mmathew@mail.com",
+            "BeneficiaryMobile": "+1 752 7868",
+            "BeneficiarySwiftCode": "CITIGB2LBLK"
+        }, {
+            "BeneficiaryId": "3",
+            "BeneficiaryName": "John Doe",
+            "BeneficiaryACNumber": "031301548788",
+            "BeneficiaryCurrency": "US Dollers (USD)",
+            "BeneficiaryType": "Within Bank",
+            "BeneficiaryEmail": "jdoe@mail.com",
+            "BeneficiaryMobile": "+1 652 7856",
+            "BeneficiarySwiftCode": "BOFAUS6S"
+        }, {
+            "BeneficiaryId": "4",
+            "BeneficiaryName": "United Red Cresent",
+            "BeneficiaryACNumber": "031301575241",
+            "BeneficiaryCurrency": "EURO(EUR)",
+            "BeneficiaryType": "International",
+            "BeneficiaryEmail": "erc@mail.com",
+            "BeneficiaryMobile": "+1 652 7856",
+            "BeneficiarySwiftCode": "DUIBAEAD"
+        }]
+    }],
+	
+	"FTWithinBank": [{
+        "Beneficiaries": [{
+            "BeneficiaryId": "0",
+            "BeneficiaryName": "John Doe",
+            "BeneficiaryACNumber": "031301548788",
+            "BeneficiaryCurrency": "US Dollers (USD)",
+            "BeneficiaryType": "Within Bank",
+            "BeneficiaryEmail": "jdoe@mail.com",
+            "BeneficiaryMobile": "+1 652 7856",
+            "BeneficiarySwiftCode": "BOFAUS6S"
+        }]
+    }],
+	
+	"FTDomestic": [{
+        "Beneficiaries": [{
+            "BeneficiaryId": "0",
+            "BeneficiaryName": "Mary Fairchild",
+            "BeneficiaryACNumber": "031301548786",
+            "BeneficiaryCurrency": "EURO(EUR)",
+            "BeneficiaryType": "Domestic",
+            "BeneficiaryEmail": "mfairchild@mail.com",
+            "BeneficiaryMobile": "+1 52 785 9623",
+            "BeneficiarySwiftCode": "BLOMAEAD"
+        }, {
+            "BeneficiaryId": "1",
+            "BeneficiaryName": "Father",
+            "BeneficiaryACNumber": "031301548787",
+            "BeneficiaryCurrency": "Great British Pounds (GBP)",
+            "BeneficiaryType": "Domestic",
+            "BeneficiaryEmail": "mmathew@mail.com",
+            "BeneficiaryMobile": "+1 752 7868",
+            "BeneficiarySwiftCode": "CITIGB2LBLK"
+        }]
+    }],
+	
+	"FTInternational": [{
+        "Beneficiaries": [{
+            "BeneficiaryId": "0",
+            "BeneficiaryName": "John Mathew",
+            "BeneficiaryACNumber": "031301548785",
+            "BeneficiaryCurrency": "Great British Pounds(GBP)",
+            "BeneficiaryType": "International",
+            "BeneficiaryEmail": "jmathew@mail.com", 
+            "BeneficiaryMobile": "+1 652 7856",
+            "BeneficiarySwiftCode": "EBILAEAD"
+        }, {
+            "BeneficiaryId": "1",
+            "BeneficiaryName": "United Red Cresent",
+            "BeneficiaryACNumber": "031301575241",
+            "BeneficiaryCurrency": "EURO(EUR)",
+            "BeneficiaryType": "International",
+            "BeneficiaryEmail": "erc@mail.com",
+            "BeneficiaryMobile": "+1 652 7856",
+            "BeneficiarySwiftCode": "DUIBAEAD"
+        }]
+    }]
+}

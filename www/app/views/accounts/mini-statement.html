@@ -1,0 +1,89 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                My Accounts
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+                        Mini Statement
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">0214152356785</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Opening Balance ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">0.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Closing Balance ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">2,860.00</label>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Transaction Date</th>
+                                        <th>Value Date</th>
+                                        <th>Reference Number</th>
+                                        <th>Description</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Debit</th>
+                                        <th class="text-right">Credit</th>
+                                        <th class="text-right">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="transaction in Transactions | limitTo:5">
+                                        <td data-label="Transaction Date">{{transaction.TransactionDate}}</td>
+                                        <td data-label="Value Date">{{transaction.ValueDate}}</td>
+                                        <td data-label="Reference Number">{{transaction.ReferenceNumber}}</td>
+                                        <td data-label="Description" data-label="">{{transaction.TransactionDescription}}</td>
+                                        <td data-label="Currency" class="text-right">{{transaction.Currency}}</td>
+                                        <td data-label="Debit" class="text-right">{{transaction.TransactionDebit}}</td>
+                                        <td data-label="Credit" class="text-right">{{transaction.TransactionCredit}}</td>
+                                        <td data-label="Balance" class="text-right">{{transaction.TransactionBalance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group text-right">
+                        <label>
+                            Download as :
+                        </label>
+                        <a href="" title="PDF"><i class="fa fa-file-pdf-o"></i></a>&nbsp;&nbsp;&nbsp;<a href="" title="CSV"><i class="fa fa-file-excel-o"></i></a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <a href="#MyAccounts" class="btn btn-vb-theme">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

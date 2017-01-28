@@ -1,0 +1,398 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Budget Management
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="BudgetDetails">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="alert vb-alert vb-alert-out">
+                <p>Budget Tracking is an easy to use transaction that will help you to track and understand your monthly / weekly / daily expenses from your accounts and credit cards.</p>
+                <p>The first step to create a budget is to determine how much money you plan to spend to spend for every month.</p>
+                <p>Please set your expenses group that are defined below.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-ng-show="BudgetDetails">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="box widget budget">
+                <h4>
+                    <i class="fa fa-home"></i> House Rent
+                    <span class="dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </span>
+                </h4>
+                <div class="budget-body">
+                    <input type="text" class="vb-knob" value="22" data-width="160" data-height="160" data-fgColor="#00c7ab" data-bgColor="#e8e8e8" data-readonly="true" />
+                </div>
+                <div class="budget-body-info">
+                    <div class="budget-liabilities pull-left">
+                        <span>Last Updated:</span>
+                        <span>25 NOV 2015</span>
+                    </div>
+                </div>
+                <div class="budget-footer">
+                    Amount:
+                    <span class="pull-right">{{vbCurrency}} 3,000.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="box widget budget">
+                <h4>
+                    <i class="fa fa-lightbulb-o"></i> Utilities
+                    <span class="dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </span>
+                </h4>
+                <div class="budget-body">
+                    <input type="text" class="vb-knob" value="12" data-width="160" data-height="160" data-fgColor="#f35958" data-bgColor="#e8e8e8" data-readonly="true" />
+                </div>
+                <div class="budget-body-info">
+                    <div class="budget-liabilities pull-left">
+                        <span>Last Updated:</span>
+                        <span>12 NOV 2015</span>
+                    </div>
+                </div>
+                <div class="budget-footer">
+                    Amount:
+                    <span class="pull-right">{{vbCurrency}} 1,200.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="box widget budget">
+                <h4>
+                    <i class="fa fa-cutlery"></i> Food
+                    <span class="dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </span>
+                </h4>
+                <div class="budget-body">
+                    <input type="text" class="vb-knob" value="7" data-width="160" data-height="160" data-fgColor="#0090d9" data-bgColor="#e8e8e8" data-readonly="true" />
+                </div>
+                <div class="budget-body-info">
+                    <div class="budget-liabilities pull-left">
+                        <span>Last Updated:</span>
+                        <span>18 OCT 2015</span>
+                    </div>
+                </div>
+                <div class="budget-footer">
+                    Amount:
+                    <span class="pull-right">{{vbCurrency}} 500.00</span>
+                </div>
+            </div>
+        </div> 
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="box widget budget">
+                <h4>
+                    <i class="fa fa-graduation-cap"></i> Education
+                    <span class="dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </span>
+                </h4>
+                <div class="budget-body">
+                    <input type="text" class="vb-knob" value="12" data-width="160" data-height="160" data-fgColor="#9e79cf" data-bgColor="#e8e8e8" data-readonly="true" />
+                </div>
+                <div class="budget-body-info">
+                    <div class="budget-liabilities pull-left">
+                        <span>Last Updated:</span>
+                        <span>17 OCT 2015</span>
+                    </div>
+                </div>
+                <div class="budget-footer">
+                    Amount:
+                    <span class="pull-right">{{vbCurrency}} 1,000.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="box widget budget">
+                <h4>
+                    <i class="fa fa-stethoscope"></i> Medical
+                    <span class="dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </span>
+                </h4>
+                <div class="budget-body">
+                    <input type="text" class="vb-knob" value="9" data-width="160" data-height="160" data-fgColor="#e20bda" data-bgColor="#e8e8e8" data-readonly="true" />
+                </div>
+                <div class="budget-body-info">
+                    <div class="budget-liabilities pull-left">
+                        <span>Last Updated:</span>
+                        <span>25 NOV 2015</span>
+                    </div>
+                </div>
+                <div class="budget-footer">
+                    Amount:
+                    <span class="pull-right">{{vbCurrency}} 700.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="box widget budget">
+                <h4>
+                    <i class="fa fa-cart-plus"></i> Shopping
+                    <span class="dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Edit</a>
+                            </li>
+                            <li>
+                                <a href="">Delete</a>
+                            </li>
+                        </ul>
+                    </span>
+                </h4>
+                <div class="budget-body">
+                    <input type="text" class="vb-knob" value="8" data-width="160" data-height="160" data-fgColor="#ff8e1f" data-bgColor="#e8e8e8" data-readonly="true" />
+                </div>
+                <div class="budget-body-info">
+                    <div class="budget-liabilities pull-left">
+                        <span>Last Updated:</span>
+                        <span>5 NOV 2015</span>
+                    </div>
+                </div>
+                <div class="budget-footer">
+                    Amount:
+                    <span class="pull-right">{{vbCurrency}} 600.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-ng-show="BudgetDetails">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group-actions text-center">
+                <input type="submit" class="btn btn-vb-theme" value="Add New Budget" data-ng-click="GoAddNewBudgetForm()" />
+                <input type="submit" class="btn btn-vb-theme" value="Budget Comparison" data-ng-click="GoBudgetComparisonForm()" />
+            </div> 
+        </div>
+    </div> 
+    <div class="row" data-ng-show="AddNewBudgetForm">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="CreateBudget" ng-submit="submitForm(CreateBudget.$valid)" novalidate  action="" method=""> 
+                <div class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="alert vb-alert vb-alert-out" data-ng-show="SucessMessage">
+                    <p>Congratulations! Your budget has been added successfully.</p>
+                </div>
+                <div class="box widget"> 
+                    <h4>
+                        Budget details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="BudgetName">Budget Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your budget name" name="BudgetName" data-ng-model="CreateBudgetForm.BudgetName" required />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="BudgetAmount">Budget Amount <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="BudgetAmount" data-ng-model="CreateBudgetForm.BudgetAmount" vb-Amount required /> 
+                            <p ng-show="CreateBudget.BudgetAmount.$invalid && !CreateBudget.BudgetAmount.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="BudgetFrequency">Budget Frequency</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="BudgetFrequency" id="Yearly" />
+                                <label for="Yearly" class="radio">Yearly</label>
+                                <input type="radio" name="BudgetFrequency" id="Monthly" checked />
+                                <label for="Monthly" class="radio">Monthly</label>
+                                <input type="radio" name="BudgetFrequency" id="Weekly" />
+                                <label for="Weekly" class="radio">Weekly</label>
+                                <input type="radio" name="BudgetFrequency" id="Daily" />
+                                <label for="Daily" class="radio">Daily</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="BudgetCategory">Budget Category</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vbGoal-Category">
+                                <a href=""><i class="fa fa-home" title="House Rent"></i></a>
+                                <a href="" class="active"><i class="fa fa-lightbulb-o" title="Utilities"></i></a>
+                                <a href=""><i class="fa fa-cutlery" title="Food"></i></a>
+                                <a href=""><i class="fa fa-graduation-cap" title="Education"></i></a>
+                                <a href=""><i class="fa fa-stethoscope" title="Medical"></i></a>
+                                <a href=""><i class="fa fa-cart-plus" title="Shopping"></i></a>
+                                <a href=""><i class="fa fa-plane" title="Travel"></i></a>
+                                <a href=""><i class="fa fa-gamepad" title="Entertainment"></i></a>
+                                <a href=""><i class="fa fa-plus-square-o" title="Others"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" class="btn btn-vb-theme-cancel" value="Cancel" data-ng-click="BackBudgetDetails()"  />
+                    <input type="submit" class="btn btn-vb-theme" value="Add" data-ng-click="AddNewBudget()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="BudgetComparisonForm">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>
+                        Budget comparison
+                    </h4> 
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SpendingView">Spending View</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="SpendingView" id="Yearly1" data-ng-click="ShowYearly()" />
+                                <label for="Yearly1" class="radio">Yearly</label>
+                                <input type="radio" name="SpendingView" id="Monthly1"  data-ng-click="ShowMonthly()" checked />
+                                <label for="Monthly1" class="radio">Monthly</label>
+                                <input type="radio"  name="SpendingView" id="Weekly1" data-ng-click="ShowWeekly()" />
+                                <label for="Weekly1" class="radio">Weekly</label>
+                                <input type="radio" name="SpendingView" id="Daily1" data-ng-click="ShowDaily()" />
+                                <label for="Daily1" class="radio">Daily</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="YearlyForm">
+                            <label class="control-label" for="SpendingView">Select Year</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="YearlyForm">
+                            <select name="select" class="form-control">
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option> 
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="MonthlyForm">
+                            <label class="control-label" for="SpendingView">Select Month</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="MonthlyForm">
+                            <select name="select" class="form-control">
+                                <option>January</option>
+                                <option>February</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>Augest</option>
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                                <option>December</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="WeeklyForm">
+                            <label class="control-label" for="SpendingView">Select Week</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="WeeklyForm">
+                            <select name="select" class="form-control">
+                                <option>First Week (1 to 7)</option>
+                                <option>Second Week (8 to 15)</option>
+                                <option>Third Week (16 to 22)</option>
+                                <option>Four Week (23 to 31)</option> 
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="DailyForm">
+                            <label class="control-label" for="SpendingView">Select Day</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="DailyForm">
+                            <select name="select" class="form-control">
+                                <option>Sunday</option>
+                                <option>Monday</option>
+                                <option>Tuesday</option>
+                                <option>Wednesday</option>
+                                <option>Thursday</option>
+                                <option>Friday</option>
+                                <option>Satudary</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-center"> 
+                        <div id="vbBarChartContainer" class="vb-barChart"></div>
+                    </div> 
+                </div>  
+                <div class="form-group-actions text-center">
+                    <input type="button" class="btn btn-vb-theme" value="Back" data-ng-click="BackBudgetDetails()"  /> 
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

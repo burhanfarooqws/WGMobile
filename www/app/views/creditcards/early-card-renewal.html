@@ -1,0 +1,300 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Early Card Renewal
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "> 
+            <form class="form-horizontal" role="form" name="EarlyCardRenewal" ng-submit="submitForm(EarlyCardRenewal.$valid)" novalidate action="" method="">
+                <div class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <!--div class="alert vb-alert vb-alert-out">
+                    <p>
+                        Through this service, you can instantly activate your debit cards and credit cards (both primary and supplementary)
+                    </p>
+                    <p>
+                        Please ensure that you activate your new / renewed card only after you receive it, you can verify this by comparing expiry date on the card with expiry date on the screen.
+                    </p>
+                </div-->
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 2</span>
+                        Please select your card
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CardType">Card Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl"> 
+                                <input type="radio" value="CreditCard" id="CreditCards" name="CardType" data-ng-model="CardType" />
+                                <label for="CreditCards" class="radio">Credit Cards</label>
+                                <input type="radio" value="DebitCards" id="DebitCards" name="CardType" data-ng-model="CardType" />
+                                <label for="DebitCards" class="radio">Debit Cards</label>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='CreditCard'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Cash Limit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object2-'+$index}}" ng-model="selectedCard1.CardId" value="{{card.CardId}}" />
+                                                <label for="{{'object2-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td>
+                                        <td data-label="Status">{{card.CardStatus}}</td>
+                                        <td data-label="Status">{{card.Currency}}</td>
+                                        <td data-label="Cash Limit" class="text-right">{{card.CashLimit}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='DebitCards'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object1-'+$index}}" ng-model="selectedCard.CardId" value="{{card.CardId}}" />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td>
+                                        <td data-label="Status">{{card.CardStatus}}</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 2</span>
+                        Please fill the delivery details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DeliveryOptions">Delivery Options </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl"> 
+                                <input type="radio" value="To Home Branch" id="ToHomeBranch" name="DeliveryOptions" data-ng-model="DeliveryOptions.selected" />
+                                <label for="ToHomeBranch" class="radio">To Home Branch</label>
+                                <input type="radio" value="To Another Branch" id="ToAnotherBranch" name="DeliveryOptions"data-ng-model="DeliveryOptions.selected" />
+                                <label for="ToAnotherBranch" class="radio">To Another Branch</label>
+                                <input type="radio" value="To Home Address" id="ToHomeAddress" name="DeliveryOptions" data-ng-model="DeliveryOptions.selected" />
+                                <label for="ToHomeAddress" class="radio">To My Home Address</label> 
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Another Branch'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SelectYourBranch">Select Your Branch <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="DeliveryBranch" data-ng-model="EarlyCardRenewalForm.DeliveryBranch" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Munich Branch">Munich Branch</option>
+                                <option value="Berlin Branch">Berlin Branch</option>
+                                <option value="Hamburg Branch">Hamburg Branch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Home Address'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="HomeAddress">Home Address </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea rows="3" class="form-control">Flat No:507, St. Peters Tower, Hamilton Road, London, United Kingdom</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Home Address'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" value="None" name="delivernewaddress" id="delivernewaddress" data-ng-model="delivernewaddress" />
+                                <label for="delivernewaddress" class="checkbox">Do You Want to Deliver New Address?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Home Address'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea rows="3" class="form-control" data-ng-readonly="!delivernewaddress"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCardNumber.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Holder Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie Andrews</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Expiry&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectExpiryMonth.selected}}&nbsp;/&nbsp;{{selectExpiryYear.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCardType.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{vbCurrencyName}} ({{vbCurrency}})</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Available Limit&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectAvailableLimit.selected}}</label>
+                        </div>
+                    </div>
+                     <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Delivery Option &nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{DeliveryOptions.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="DeliveryOptions.selected=='To Another Branch'">
+                            <label class="control-label">Branch&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="DeliveryOptions.selected=='To Another Branch'">
+                            <label class="label-detail">{{EarlyCardRenewalForm.DeliveryBranch}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Your card has been renewed successfully. Please note that the below reference for your record.</p>
+                </div>
+                <div class="box widget" id="vbPrintable">
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Card Number</td>
+                                <td>: <strong>{{selectCardNumber.selected}}</strong></td>
+                                <td class="text-left">Card Holder Name</td>
+                                <td>: <strong>Archie Andrews</strong></td>
+                            </tr>  
+                            <tr>
+                                <td class="text-left">Card Expiry</td>
+                                <td>: <strong>{{selectExpiryMonth.selected}}&nbsp;/&nbsp;{{selectExpiryYear.selected}}</strong></td>
+                                <td class="text-left">Card Type</td>
+                                <td>: <strong>{{selectCardType.selected}}</strong></td>
+                            </tr>  
+                            <tr>
+                                <td class="text-left">Currency</td>
+                                <td>: <strong>{{vbCurrencyName}} ({{vbCurrency}})</strong></td>
+                                <td class="text-left">Available Limit</td>
+                                <td>: <strong>{{selectAvailableLimit.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Delivery Option</td>
+                                <td>: <strong>{{DeliveryOptions.selected}}</strong></td>
+                                <td class="text-left">Branch</td>
+                                <td>: <strong>{{EarlyCardRenewalForm.DeliveryBranch}}</strong></td>
+                            </tr>  
+                            <tr> 
+                                <td class="text-left">Reference Number</td>
+                                <td colspan="3">: <strong>VBHJYU78545</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div> 
+            </form>
+        </div>
+    </div>
+</section>

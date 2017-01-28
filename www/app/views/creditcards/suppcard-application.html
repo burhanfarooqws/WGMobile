@@ -1,0 +1,266 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Supplementary Card Application
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "> 
+            <form class="form-horizontal" role="form" name="SupCardApplication" ng-submit="submitForm(SupCardApplication.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div> 
+                <div class="box widget">
+                    <h4> 
+                        <span class="step-control"><b>1</b> of 2</span>
+                        Please select your primacy credit card
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th> 
+                                        <th>Currency</th>
+                                        <th class="text-right">Credit Limit</th>
+                                        <th class="text-right">Outstanding Balance</th>
+                                        <th>Due Date</th>
+                                        <th class="text-right">Minimum Amount Due</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object1-'+$index}}" ng-model="selectedCard.CardId" value="{{card.CardId}}" ng-change="onTaskSelect1(card)" required />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Currency">{{card.Currency}}</td>
+                                        <td data-label="Credit Limit" class="text-right">{{card.CreditLimit}}</td>
+                                        <td data-label="Outstanding Balance" class="text-right">{{card.OutstandingBalance}}</td>
+                                        <td data-label="Due Date">{{card.DueDate}}</td>
+                                        <td data-label="Min. Amount Due" class="text-right">{{card.MinimumAmountDue}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        <span class="step-control"><b>2</b> of 2</span>
+                        Please provide the supplementary card details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ApplicantName">Name of the Applicant <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Archie Andrew" name="ApplicantName" data-ng-model="SupCardApplicationForm.ApplicantName" required />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="City">City</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="City" data-ng-model="SupCardApplicationForm.City" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option>Munich Branch</option>
+                                <option>Berlin Branch</option>
+                                <option>Hamburg Branch</option>
+                                <option>Frankfurt Branch</option>
+                                <option>Cologne Branch</option>
+                                <option>Hangover Branch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Mobile Phone">Mobile Phone</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control" name="Mobile" data-ng-model="SupCardApplicationForm.Mobile" data-ng-minlength="10" data-ng-maxlength="10" ng-pattern="mobileNumberPattern" placeholder="Ex: 050 888 7755" />  
+                            <p ng-show="SupCardApplication.Mobile.$error.pattern" class="help-block error">Enter only numbers without spaces.</p>
+                            <p ng-show="((SupCardApplication.Mobile.$error.minlength || SupCardApplication.Mobile.$error.maxlength) && SupCardApplication.Mobile.$dirty)" class="help-block error">Mobile number should be 10 digits</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Residence Phone">Residence Phone</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="+4 52 785 9658" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Office Phone">Office Phone</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="+4 52 785 9658" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Preferred Contact Number">Preferred Contact Number</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="PreferredContact" data-ng-model="SupCardApplicationForm.PreferredContact" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Mobile Phone">Mobile Phone</option>
+                                <option value="Residence Phone">Residence Phone</option>
+                                <option value="Office Phone">Office Phone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Credit Limit Type">Credit Limit Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl"> 
+                                <input type="radio" value="Amount" name="CreditLimitType" id="Amount" data-ng-model="CreditLimitType" checked />
+                                <label for="Amount" class="radio">Amount</label>
+                                <input type="radio" value="Percentage" name="CreditLimitType" id="Percentage" data-ng-model="CreditLimitType" />
+                                <label for="Percentage" class="radio">Percentage</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Amount'">
+                            <label class="control-label" for="Amount">Amount ({{vbCurrency}})</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Amount'">
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="CreditLimitAmount" data-ng-model="SupCardApplicationForm.CreditLimitAmount" vb-Amount required /> 
+                            <p ng-show="SupCardApplication.CreditLimitAmount.$invalid && !SupCardApplication.CreditLimitAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Percentage'">
+                            <label class="control-label" for="Percentage">Percentage (%)</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Percentage'">
+                            <input type="text" class="form-control" placeholder="50" size="3" minlength="1" maxlength="3" name="CreditLimitPercent" data-ng-model="SupCardApplicationForm.CreditLimitPercent" />
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Primary Card Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCardNumber.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Name of the Applicant&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SupCardApplicationForm.ApplicantName}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">City&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SupCardApplicationForm.City}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mobile Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SupCardApplicationForm.Mobile}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Preferred Contact&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SupCardApplicationForm.PreferredContact}}</label>
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Percentage'">
+                            <label class="control-label">Credit Limit Percentage&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Percentage'">
+                            <label class="label-detail">{{SupCardApplicationForm.CreditLimitPercent}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Amount'">
+                            <label class="control-label">Credit Limit Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType=='Amount'">
+                            <label class="label-detail">{{SupCardApplicationForm.CreditLimitAmount}}</label>
+                        </div>
+                    </div>  
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your application received successfully. Please note the below reference number for your records.</p>
+                </div> 
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Primary Card Number</td>
+                                <td>: <strong>{{todaysDate | date:'dd MMM yyyy' | uppercase}}</strong></td>
+                                <td class="text-left">Name of the Applicant</td>
+                                <td>: <strong>{{SupCardApplicationForm.ApplicantName}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">City</td>
+                                <td>: <strong>{{SupCardApplicationForm.City}}</strong></td>
+                                <td class="text-left">Mobile Number</td>
+                                <td>: <strong>{{SupCardApplicationForm.Mobile}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Preferred Contact</td>
+                                <td>: <strong>{{SupCardApplicationForm.PreferredContact}}</strong></td>
+                                <td class="text-left" data-ng-show="CreditLimitType=='Percentage'">Credit Limit Percentage</td>
+                                <td data-ng-show="CreditLimitType=='Percentage'">: <strong>{{SupCardApplicationForm.CreditLimitPercent}}</strong></td>
+                                <td class="text-left" data-ng-show="CreditLimitType=='Amount'">Credit Limit Amount</td>
+                                <td data-ng-show="CreditLimitType=='Amount'">: <strong>{{SupCardApplicationForm.CreditLimitAmount}}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="text-left">Reference Number</td>
+                                <td>: <strong>VBHJKI457852</strong></td>
+                                <td class="text-left">CRM Reference Number</td>
+                                <td>: <strong>VBHJYU7858585</strong></td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="form-group-actions text-center hidden-xs hidden-sm hidden-md">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div> 
+            </form>
+        </div>
+    </div>
+</section>

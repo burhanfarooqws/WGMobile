@@ -1,0 +1,306 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Open Term Deposit Account
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="AOFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="TDOpening" ng-submit="submitForm(TDOpening.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 5</span>
+                        Please select the period from the options below.
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Investment Term <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <select class="form-control" name="tdopenInvestmentTerm" data-ng-model="TDOpeningForm.tdopenInvestmentTerm" required >
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="1 Month">1 Month</option>
+                                <option value="2 Months">2 Months</option>
+                                <option value="3 Months">3 Months</option>
+                                <option value="6 Months">6 Months</option>
+                                <option value="12 Months">12 Months</option>
+                                <option value="18 Months">18 Months</option>
+                            </select>  
+                            <p ng-show="TDOpening.tdopenInvestmentTerm.$invalid && !TDOpening.tdopenInvestmentTerm.$pristine" class="help-block error">Please select a investment term</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 5</span>
+                        Please select the funding account
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Account Number</th>
+                                        <th>Account Type</th>
+                                        <th>Currency</th>
+                                        <th>Branch</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Available Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="account in Accounts">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="acccountslist" id="{{'object-'+$index}}" ng-model="selectedAccount.AccountId" value="{{account.AccountId}}" ng-change="onTaskSelect(account)" required />
+                                                <label for="{{'object-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Account Number">{{account.AccountNumber}}</td>
+                                        <td data-label="Account Type">{{account.AccountType}}</td>
+                                        <td data-label="Currency">{{account.AccountCurrency}}</td>
+                                        <td data-label="Branch">{{account.AccountBranch}}</td>
+                                        <td data-label="Status">{{account.AccountStatus}}</td>
+                                        <td data-label="" class="text-right">{{account.AccountAvailableBalance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget" data-intro="Enter amount above 5,000 to avail the offer">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 5</span>
+                        Please specify the amount for investment
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AccountType">Amount ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">  
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="investmentAmount" data-ng-model="TDOpeningForm.investmentAmount" vb-Amount required />
+                            <p ng-show="TDOpening.investmentAmount.$invalid && !TDOpening.investmentAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+					<!--<div class="alert vb-alert">
+						<p><b>Note:</b> Enter amount above 5,000 to avail the offer</p>
+					</div>-->
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>4</b> of 5</span>
+                        Please select a maturity instruction
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DCFacility">Maturity Instruction</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Do not renew, Transfer the principal and interest to account specified below" id="DoNotRenew" name="MaturityInstruction" data-ng-model="MaturityInstruction.selected" />
+                                <label for="DoNotRenew" class="radio">Do not renew, Transfer the principal and interest to account specified below</label>
+                                <br />
+                                <input type="radio" value="Tranfer interest to account specified below, but renew the principal for same period" id="TransferProfit" name="MaturityInstruction" data-ng-model="MaturityInstruction.selected" />
+                                <label for="TransferProfit" class="radio">Tranfer interest to account specified below, but renew the principal for same period.</label>
+                                <br />
+                                <input type="radio" value="Renew the principal and interest for period specified above" id="RenewPrincipal" name="MaturityInstruction" data-ng-model="MaturityInstruction.selected" />
+                                <label for="RenewPrincipal" class="radio">Renew the principal and interest for period specified above.</label> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget" id="TDTransferAccount">
+                    <h4>
+                        <span class="step-control"><b>5</b> of 5</span>
+                        Please select account to transfer principal and interest at maturity
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Account Number</th>
+                                        <th>Account Type</th>
+                                        <th>Currency</th>
+                                        <th>Branch</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Available Balance ({{vbCurrency}})</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="account in Accounts">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="acccountslist1" id="{{'object1-'+$index}}" ng-model="selectedAccount1.AccountId" value="{{account.AccountId}}" ng-change="onTaskSelect1(account)" required />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Account Number">{{account.AccountNumber}}</td>
+                                        <td data-label="Account Type">{{account.AccountType}}</td>
+                                        <td data-label="Currency">{{account.AccountCurrency}}</td>
+                                        <td data-label="Branch">{{account.AccountBranch}}</td>
+                                        <td data-label="Status">{{account.AccountStatus}}</td>
+                                        <td data-label="" class="text-right">{{account.AccountAvailableBalance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <!--<input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoAOConfirmation();" />-->
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="showModal()" />  
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="AOConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>
+                        Please check the details provided
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{todaysDate2 | date:'dd MMM yyyy' | uppercase}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Term Deposit Account</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Investment Term&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{TDOpeningForm.tdopenInvestmentTerm}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Maturity&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{maturityDate | date:'dd MMM yyyy' | uppercase}}</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Debited&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectAccountNumber.selected}}</label>
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{vbCurrencyName}} ({{vbCurrency}})</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Investment Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{TDOpeningForm.investmentAmount}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Rollover Instruction&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{MaturityInstruction.selected}} to {{selectAccountNumber1.selected}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-details text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackAOFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoAOReceipt();" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="AOReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your details has been sent successfully. Please note the below reference number for your records.</p>
+                </div> 
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left col-md-3">Transaction Date</td>
+                                <td class="col-md-3">: <strong>{{todaysDate2 | date:'dd MMM yyyy' | uppercase}}</strong></td>
+                                <td class="text-left col-md-3">Transaction Type</td>
+                                <td class="col-md-3">: <strong>Term Deposit Account</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Investment Term</td>
+                                <td>: <strong>{{TDOpeningForm.tdopenInvestmentTerm}}</strong></td>
+                                <td class="text-left">Maturity</td>
+                                <td>: <strong>{{maturityDate | date:'dd MMM yyyy' | uppercase}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Account Debited</td>
+                                <td>: <strong>{{selectAccountNumber.selected}}</strong></td>
+                                <td class="text-left">Currency</td>
+                                <td>: <strong>{{vbCurrencyName}} ({{vbCurrency}})</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Investment Amount ({{vbCurrency}})</td>
+                                <td>: <strong>{{TDOpeningForm.investmentAmount}}</strong></td>
+                                <td class="text-left">Rollover Instruction</td>
+                                <td>: <strong>{{MaturityInstruction.selected}} to {{selectAccountNumber1.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Term Deposit Account Number</td>
+                                <td>: <strong>{{selectAccountNumber.selected}}</strong></td>
+                                <td class="text-left">Reference Number</td>
+                                <td>: <strong>VB1245852001</strong></td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="form-group-actions text-center hidden-xs hidden-sm hidden-md">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div>
+			</form>
+        </div>
+    </div>
+</section>
+<script>
+    introJs().start();
+	
+	$(function(){ 
+        $('#RenewPrincipal').on('click touchstart', function() {
+            setTimeout(function(){ 
+                $('#TDTransferAccount').addClass('hide');
+            }, 100); 
+        });
+        $('#DoNotRenew, #TransferProfit').on('click touchstart', function() {
+            setTimeout(function(){ 
+                $('#TDTransferAccount').removeClass('hide');
+            }, 100); 
+        });
+    });
+</script>

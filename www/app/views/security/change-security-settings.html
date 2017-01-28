@@ -1,0 +1,247 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Change Security Settings
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method=""> 
+                <div class="alert  vb-alert vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! your security settings has been updated successfully.</p> 
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 3</span>  
+                        Login password
+                    </h4>
+                    <!--<div class="alert vb-alert">
+                        <p>This option allows you to change your online banking password at any time. All you need to do is type in a new password of your choice in the box provided.</p>
+                        <p>Then, for confirmation, retype this password in the second box provided in the same screen.</p>
+                        <p>Your password is case sensitive and must be between 8-20 characters (Alphanumeric)</p>
+                    </div>-->
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="OldPassword">Old Password <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="password" class="form-control" placeholder="Enter your old password" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="New Pasword">New Pasword <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="password" class="form-control" placeholder="Enter your new password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmPassword">Confirm Password <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="password" class="form-control" placeholder="Please confirm your password" />
+                        </div> 
+                    </div> 
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 3</span>
+                        Security image
+                    </h4>
+                    <!--<div class="alert vb-alert">
+                        <p>This option allows you to change the security image and description for your online banking login.</p>
+                        <p>This image and description combination tells you that the page you are on is genuine.</p>
+                    </div>--> 
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="NewSecurityImage">New Security Image <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vbGoal-Category">
+                                <a href=""><i class="fa fa-anchor" title="Anchor"></i></a>
+                                <a href="" class="active"><i class="fa fa-balance-scale" title="Balance Scale"></i></a>
+                                <a href=""><i class="fa fa-university" title="Bank"></i></a>
+                                <a href=""><i class="fa fa-birthday-cake" title="Birth Day Cake"></i></a>
+                                <a href=""><i class="fa fa-cubes" title="Cube"></i></a>
+                                <a href=""><i class="fa fa-flag" title="Flag"></i></a>
+                                <a href=""><i class="fa fa-gift" title="Gift"></i></a>
+                                <a href=""><i class="fa fa-ship" title="Ship"></i></a>
+                                <a href=""><i class="fa fa-umbrella" title="Umberla"></i></a>
+                                <a href=""><i class="fa fa-tree" title="X-Mass Tree"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ImageDescription">Image Description <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter image description" />
+                        </div>
+                    </div> 
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 3</span>
+                        Security questions
+                    </h4>
+                    <!--<div class="alert vb-alert">
+                        <p>This option allows you to reset your existing security questions which are used during login and for submission of specific transactions through online banking.</p>
+                    </div>--> 
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Your First Question">Your First Question <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                             <select class="form-control">
+                                <option>Name of the first foreign country you visited?</option>
+                                <option>What was the make of your first car?</option>
+                                <option>Name of your favorite football team?</option>
+                                <option>What was the make of your first bike?</option>
+                                <option>What was your childhoold nick name?</option>
+                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Answer">Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your answer" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmAnswer">Confirm Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Confirm your answer" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Your Second Question">Your Second Question <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                             <select class="form-control">
+                                <option>Name of the first foreign country you visited?</option>
+                                <option>What was the make of your first car?</option>
+                                <option>Name of your favorite football team?</option>
+                                <option>What was the make of your first bike?</option>
+                                <option>What was your childhoold nick name?</option>
+                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Answer">Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your answer" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmAnswer">Confirm Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Confirm your answer" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Your Third Question">Your Third Question <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                             <select class="form-control">
+                                <option>Name of the first foreign country you visited?</option>
+                                <option>What was the make of your first car?</option>
+                                <option>Name of your favorite football team?</option>
+                                <option>What was the make of your first bike?</option>
+                                <option>What was your childhoold nick name?</option>
+                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Answer">Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your answer" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmAnswer">Confirm Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Confirm your answer" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Your Fourth Question">Your Fourth Question <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                             <select class="form-control">
+                                <option>Name of the first foreign country you visited?</option>
+                                <option>What was the make of your first car?</option>
+                                <option>Name of your favorite football team?</option>
+                                <option>What was the make of your first bike?</option>
+                                <option>What was your childhoold nick name?</option>
+                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Answer">Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your answer" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmAnswer">Confirm Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Confirm your answer" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Your Fifth Question">Your Fifth Question <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+                             <select class="form-control">
+                                <option>Name of the first foreign country you visited?</option>
+                                <option>What was the make of your first car?</option>
+                                <option>Name of your favorite football team?</option>
+                                <option>What was the make of your first bike?</option>
+                                <option>What was your childhoold nick name?</option>
+                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Answer">Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your answer" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmAnswer">Confirm Answer <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Confirm your answer" />
+                        </div>
+                    </div> 
+                </div>   
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Update" class="btn btn-vb-theme" data-ng-click="UpdateSecuritySettings()" />
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>

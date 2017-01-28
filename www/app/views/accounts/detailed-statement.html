@@ -1,0 +1,141 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                My Accounts
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form"> 
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget vb-grid-container">
+                    <div class="vb-grid-container-title">
+                        <h4> 
+                            Detailed Account Statement
+                        </h4>
+                        <span class="vb-grid-title-actions pull-right">  
+                            <a href="" class="btn btn-vb-theme" data-ng-click="AdvancedSearch()">Advanced Search</a>
+                        </span>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">0214152356785</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Current Account</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Opening Balance ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">0.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Closing Balance ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">2,860.00</label>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="vb-grid-container-body">
+                        <div class="row" data-ng-show="IsVisible">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="vb-grid-slider">
+                                    <h5>
+                                        Select Period
+                                    </h5>
+                                    <div class="vb-grid-slider-control">
+                                        <input type="hidden" value="20" class="vb-range-slider" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="vb-grid-daterange">
+                                    <h5>
+                                        Date Range
+                                    </h5>
+                                    <div class="vb-grid-daterange-control">
+                                        <div class="form-group">
+                                            <label for="fromdate">From</label>
+                                            <div class="input-group vb-dtp">
+                                                <input type="text" class="form-control" id="fromdate">
+                                                <div class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="todate">To</label>
+                                            <div class="input-group vb-dtp">
+                                                <input type="text" class="form-control" id="todate">
+                                                <div class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="todate">&nbsp;</label>
+                                            <button type="submit" class="btn btn-block btn-vb-theme">Show</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover dt-responsive nowrap vbDataGrid">
+                                <thead>
+                                    <tr>
+                                        <th>Transaction Date</th>
+                                        <th>Value Date</th>
+                                        <th>Reference Number</th>
+                                        <th>Description</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Debit</th>
+                                        <th class="text-right">Credit</th>
+                                        <th class="text-right">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="transaction in Transactions">
+                                        <td>{{transaction.TransactionDate}}</td>
+                                        <td>{{transaction.ValueDate}}</td>
+                                        <td>{{transaction.ReferenceNumber}}</td>
+                                        <td>{{transaction.TransactionDescription}}</td>
+                                        <td>{{transaction.Currency}}</td>
+                                        <td>{{transaction.TransactionDebit}}</td>
+                                        <td>{{transaction.TransactionCredit}}</td>
+                                        <td class="text-right">{{transaction.TransactionBalance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label> Download as : </label>
+                        <a href="" title="PDF"><i class="fa fa-file-pdf-o"></i></a>&nbsp;&nbsp;&nbsp;<a href="" title="CSV"><i class="fa fa-file-excel-o"></i></a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <!--<input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackToAccounts();" />-->
+                    <a href="#MyAccounts" class="btn btn-vb-theme">Back</a>
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>

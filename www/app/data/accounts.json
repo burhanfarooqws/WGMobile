@@ -1,0 +1,186 @@
+{
+    "CustomerAccounts": [{
+        "AccountId": "0",
+        "AccountNumber": "0313015192584501",
+        "AccountType": "Current Account",
+        "AccountCurrency": "GBP",
+        "AccountBranch": "Munich Mall Branch",
+        "AccountStatus": "Active",
+        "AccountCurrentBalance": "28,690.00",
+        "AccountAvailableBalance": "28,690.00",
+        "AccountLowestCredit": "2,199.00",
+        "AccountHighestCredit": "10,000.00",
+        "AccountLowestDebit": "20.00",
+        "AccountHighestDebit": "1,600.00",
+        "JointAccount": "No",
+
+        "Transactions": [{
+            "TransactionDate": "30 MAR 2016 - 11:36 AM",
+            "ValueDate": "30 MAR 2016 - 11:36 AM",
+            "ReferenceNumber": "VBACCTRAN0010",
+            "TransactionDescription": "Debit Card - Dragan Mall",
+            "TransactionAmount": "650.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit",
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "04 APR 2016 - 09:15 AM",
+            "ValueDate": "04 APR 2016 - 09:15 AM",
+            "ReferenceNumber": "VBACCTRAN0007",
+            "TransactionDescription": "ATM Transaction - Spinnys Mall",
+            "TransactionAmount": "300.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "05 APR 2016 - 04:36 PM",
+            "ValueDate": "05 APR 2016 - 04:36 PM",
+            "ReferenceNumber": "VBACCTRAN0008",
+            "TransactionDescription": "ATM Transaction - Fun World",
+            "TransactionAmount": "150.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "06 APR 2016 - 02:36 PM",
+            "ValueDate": "06 APR 2016 - 02:36 PM",
+            "ReferenceNumber": "VBACCTRAN0009",
+            "TransactionDescription": "International Transfer - 101493373401",
+            "TransactionDebitCredit": "Credit",
+            "TransactionAmount": "8,500.00", 
+            "TransactionTag": "abcd",
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "07 APR 2016 - 06:47 PM",
+            "ValueDate": "07 APR 2016 - 06:47 PM",
+            "ReferenceNumber": "VBACCTRAN0010",
+            "TransactionDescription": "Debit Card - Dragan Mall",
+            "TransactionAmount": "450.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }]
+    }, {
+        "AccountId": "1",
+        "AccountNumber": "0313015192584502",
+        "AccountType": "Savings Account",
+        "AccountCurrency": "GBP",
+        "AccountBranch": "Munich Branch",
+        "AccountStatus": "Active",
+        "AccountCurrentBalance": "10,869.00",
+        "AccountAvailableBalance": "10,869.00",
+        "AccountLowestCredit": "3,199.00",
+        "AccountHighestCredit": "8,000.00",
+        "AccountLowestDebit": "300.00",
+        "AccountHighestDebit": "2,600.00",
+        "JointAccount": "Yes",
+
+        "Transactions": [{
+            "TransactionDate": "08 APR 2016 - 05:10 PM",
+            "ValueDate": "08 APR 2016 - 05:10 PM",
+            "ReferenceNumber": "VBACCTRAN0011",
+            "TransactionDescription": "Debit Card - China Mall",
+            "TransactionAmount": "250.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit",
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "09 APR 2016 - 01:04 PM",
+            "ValueDate": "09 APR 2016 - 01:04 PM",
+            "ReferenceNumber": "VBACCTRAN0017",
+            "TransactionDescription": "ATM Transaction - Wall Street",
+            "TransactionAmount": "300.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "10 APR 2016 - 07:10 PM",
+            "ValueDate": "10 APR 2016 - 07:10 PM",
+            "ReferenceNumber": "VBACCTRAN0081",
+            "TransactionDescription": "ATM Transaction - Kids World",
+            "TransactionAmount": "250.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "11 APR 2016 - 011:36 AM",
+            "ValueDate": "11 APR 2016 - 011:36 AM",
+            "ReferenceNumber": "VBACCTRAN0091",
+            "TransactionDescription": "International Transfer - 101493373412",
+            "TransactionDebitCredit": "Credit",
+            "TransactionAmount": "2,500.00", 
+            "TransactionTag": "abcd",
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "12 APR 2016 - 03:35 PM",
+            "ValueDate": "12 APR 2016 - 03:35 PM",
+            "ReferenceNumber": "VBACCTRAN0012",
+            "TransactionDescription": "Debit Card - EMKY Mall",
+            "TransactionAmount": "400.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }]
+    }, {
+        "AccountId": "2",
+        "AccountNumber": "0313015192584503",
+        "AccountType": "Current Account",
+        "AccountCurrency": "GBP",
+        "AccountBranch": "Berlin Branch",
+        "AccountStatus": "Active",
+        "AccountCurrentBalance": "9,869.00",
+        "AccountAvailableBalance": "9,869.00",
+        "AccountLowestCredit": "2,199.00",
+        "AccountHighestCredit": "5,000.00",
+        "AccountLowestDebit": "400.00",
+        "AccountHighestDebit": "3,200.00",
+        "JointAccount": "No",
+
+        "Transactions": [{
+            "TransactionDate": "21 MAR 2016 - 05:10 PM",
+            "ValueDate": "21 MAR 2016 - 05:10 PM",
+            "ReferenceNumber": "VBACCTRAN0021",
+            "TransactionDescription": "Debit Card - Mall of Europe",
+            "TransactionAmount": "550.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit",
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "22 MAR 2016 - 09:10 PM",
+            "ValueDate": "22 MAR 2016 - 09:10 PM",
+            "ReferenceNumber": "VBACCTRAN0123",
+            "TransactionDescription": "ATM Transaction - Couples Street",
+            "TransactionAmount": "350.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "23 MAR 2016 - 03:50 PM",
+            "ValueDate": "23 MAR 2016 - 03:50 PM",
+            "ReferenceNumber": "VBACCTRAN0158",
+            "TransactionDescription": "ATM Transaction - Water World",
+            "TransactionAmount": "650.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "24 MAR 2016 - 08:50 AM",
+            "ValueDate": "24 MAR 2016 - 08:50 AM",
+            "ReferenceNumber": "VBACCTRAN0852",
+            "TransactionDescription": "International Transfer - 101493373414",
+            "TransactionDebitCredit": "Credit",
+            "TransactionAmount": "4,000.00", 
+            "TransactionTag": "abcd",
+            "Currency": "GBP"
+        }, {
+            "TransactionDate": "25 MAR 2016 - 07:50 AM",
+            "ValueDate": "25 MAR 2016 - 07:50 AM",
+            "ReferenceNumber": "VBACCTRAN0124",
+            "TransactionDescription": "Debit Card - Dragon Mall",
+            "TransactionAmount": "250.00",
+            "TransactionTag": "abcd",
+            "TransactionDebitCredit": "Debit", 
+            "Currency": "GBP"
+        }]
+    }]
+}

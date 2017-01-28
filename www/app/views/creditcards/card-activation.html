@@ -1,0 +1,120 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Debit / Credit Card Activation
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method=""> 
+                <div class="alert  vb-alert vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! Your card has been activated successfully.</p> 
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        Please select your card
+                    </h4>
+                    <div class="alert vb-alert">
+                        <p>
+                            Through this service, you can instantly activate your debit cards and credit cards (both primary and supplementary)
+                        </p>
+                        <p>
+                            Please ensure that you activate your new / renewed card only after you receive it, you can verify this by comparing expiry date on the card with expiry date on the screen.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CardType">Card Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="DebitCards" id="DebitCards" name="CardType" data-ng-model="CardType" checked />
+                                <label for="DebitCards" class="radio">Debit Cards</label>
+                                <input type="radio" value="CreditCard" id="CreditCards" name="CardType" data-ng-model="CardType" />
+                                <label for="CreditCards" class="radio">Credit Cards</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='DebitCards'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards | limitTo:1">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object1-'+$index}}" checked />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">Visa Electron</td>
+                                        <td data-label="Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td>
+                                        <td data-label="Status">Inactive</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='CreditCard'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Card Limit ({{vbCurrency}})</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards | limitTo:1">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object2-'+$index}}" checked />
+                                                <label for="{{'object2-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">Visa Gold</td>
+                                        <td data-label="Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td>
+                                        <td data-label="Status">Inactive</td>
+                                        <td data-label="Currency">{{card.Currency}}</td>
+                                        <td data-label="Cash Limit" class="text-right">{{card.CashLimit}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Activate" class="btn btn-vb-theme" data-ng-click="SuccessMessageAction()" />
+                </div>
+            </form>
+        </div>
+    </div>  
+</section>

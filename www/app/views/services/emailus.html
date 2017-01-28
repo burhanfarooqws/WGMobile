@@ -1,0 +1,369 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Secure Email  
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>The mail box service allows you to communicate any inquiry, feedback or complaint with the bank in a secured manner.</p>
+                    <p>
+                        For ATM, CDM, or E-Payment related complaints / feedback, you are requested to also mention the transaction amount, time & date in the below as part of your comments.
+                    </p>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        Email list
+                    </h4>
+                    <div class="vb-email-plugin">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#Inbox">Inbox</a></li>
+                            <li><a data-toggle="tab" href="#Trash">Trash</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="Inbox" class="tab-pane fade in active">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-trash"></i></button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-print"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search for...">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-right">
+                                        <button type="button" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()">
+                                            <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;Compose
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object1-'+$index}}" />
+                                                        <label for="{{'object1-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </th>
+                                                <th>Date</th>
+                                                <th>Subject</th>
+                                                <th>Reference Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>28 FEB 2016 09:40 A.M.</td>
+                                                <td><strong><a href=""  data-ng-click="GoVBMailReplyForm()"><i class="fa fa-paperclip"></i> Dispute Transaction for Credit Card (4452 **** **** 4578).</a></strong></td>
+                                                <td>VBRNDF879657</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>17 NOV 2015 11:55 P.M.</td>
+                                                <td><a href=""  data-ng-click="GoVBMailReplyForm()">Your complaint has been received.</a></td>
+                                                <td>VBRNDF45785</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>18 NOV 2015 11:05 A.M.</td>
+                                                <td><a href=""  data-ng-click="GoVBMailReplyForm()">You have offered a new credit card</a></td>
+                                                <td>VBRNDF12457</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>16 OCT 2015 07:15 A.M.</td>
+                                                <td><a href=""  data-ng-click="GoVBMailReplyForm()">Your complaint has been received.</a></td>
+                                                <td>VBRNDF478545</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>3 NOV 2015 08:40 A.M.</td>
+                                                <td><a href=""  data-ng-click="GoVBMailReplyForm()">Your complaint has been received.</a></td>
+                                                <td>VBRNDF877845</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="Trash" class="tab-pane fade">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object1-'+$index}}" />
+                                                        <label for="{{'object1-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </th>
+                                                <th>Date</th>
+                                                <th>Subject</th>
+                                                <th>Reference Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>18 NOV 2015 11:05 A.M.</td>
+                                                <td><i class="fa fa-paperclip"></i> You have offered a new credit card</td>
+                                                <td>VBRNDF12457</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>17 NOV 2015 11:55 P.M.</td>
+                                                <td>Your complaint has been received.</td>
+                                                <td>VBRNDF45785</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="vb-checkbox-ctrl">
+                                                        <input type="checkbox" name="emailList" id="{{'object2-'+$index}}" />
+                                                        <label for="{{'object2-'+$index}}" class="checkbox">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>03 DEC 2015 09:40 A.M.</td>
+                                                <td>Credit Card (4452 7858 9632 4578) Related.</td>
+                                                <td>VBRNDF879657</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBMailReplyForm">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget"> 
+                    <h4> 
+                        Dispute transaction details has been received.<br />
+                        <small>28 FEB 2016 at 02:20 P.M.</small>
+                    </h4>
+                    <div class="form-group"> 
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label>We thank you for highlighting your concerns to us. Please be assured that we will investigate the matter raised and revert to you with a response within two business days.</label>
+                            <p></p>
+                            <label>Regards,</label>
+                            <p><label><b>VeriBank Customer Service</b></label></p> 
+                            <p><a href=""><i class="fa fa-paperclip"></i> Download Attachment</a></p>
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reply Message</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <textarea rows="10" class="form-control"></textarea>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="fileUpload btn btn-vb-theme">
+                                <span><i class="fa fa-paperclip"></i>  &nbsp;&nbsp;Attachment</span>
+                                <input type="file" class="upload" />
+                            </div>
+                        </div> 
+                    </div> 
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Send" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>
+                        Compose email
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Category">Category <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Complaint</option>
+                                <option>Query</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Branch">Branch</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Munich Branch</option>
+                                <option>Berlin Branch</option>
+                                <option>Hamburg Branch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Category">Product Category <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Accounts</option>
+                                <option>Credit Cards</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Branch">Call Back Phone</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="RegisteredMobile" name="CallBackPhone" id="RegisteredMobile" data-ng-model="CallBackPhone" />
+                                <label for="RegisteredMobile" class="radio">Registered Mobile</label>
+                                <input type="radio" value="OtherMobile" name="CallBackPhone" id="OtherMobile" data-ng-model="CallBackPhone" />
+                                <label for="OtherMobile" class="radio">Other Mobile</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CallBackPhone=='OtherMobile'">
+                            <input type="text" class="form-control" placeholder="Enter your mobile number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Message">Message</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                            <textarea rows="10" class="form-control" placeholder="Please enter your comments"></textarea>
+                        </div>
+                    </div> 
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Congratulations! your mail sent successfully.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Category&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Complaint</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Branch&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail"Munich Branch</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Product Category&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Accounts</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Complaint Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">The Concerned Staff Unware of Banks Products</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">031524875632</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Call Back Phone&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">+49 50 856 7845</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Message&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <label class="label-detail">This is the sample message description. This is the sample message description. This is the sample message description.</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

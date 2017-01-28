@@ -1,0 +1,405 @@
+<section class="content-header dashboard">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <h1 class="page-title">
+                My Dashboard
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2" data-intro="Total Unpaid amount based on your Accounts/Cards">
+            <div class="box un-paid">
+                <span>Unpaid</span>
+                <span>{{vbCurrency}} <b>1,892.00</b></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2" data-intro="Total amount paid in last 30 days">
+            <div class="box billed-paid">
+                <span>9 paid - Last 30 days</span>
+                <span>{{vbCurrency}} <b>865.41</b></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content dashboard" data-ng-controller="DashboardCtrl">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5" data-intro="Account Holder's total Account Information, Available Balance and Transaction Flow.">
+            <div class="box widget myaccount">
+                <div class="widget-header">
+                    <div class="pull-left">
+                        <div class="widget-title">
+                            <h4><i class="fa fa-briefcase"></i> My Accounts</h4>
+                        </div>
+                        <div class="widget-info">
+                            <span>Account Number</span>
+                            <span>
+                                <!--<i class="arrow arrow-down dropdown"></i>-->
+                                <select class="acc-dropwdown down-arrow" data-ng-model="selectAccount" data-ng-options="Account as Account.AccountNumber for Account in Accounts">
+                                </select> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="widget-info">
+                            <span>Available Balance</span>
+                            <span>{{selectAccount.AccountCurrency}} <b>{{selectAccount.AccountAvailableBalance}}</b></span>
+                        </div>
+                        <div class="widget-info">
+                            <span>Account Type</span>
+                            <span>{{selectAccount.AccountType}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-body-title">
+                        <span>  
+                            Transaction Flow :
+                        </span>
+                        <span class="dropdown pull-right">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                Monthly<i class="fa fa-bars"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="">Monthly</a>
+                                </li>
+                                <li>
+                                    <a href="">Weekly</a>
+                                </li>
+                                <li>
+                                    <a href="">Daily</a>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="widget-body-content">
+                        <div id="chartContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-intro="Account Holder's total Credit Card Information, Outstanding Balance, Available Limit and Card Usage.">
+            <div class="box widget mycards">
+                <div class="widget-header">
+                    <div class="pull-left">
+                        <div class="widget-title">
+                            <h4><i class="fa fa-credit-card"></i>{{selectCC.CardType}}</h4>
+                        </div>
+                        <div class="widget-info">
+                            <span>Credit Card Number</span>
+                            <span>
+                                <!--<i class="arrow arrow-down dropdown"></i>-->
+                                <select class="acc-dropwdown down-arrow" data-ng-model="selectCC" data-ng-options="CreditCard as CreditCard.CardNumber for CreditCard in CreditCards">
+                                </select>  
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="widget-info">
+                            <span>Outstanding Balance</span>
+                            <span>{{vbCurrency}} <b>{{selectCC.OutstandingBalance}}</b></span>
+                        </div>
+                        <div class="widget-info">
+                            <span>Available Limit</span>
+                            <span>{{vbCurrency}} <b>{{selectCC.AvailableLimit}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-body-title">
+                        <span>  
+                            Credit Card Usage :
+                        </span>
+                        <span class="dropdown pull-right">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                Graph View<i class="fa fa-bars"></i>
+                            </a>
+                            <ul class="dropdown-menu"> 
+                                <li>
+                                    <a href="">Graph View</a>
+                                </li>
+                                <li>
+                                    <a href="">Table View</a>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="widget-body-content text-center">
+                        <input type="text" knob data-ng-model="selectCC.CardUsage" data-width="170" data-height="170" data-fgColor="#00c7ab" data-bgColor="#e8e8e8" data-readonly="true" />
+                        <div class="chart-indicators">
+                            <span class="usedamt">
+                                <i></i>Used Amount
+                            </span>
+                            <span class="avllimit">
+                                <i></i>Available Limit
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 connectedSortable">
+            <!-- Weather Widget -->
+            <!--<div class="box widget weather">
+                <div class="weather-info">
+                    <span>29&deg;C / 84&deg;F</span>
+                    <span>London, UK</span>
+                </div>
+                <div class="weather-icon pull-right">
+                    <i class="fa fa-sun-o"></i>
+                </div>
+            </div>-->
+            
+            <div class="box widget vb-banner carousel slide" id="vbBannerCarousel" data-ride="carousel" data-intro="User is eligible to take these best available offers. Available Offers are offered to the user based on their Account/Card's Worth and Usage.">
+                <ol class="carousel-indicators">
+                    <li data-target="#vbBannerCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#vbBannerCarousel" data-slide-to="1"></li>
+                    <li data-target="#vbBannerCarousel" data-slide-to="2"></li>
+                    <li data-target="#vbBannerCarousel" data-slide-to="3"></li>
+                    <li data-target="#vbBannerCarousel" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="themes/imgs/banner-1.jpg" alt="Banner" class="img-responsive" data-toggle="modal" data-target="#VBPromotion">
+                    </div>
+                    <div class="item">
+                        <img src="themes/imgs/banner-2.jpg" alt="Banner" class="img-responsive" data-toggle="modal" data-target="#VBPromotion">
+                    </div>
+                    <div class="item">
+                        <img src="themes/imgs/banner-7.jpg" alt="Banner" class="img-responsive" data-toggle="modal" data-target="#VBPromotion">
+                    </div>
+                    <div class="item">
+                        <img src="themes/imgs/banner-6.jpg" alt="Banner" class="img-responsive" data-toggle="modal" data-target="#VBPromotion">
+                    </div>
+                    <div class="item">
+                        <img src="themes/imgs/banner-4.jpg" alt="Banner" class="img-responsive" data-toggle="modal" data-target="#VBPromotion">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" data-intro="Transaction history of Account Holder's default account.">
+            <div class="box widget vb-grid-container">
+                <div class="vb-grid-container-title">
+                    <h4>  
+                        Last Transactions 
+                    </h4>
+                    <span class="vb-grid-title-actions dropdown pull-right">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            Table View<i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Table View</a>
+                            </li>
+                            <li>
+                                <a href="">Graphical View</a>
+                            </li> 
+                        </ul>
+                    </span>
+                </div>
+                <div class="vb-grid-container-body">
+                    <div class="vb-grid table-responsive">
+                        <table class="table table-striped table-hover dt-responsive nowrap vbDataGrid">
+                            <thead>
+                                <tr>
+                                    <th>Date & Time</th>
+                                    <th>Account</th>
+                                    <th>Description</th> 
+                                    <!--<th>Currency</th>--> 
+                                    <th>Debit/Credit</th> 
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="transaction in transactions">
+                                    <td>{{transaction.TDate}}</td>
+                                    <td>{{transaction.TAccount}}</td>
+                                    <td>{{transaction.TDescb}}</td> 
+                                    <!--<td>{{transaction.TCurrency}}</td>--> 
+                                    <td>{{transaction.TDebitCredit}}</td> 
+                                    <td class="text-right">{{transaction.TAmount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 connectedSortable">
+            <!-- Subscribtion Widget -->
+            <div class="box widget notification carousel slide" id="vbSubscriptionCarousel" data-intro="This is the Subscription information which User have already subscribed.">
+                <div class="carousel-controls">
+                    <a class="carousel-control left" href="#vbSubscriptionCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="carousel-control right" href="#vbSubscriptionCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+                <h4>
+                    Subscription
+                </h4>
+                <div class="notification-content carousel-inner">
+                    <div class="item active">
+                        <h5>E-Statement Subscription</h5>
+                        <p>Auto Generate: 10th of each month.</p>
+                    </div>
+                    <div class="item">
+                        <h5>Bill Payment Subscription</h5>
+                        <p>You've subcribed for Bill Payment.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notification Widget -->
+            <div class="box widget notification carousel slide" id="vbNotificationCarousel" data-intro="General notifications information.">
+                <div class="carousel-controls">
+                    <a class="carousel-control left" href="#vbNotificationCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="carousel-control right" href="#vbNotificationCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+                <h4>
+                    Notifications
+                </h4>
+                <div class="notification-content carousel-inner">
+                    <div class="item active">
+                        <h5>Online Chat now on the go!</h5>
+                        <p>Set new benchmark on convenience by becoming the first bank ...</p>
+                    </div>
+                    <div class="item">
+                        <h5>Credit Card with your Choice!</h5>
+                        <p>Building your own rewards program allows you to maximize the ...</p>
+                    </div>
+                    <div class="item">
+                        <h5>Exceeding your Expectations!</h5>
+                        <p>A new era of private banking, with a commitment to deliver proven ...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Standing Instruction Widget -->
+            <div class="box widget standing-instructions" data-intro="User's upcoming appointment which is schedule with the Relationship Manager at Bank on the date showing here.">
+                <div class="si-title">
+                    <i class="fa fa-calendar"></i>
+                    <span>Upcoming Appointment</span>
+                </div>
+                <div class="si-info">
+                    <span class="si-info-date">23</span>
+                    <span>Jan, 2017</span>
+                    <span>Monday</span>
+                </div>
+            </div>
+              
+            <div class="box widget calendar">
+                <div class="vb-dtp-inline"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" data-intro="User's Net Worth. Showing total Assets and Liabilities.">
+            <div class="box widget worth">
+                <h4>My Worth</h4>
+                <div class="worth-body">
+                    <input type="text" knob data-ng-model="selectCC.CardWorth" data-width="140" data-height="140" data-fgColor="#00c7ab" data-bgColor="#f35958" data-readonly="true" />
+                    <div class="chart-indicators">
+                        <span class="assets">
+                            <i></i>Assets
+                        </span>
+                        <span class="liabilities">
+                            <i></i>Liabilities
+                        </span>
+                    </div>
+                </div>
+                <div class="worth-body-info">
+                    <div class="worth-assets pull-left">
+                        <span>Assets:</span>
+                        <span>{{vbCurrency}} 500,000.00</span>
+                    </div>
+                    <div class="worth-liabilities pull-right">
+                        <span>Liabilities:</span>
+                        <span>{{vbCurrency}} 150,000.00</span>
+                    </div>
+                </div>
+                <div class="worth-footer">
+                    Net Worth:
+                    <span class="pull-right">{{vbCurrency}} 350,000.00 </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" data-intro="Showing User's Goal and its complete details (Goal start date, Goal end date, Paid amount and Unpaid amount)">
+            <div class="box widget goal">
+                <h4>Goal</h4>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="goal-item">
+                        <h5>
+                            <i class="fa fa-car"></i> Car - BMW X6
+                        </h5>
+                        <div class="goal-slider">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-purple progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%
+                                    <span class="sr-only">50% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goal-slider-info text-right">
+                            <span>{{vbCurrency}} 50,000.00</span> 
+                        </div>
+                        <div class="goal-info">
+                            <div>
+                                <span>Start Date:</span>
+                                <span class="text-right">01 APR 2014</span>
+                            </div>
+                            <div>
+                                <span>End Date:</span>
+                                <span class="text-right">31 MAR 2018</span>
+                            </div>
+                            <div>
+                                <span>Remaining Amount:</span>
+                                <span class="text-right">{{vbCurrency}} 25,000.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="goal-item">
+                        <h5>
+                            <i class="fa fa-home"></i> Home Mortgage
+                        </h5>
+                        <div class="goal-slider">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-purple progress-bar-striped" role="progressbar" data-transitiongoal="33.5" aria-valuenow="33.5" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%
+                                    <span class="sr-only">75% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goal-slider-info text-right">
+                            <span>{{vbCurrency}} 800,000.00</span> 
+                        </div>
+                        <div class="goal-info">
+                            <div>
+                                <span>Start Date:</span>
+                                <span class="text-right">15 MAR 2012</span>
+                            </div>
+                            <div>
+                                <span>End Date:</span>
+                                <span class="text-right">31 JAN 2017</span>
+                            </div>
+                            <div>
+                                <span>Remaining Amount:</span>
+                                <span class="text-right">{{vbCurrency}} 200,000.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,117 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                E-Statement Subscription
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method=""> 
+                <div class="alert vb-alert-success vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! You have successfully subscribed E-Statement for Account Number {{FundTransferForm.FromAccount}}</p> 
+                </div>
+                <div class="box widget"> 
+                    <!--<div class="vb-banner carousel slide" id="VBPromotionBanner">
+                        <ol class="carousel-indicators">
+                            <li data-target="#VBPromotionBanner" data-slide-to="0" class="active"></li>
+                            <li data-target="#VBPromotionBanner" data-slide-to="1"></li>
+                            <li data-target="#VBPromotionBanner" data-slide-to="2"></li>
+                            <li data-target="#VBPromotionBanner" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="themes/imgs/Index-Banner-1.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="themes/imgs/Index-Banner-2.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="themes/imgs/Index-Banner-3.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="themes/imgs/Index-Banner-4.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <br>
+
+                    <div class="alert vb-alert">
+                        <ul>
+                            <li>Please take a few moments to fill this application form and we will contact you at the earliest.</li>
+                            <li>Fields marked with <span class="mandatory">*</span> are mandatory.</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="From Account">Account <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" data-ng-model="FundTransferForm.FromAccount" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="0313015192584501">0313015192584501</option>
+                                <option value="0313015192584502">0313015192584502</option>
+                                <option value="0313015192584503">0313015192584503</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FirstName">First Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Archie" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LastName">Last Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Andrews" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MobileNumber">Mobile Number <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+973 00 111 2222" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Company">Company Name</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MobileNumber">Alternate Contact Number <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+973 00 111 2222" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Email">Email</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="archie.andrews@email.com" class="form-control" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Subscribe" class="btn btn-vb-theme" data-ng-click="SuccessMessageAction()" />
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>

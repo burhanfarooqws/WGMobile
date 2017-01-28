@@ -1,0 +1,238 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Increase / Decrease Limits
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="IncreaseDecreaseLimit" ng-submit="submitForm(IncreaseDecreaseLimit.$valid)" novalidate action="" method="">
+                <!--<div class="alert vb-alert vb-alert-out"> 
+                    <p>Through this option, you can set your preferred transaction / daily limits for internal & external fund transfers initiated through VeriBank online banking. The preferred limits must be within the maximum limits prescribed by the bank.</p>
+                    <p>Request for decrease in limits will be processed immediately.</p>
+                    <p>Request for increase in limits (Within the maximum limits prescribed by the bank) will take one working day to process.</p>
+                </div>-->
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        <span class="step-control"><b>1</b> of 4</span>   
+                        Transfer within bank accounts
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PreferredLimit">Preferred Limit ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="" ="0.00" name="PreferredLimit" data-ng-model="IncreaseDecreaseLimitForm.PreferredLimit" vb-Amount required /> 
+                            <p ng-show="IncreaseDecreaseLimit.PreferredLimit.$invalid && !IncreaseDecreaseLimit.PreferredLimit.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MaximumLimit">Maximum Limit ({{vbCurrency}}) </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" disabled="disabled" value="10,000.00" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DailyLimit">Daily Limit ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="" ="0.00" name="DailyLimit" data-ng-model="IncreaseDecreaseLimitForm.DailyLimit" vb-Amount required /> 
+                            <p ng-show="IncreaseDecreaseLimit.DailyLimit.$invalid && !IncreaseDecreaseLimit.DailyLimit.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MaximumDailyLimit">Maximum Daily Limit ({{vbCurrency}})</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" disabled="disabled" value="5,000.00" />
+                        </div>
+                    </div> 
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        <span class="step-control"><b>2</b> of 4</span> 
+                        Transfer outside bank accounts
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mobile-hide">
+                            <label class="control-label" for="">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" name="EnableDisable" id="Enabled" data-ng-model="EnableDisable" />
+                                <label for="Enabled" class="checkbox">Enabled</label> 
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PreferredLimit1">Preferred Limit ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="" ="0.00" name="PreferredLimit1" data-ng-model="IncreaseDecreaseLimitForm.PreferredLimit1" data-ng-readonly="!EnableDisable"  vb-Amount required /> 
+                            <p ng-show="IncreaseDecreaseLimit.PreferredLimit1.$invalid && !IncreaseDecreaseLimit.PreferredLimit1.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MaximumLimit">Maximum Limit ({{vbCurrency}})</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" disabled="disabled" value="20,000.00" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DailyLimit1">Daily Limit ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="" ="0.00" name="DailyLimit1" data-ng-model="IncreaseDecreaseLimitForm.DailyLimit1" data-ng-readonly="!EnableDisable"  vb-Amount required /> 
+                            <p ng-show="IncreaseDecreaseLimit.DailyLimit1.$invalid && !IncreaseDecreaseLimit.DailyLimit1.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MaximumDailyLimit">Maximum Daily Limit ({{vbCurrency}})</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" disabled="disabled" value="15,000.00" />
+                        </div>
+                    </div> 
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+                        Please check the information entered. To finish, press confirm.
+                    </h4>
+                    <h5>
+                        Transfer within bank accounts
+                    </h5>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Preferred Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{IncreaseDecreaseLimitForm.PreferredLimit}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Daily Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{IncreaseDecreaseLimitForm.DailyLimit}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <h5>
+                        Transfer outside bank accounts
+                    </h5> 
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Enabled&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Yes</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Preferred Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{IncreaseDecreaseLimitForm.PreferredLimit1}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Daily Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{IncreaseDecreaseLimitForm.DailyLimit1}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p> Your details updated successfully. Please note that the blow reference number of your records.</p>
+                </div>
+                <div class="box widget" id="vbprintSection"> 
+                    <h5>
+                        Transfer within bank accounts
+                    </h5>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Preferred Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">10,000.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Daily Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">1,000.00</label>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <h5>
+                        Transfer outside bank accounts
+                    </h5> 
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Enabled&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Yes</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Preferred Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">10,000.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Daily Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">1,500.00</label>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">VBJDKSAFDASJF452</label>
+                        </div>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</section> 

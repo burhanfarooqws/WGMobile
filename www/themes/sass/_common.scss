@@ -1,0 +1,258 @@
+.btn-vb-theme{
+    color: $vb-white;
+    background-color: $vb-green;
+    /*border-color: $vb-darkgreen;*/
+    border: 0px;
+    padding: 7px 24px;
+    transition: all .3s ease-in-out;
+    /*box-shadow: 0 3px 0 #097168;*/
+    @include OpenSans-Regular-webfont;
+    font-size: .75em;
+
+    &:hover, &:focus{
+        background-color: $vb-darkgreen;
+        color: $vb-white;
+    } 
+    /*&:active { 
+        box-shadow: 0 1px 0 #097168;
+        transform: translateY(2px);
+    }*/
+
+    @include mobile {
+    	width: 100%;
+    	margin-bottom: 10px;
+    }
+}
+.btn-vb-theme-cancel{
+    color: $vb-white;
+    background-color: #5f6e81;
+    /*border-color: #888888;*/ 
+    font-size: .75em;
+
+    &:hover, &:focus{
+        background-color: $vb-darkgrey;
+        color: $vb-white;
+    }  
+    @include mobile {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.btn-block+.btn-block{
+    margin-top: 15px;
+} 
+
+/* for alert */ 
+.vb-alert{
+	background-color: #fcefa1;
+	border-color: #ecdd81;
+	color: $vb-black;
+	font-size: .8125em;
+} 
+.vb-alert-success{
+    background-color: #71ccd2;
+    border-color: #61b4b9;
+    color: $vb-white;
+    font-size: .8125em;
+} 
+.vb-alert-box {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.slimScrollDiv{ 
+    margin-bottom: 15px;
+
+    .slimScrollBar{
+        right: 25px !important;
+    }
+}
+
+/* hyper links */
+a {
+    transition: all .3s ease-in-out;
+    outline: 0 !important; 
+}
+
+/* custom styles */
+.padding-right-15{
+    padding-right: 15px !important;
+}
+
+
+.modal-footer{
+    text-align: $vb-center;
+}
+
+.statement{
+    a{
+        i{
+            font-size: 1.2em;
+        }
+    }
+}
+
+
+/* for printing the confirmation table */
+#vbPrintable{
+    padding: 20px;
+    table{
+        width: 100%;
+        font-size: .7em;
+        @include OpenSans-Regular-webfont;
+        color: #000;
+        tr{
+            td{
+                padding: 8px; 
+            }
+        }
+    } 
+}
+
+@media (min-width: 420px) {
+	/* for printing the confirmation table */
+	#vbPrintable{
+		padding: 20px;
+		table{
+			width: 100%;
+			font-size: .8175em;
+			@include OpenSans-Regular-webfont;
+			color: #000;
+			tr{
+				td{
+					padding: 8px; 
+				}
+			}
+		} 
+	}
+}
+
+table.dataTable.tagging>tbody>tr.child span.dtr-title {
+    vertical-align: top;
+}
+table.dataTable.tagging>tbody>tr.child span.dtr-data {
+    display: block;
+    min-width: 70%;
+    /*background:#FC0;*/
+}
+table.dataTable.tagging>tbody>tr.child span.dtr-data .form-group {
+    display: block;
+}
+table.dataTable.tagging>tbody>tr.child span.dtr-data .form-control {
+    width: 100%;
+}
+table.dataTable.tagging>tbody>tr.child span.dtr-data .control-label {
+    font-size: 1.1em;
+    padding-top: 9px;
+}
+
+@media (min-width: 768px) {
+	.form-horizontal .control-label {
+		text-align: left !important;
+	}
+}
+@media (max-width: 736px) {
+	.modal-footer .btn+.btn {
+		margin-left: 0px;
+	}
+}
+
+/*.blur,
+.content {
+	
+	position: relative;
+	
+	&:before {
+		content: "";
+		background: url(../imgs/blured.png) left top no-repeat;
+		background-size: 100% auto;
+		width: 97%;
+    	height: 500px;
+    	display: inline-block;
+    	margin: 0 0 30px 20px;
+	}
+	&:after {
+        top: 40%;
+        left: 50%;
+		width: 500px;
+		height: 140px;
+		margin: -70px 0 0 -250px;
+		padding: 26px 38px;
+		
+		display: inline-block;
+		z-index: 999 !important;
+        
+        content: "This is a demo version. Kindly contact VERIPARK for full version, visit: www.veripark.com";
+		
+		font-size: 1.2em;
+		color: #FFF;
+		text-align:center;
+		
+		background-color: $vb-green;
+		border: 6px solid #fff;
+		
+        position: $vb-absolute;
+        pointer-events: $vb-none;
+		
+		@include border-radius(4px);
+		@include box-shadow(0 10px 40px 0px rgba(0,0,0,.5))
+    }
+	
+	>.row {
+		display: none;
+	}
+}
+.not-blur,
+.content {
+	&.not-blur {
+		&:before,
+		&:after {
+			display: none;
+			content: " ";
+		}
+		>.row {
+			display:block;
+		}
+	}
+}*/
+
+.content {
+	
+	position: relative;
+	
+	.blurImage {
+		background: url(../imgs/blured.png) left top no-repeat;
+		background-size: 100% auto;
+		width: 100%;
+    	height: 500px;
+    	display: inline-block;
+    	margin: 0 0 30px 0px;
+	}
+	.demoMessage {
+        top: 40%;
+        left: 50%;
+		width: 500px;
+		height: 140px;
+		margin: -70px 0 0 -250px;
+		padding: 26px 38px;
+		
+		display: inline-block;
+		z-index: 999 !important;
+		
+		font-size: 1.2em;
+		color: #FFF;
+		text-align:center;
+		
+		background-color: $vb-green;
+		border: 6px solid #fff;
+		
+        position: $vb-absolute;
+		
+		@include border-radius(4px);
+		@include box-shadow(0 10px 40px 0px rgba(0,0,0,.5))
+		
+		a {
+			color: #FFF;
+			text-decoration: underline;
+		}
+    }
+}

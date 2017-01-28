@@ -1,0 +1,176 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Please Call me back!
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method=""> 
+                <div class="alert vb-alert-success vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! Your form was submitted and our representative will contact you at the earliest.</p> 
+                </div>
+                <div class="box widget"> 
+                    <!--<div class="vb-banner carousel slide" id="VBPromotionBanner">
+                        <ol class="carousel-indicators">
+                            <li data-target="#VBPromotionBanner" data-slide-to="0" class="active"></li>
+                            <li data-target="#VBPromotionBanner" data-slide-to="1"></li>
+                            <li data-target="#VBPromotionBanner" data-slide-to="2"></li>
+                            <li data-target="#VBPromotionBanner" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="themes/imgs/Index-Banner-1.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="themes/imgs/Index-Banner-2.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="themes/imgs/Index-Banner-3.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img src="themes/imgs/Index-Banner-4.png" alt="VeriBank Promotion" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <h4>
+                        Please enter your details to avail the offer
+                    </h4>
+
+                    <div class="alert vb-alert">
+                        <ul>
+                            <li>Please take a few moments to fill this application form and we will contact you at the earliest.</li>
+                            <li>Fields marked with <span class="mandatory">*</span> are mandatory.</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group hidden">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Existing Bank Customer</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="ExistCust" id="Yes3" checked />
+                                <label for="Yes3" class="radio">Yes</label>
+                                <input type="radio" name="ExistCust" id="No3" />
+                                <label for="No3" class="radio">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FirstName">First Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Archie" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LastName">Last Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Andrews" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MobileNumber">Mobile Number <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+973 00 111 2222" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Company">Company Name</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MobileNumber">Alternate Contact Number <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+973 00 111 2222" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Email">Email</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="archie.andrews@email.com" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Description">Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea class="form-control ng-pristine ng-valid" rows="3" placeholder="Personal Loan!&#10;Congratulations, you are eligible to get GBP 10,000.00 Loan @ 3.6%" name="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Preferred Contact Time</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                        	<div class="row">
+                            	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot1" id="TimeSlot1" checked="">
+                                        <label for="TimeSlot1" class="checkbox">09:00 AM - 10:00 AM</label>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot2" id="TimeSlot2">
+                                        <label for="TimeSlot2" class="checkbox">11:00 AM - 12:00 PM</label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot3" id="TimeSlot3">
+                                        <label for="TimeSlot3" class="checkbox">02:00 PM - 03:00 PM</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot4" id="TimeSlot4">
+                                        <label for="TimeSlot4" class="checkbox">04:00 PM - 05:00 PM</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Preferred Contact Time</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" value="None" name="Morning" id="Morning" checked="">
+                                <label for="Morning" class="checkbox">Morning</label>
+                                <input type="checkbox" value="None" name="Evening" id="Evening">
+                                <label for="Evening" class="checkbox">Evening</label>
+                            </div>
+                        </div>
+                    </div>-->
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Apply Now" class="btn btn-vb-theme" data-ng-click="SuccessMessageAction()" />
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>

@@ -1,0 +1,119 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                My Portfolio
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>
+                        View a consolidated summary of all your relationships with VeriBank.
+                    </p>
+                </div>
+                <div class="box widget">
+                    <h4> 
+	            		Accounts
+	            	</h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Relationship Type</th> 
+                                        <th class="text-right">Total Balance ({{vbCurrency}})</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> 
+                                        <td><a href="#MyAccounts">Current Accounts (2)</a></td> 
+                                        <td class="text-right">12,738.00</td> 
+                                    </tr>
+                                    <tr> 
+                                        <td><a href="#MyAccounts">Savings Accounts (1)</a></td> 
+                                        <td class="text-right">10,869.00</td> 
+                                    </tr>
+                                    <tr> 
+                                        <td><a href="#MyAccounts">Term Deposit (1)</a></td> 
+                                        <td class="text-right">8,000.00</td> 
+                                    </tr> 
+                                    <tr> 
+                                        <td>Total ({{vbCurrency}})</td> 
+                                        <td class="text-right">31,607.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        Credit Cards
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Relationship Type</th> 
+                                        <th class="text-right">Outstanding Balance ({{vbCurrency}})</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> 
+                                        <td><a href="#MyCards">Credit Cards (3)</a></td>
+                                        <td class="text-right">5,200.00</td> 
+                                    </tr> 
+                                    <tr> 
+                                        <td>Total ({{vbCurrency}})</td> 
+                                        <td class="text-right">5,200.00</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4> 
+	            		Finance Relationships
+	            	</h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Relationship Type</th> 
+                                        <th class="text-right">Outstanding Amount ({{vbCurrency}})</th>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                    <tr> 
+                                        <td><a href="#PFM">Car Loan (1)</a></td> 
+                                        <td class="text-right">25,000.00</td> 
+                                    </tr> 
+                                    <tr> 
+                                        <td><a href="#PFM">Home Loan (1)</a></td> 
+                                        <td class="text-right">200,000.00</td> 
+                                    </tr>
+                                    <tr> 
+                                        <td>Total ({{vbCurrency}})</td> 
+                                        <td class="text-right">225,000.00</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>  
+            </form>
+        </div>
+    </div>
+</section>

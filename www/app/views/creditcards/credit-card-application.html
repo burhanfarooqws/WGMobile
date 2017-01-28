@@ -1,0 +1,358 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Credit Card Application
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="CCApplication" ng-submit="submitForm(CCApplication.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        Please enter the details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Title">Title <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="ApplicationTitle" data-ng-model="CCApplicationForm.title">
+                                <option value="Mr." ng-selected="true">Mr.</option>
+                                <option value="Mrs.">Mrs.</option>
+                                <option value="Miss.">Miss</option>
+                            </select>
+                            <p ng-show="CCApplication.title.$invalid && !CCApplication.title.$pristine" class="help-block error">Please select a title</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="NameonCard">Name on Card <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" value="Archie Andrews" name="ApplicationTitle" />
+                            <p ng-show="CCApplication.nameOnCard.$invalid && !CCApplication.nameOnCard.$pristine" class="help-block error">Please enter your name on card</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="NickName">Archie</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" value="Archie" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DOB">Date of Birth</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control vb-dtp" value="02/11/1982" />
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FamilyStatus">Family Status</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Gender">Gender <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="CCApplicationGender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <p ng-show="CCApplication.gender.$invalid && !CCApplication.gender.$pristine" class="help-block error">Please select your gender</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Language">Language</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" value="English" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Natioality">Natioality</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control">
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Germany">Germany</option>
+                                <option value="United States">United States</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Address">Address</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your address" data-ng-model="CCApplicationForm.address" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Mobile">Mobile <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" value="+44 1234 123456" name="mobile" /> 
+                            <p ng-show="CCApplication.mobile.$invalid && !CCApplication.mobile.$pristine" class="help-block error">Please enter your mobile</p> 
+                            <p ng-show="CCApplication.mobile.$error.pattern" class="help-block error">Enter only numbers without spaces.</p>
+                            <p ng-show="((CCApplication.mobile.$error.minlength || CCApplication.mobile.$error.maxlength) && CCApplication.mobile.$dirty)" class="help-block error">Mobile number should be 10 digits</p> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Email">Email <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="email" class="form-control" value="archie.andrew@email.com" name="email" />
+                            <p ng-show="CCApplication.email.$invalid && !CCApplication.email.$pristine" class="help-block error">Enter valid email address</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CurrentSalary">Current Salary ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="currentSalary" data-ng-model="CCApplicationForm.currentSalary" vb-Amount required />
+                            <p ng-show="CCApplication.currentSalary.$invalid && !CCApplication.currentSalary.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Amount">Amount ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="amount" data-ng-model="CCApplicationForm.amount" vb-Amount required />
+                            <p ng-show="CCApplication.amount.$invalid && !CCApplication.amount.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="RequiredLimit">Required Limit ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="requiredLimit" data-ng-model="CCApplicationForm.requiredLimit" vb-Amount required />
+                            <p ng-show="CCApplication.requiredLimit.$invalid && !CCApplication.requiredLimit.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>--> 
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method=""> 
+                <div class="box widget">
+                    <h4>  
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Title&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Mr.</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Name on Card&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie Andrews</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Nick Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Date of Birth&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">02/11/1982</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Gender&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Male</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Family Status&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Single</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Language&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">English</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Nationality&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">United Kingdom</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CCApplicationForm.address}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mobile&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">+44 1234 123456</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Email&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">archie.andrew@email.com</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Beneficiary Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Self</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Preferred Card Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Prepaid</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Current Salary ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CCApplicationForm.currentSalary}}</label>
+                        </div>
+                    </div>
+                    <!--<div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CCApplicationForm.amount}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Required Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CCApplicationForm.requiredLimit}}</label>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your application received successfully. The application process would take 3 working days. Please note that the below reference for your record.</p>
+                </div>
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Title</td>
+                                <td>: <strong>Mr.</strong></td>
+                                <td class="text-left">Name on Card</td>
+                                <td>: <strong>Archie Andrews</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Nick Name</td>
+                                <td>: <strong>Archie</strong></td>
+                                <td class="text-left">Date of Birth</td>
+                                <td>: <strong>02/11/1982</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Gender</td>
+                                <td>: <strong>Male</strong></td>
+                                <td class="text-left">Family Status</td>
+                                <td>: <strong>Single</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Language</td>
+                                <td>: <strong>English</strong></td>
+                                <td class="text-left">Nationality</td>
+                                <td>: <strong>United Kingdom</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Address</td>
+                                <td>: <strong>{{CCApplicationForm.address}}</strong></td>
+                                <td class="text-left">Mobile</td>
+                                <td>: <strong>+44 1234 123456</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Email</td>
+                                <td>: <strong>archie.andrew@email.com</strong></td>
+                                <td class="text-left">Beneficiary Type</td>
+                                <td>: <strong>Self</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Preferred Card Type</td>
+                                <td>: <strong>Prepaid</strong></td>
+                                <td class="text-left">Current Salary ({{vbCurrency}})</td>
+                                <td>: <strong>{{CCApplicationForm.currentSalary}}</strong></td>
+                            </tr>
+                            <!--<tr>
+                                <td class="text-left">Amount ({{vbCurrency}})</td>
+                                <td>: <strong>{{CCApplicationForm.amount}}</strong></td>
+                                <td class="text-left">Required Limit ({{vbCurrency}})</td>
+                                <td>: <strong>{{CCApplicationForm.requiredLimit}}</strong></td>
+                            </tr>-->
+                            <tr>
+                                <td class="text-left">Rerefence Number</td>
+                                <td colspan="3">: <strong>VBCHEQUE000127</strong></td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

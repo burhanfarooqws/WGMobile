@@ -1,0 +1,109 @@
+/*
+ VeriBank common mixins
+ */ 
+
+/* VeriBank custom fonts */  
+@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
+    @font-face {
+        font-family: $font-family;
+          src: url('#{$file-path}.eot');
+          src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+               url('#{$file-path}.woff') format('woff'),
+               url('#{$file-path}.ttf') format('truetype'),
+               url('#{$file-path}.svg##{$font-family}') format('svg');
+        font-weight: $font-weight;
+        font-style: $font-style;
+    } 
+} 
+ 
+@include font-face(OpenSans-Light-webfont, '../fonts/OpenSans-Light-webfont', 300, normal);
+@include font-face(OpenSans-Regular-webfont, '../fonts/OpenSans-Regular-webfont', 500, normal);
+@include font-face(OpenSans-Semibold-webfont, '../fonts/OpenSans-Semibold-webfont', 600, normal); 
+
+@mixin OpenSans-Light-webfont {
+    font-family: 'OpenSans-Light-webfont', arial, sans-serif;
+    font-weight: 300; font-style: normal; 
+}
+
+@mixin OpenSans-Regular-webfont {
+    font-family: 'OpenSans-Regular-webfont', arial, sans-serif;
+    font-weight: 500; font-style: normal; 
+}
+
+@mixin OpenSans-Semibold-webfont {
+    font-family: 'OpenSans-Semibold-webfont', arial, sans-serif;
+    font-weight: 600; font-style: normal; 
+}
+
+
+/* border raidus */
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+        border-radius: $radius;
+} 
+
+/* box shadow */
+@mixin box-shadow($value) {
+    -webkit-box-shadow: $value;
+    -moz-box-shadow: $value;
+    box-shadow: $value;
+} 
+
+/* css rotation */
+@mixin rotate($value) { 
+    -webkit-transform: rotate($value);
+    -moz-transform: rotate($value);
+    -o-transform: rotate($value);
+    -ms-transform: rotate($value);
+    transform: rotate($value);
+}  
+
+
+/* break points */  
+@mixin mobile() {
+    @media (min-width: 320px) and (max-width: 767px) {
+        @content;
+    }
+}
+@mixin mobileSml() {
+    @media (max-width: 320px){
+        @content;
+    }
+}
+@mixin mobilePT() {
+    @media (min-width: 320px) and (max-width: 414px) {
+        @content;
+    }
+}
+@mixin mobileLS() {
+    @media (min-width: 480px) and (max-width: 767px) {
+        @content;
+    }
+}
+@mixin tablet() {
+    @media (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+@mixin tabletPT() {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin tabletLS() {
+    @media (max-width: 1024px) {
+        @content;
+    }
+} 
+@mixin desktop() {
+    @media (min-width: 1025px) {
+        @content;
+    }
+}
+@mixin desktopLG() {
+    @media (min-width: 1200px) {
+        @content;
+    }
+} 

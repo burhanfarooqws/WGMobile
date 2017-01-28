@@ -1,0 +1,33 @@
+{
+    "Budgets": [{
+        "BudgetType": "House Rent",
+        "BugetAmount": "2,500.00",
+        "BudgetPercent": "25",
+        "LastUpdated": "25 NOV 2015"
+    }, {
+        "BudgetType": "Utilities",
+        "BugetAmount": "1,000.00",
+        "BudgetPercent": "15",
+        "LastUpdated": "28 NOV 2015"
+    }, {
+        "BudgetType": "Grocery",
+        "BugetAmount": "500.00",
+        "BudgetPercent": "7",
+        "LastUpdated": "25 NOV 2015"
+    }, {
+        "BudgetType": "Medical",
+        "BugetAmount": "500.00",
+        "BudgetPercent": "7",
+        "LastUpdated": "15 NOV 2015"
+    }, {
+        "BudgetType": "Education",
+        "BugetAmount": "1,000.00",
+        "BudgetPercent": "15",
+        "LastUpdated": "10 OCT 2015"
+    }, {
+        "BudgetType": "Shopping",
+        "BugetAmount": "500.00",
+        "BudgetPercent": "7",
+        "LastUpdated": "23 NOV 2015"
+    }]
+}

@@ -1,0 +1,435 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Pay New Bill / Add Payee
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="PayNewBill" ng-submit="submitForm(PayNewBill.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 4</span>
+                        New bill / beneficiary details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="BillerName">Biller Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="BillerName" data-ng-model="PayNewBillForm.BillerName" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Internet Provider">Internet Provider</option>
+                                <option value="Mobile (GSM)">Mobile (GSM)</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for=">BillerType">Biller Type <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="BillerType" data-ng-model="PayNewBillForm.BillerType" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Mobile(GSM)">Mobile (GSM)</option>
+                                <option value="EWA">EWA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="BeneficiaryName">Beneficiary Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" name="BeneficiaryName" data-ng-model="PayNewBillForm.BeneficiaryName" data-ng-readonly="!SaveBeneficiary" required />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MobileNumber">Mobile Number <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" name="MobileNumber" data-ng-model="PayNewBillForm.MobileNumber"  data-ng-minlength="10" data-ng-maxlength="10" ng-pattern="mobileNumberPattern" placeholder="Ex: 050 888 7755" required />  
+                            <p ng-show="PayNewBill.MobileNumber.$error.pattern" class="help-block error">Enter only numbers without spaces.</p>
+                            <p ng-show="((PayNewBill.MobileNumber.$error.minlength || PayNewBill.MobileNumber.$error.maxlength) && PayNewBill.MobileNumber.$dirty)" class="help-block error">Mobile number should be 10 digits</p> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mobile-hide">
+                            <label class="control-label">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" value="None" name="saveBeneficiary" id="saveBeneficiary" data-ng-model="SaveBeneficiary" />
+                                <label for="saveBeneficiary" class="checkbox">Save as Beneficiary</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 4</span>
+                        Bill payment details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PaymentCurrency">Currency <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select class="form-control" name="PaymentCurrency" data-ng-model="PayNewBillForm.PaymentCurrency" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="GBP">Great British Pounds(GBP)</option>
+                                <option value="USD">US Dollers (USD)</option>
+                                <option value="USD">Arab Emirate Dhirham (AED)</option>
+                                <option value="USD">Soudi Riyal (SAR)</option>
+                                <option value="USD">Qatari Riyal (QAR)</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DueAmount">Due Amount</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="150.00" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PaymentAmount">Payment Amount <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="0.00"  name="PaymentAmount" data-ng-model="PayNewBillForm.PaymentAmount" vb-Amount required /> 
+                            <p ng-show="PayNewBill.PaymentAmount.$invalid && !PayNewBill.PaymentAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 4</span>
+                        Payment from
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PaymentSource">Payment Source </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Accounts" id="Accounts" name="PaymentSource" data-ng-model="PaymentSource" checked />
+                                <label for="Accounts" class="radio">Accounts</label>
+                                <input type="radio" value="CreditCard" id="CreditCards" name="PaymentSource" data-ng-model="PaymentSource" />
+                                <label for="CreditCards" class="radio">Credit Cards</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="PaymentSource=='Accounts'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Account Number</th>
+                                        <th>Account Type</th>
+                                        <th>Currency</th>
+                                        <th>Branch</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Available Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="account in Accounts">
+                                        <td>
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="accList" id="{{'object-'+$index}}" ng-model="selectedAccount.AccountId" value="{{account.AccountId}}"  ng-change="onTaskSelect(account)" required />
+                                                <label for="{{'object-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Account Number">{{account.AccountNumber}}</td>
+                                        <td data-label="Account Type">{{account.AccountType}}</td>
+                                        <td data-label="Currency">{{account.AccountCurrency}}</td>
+                                        <td data-label="Branch">{{account.AccountBranch}}</td>
+                                        <td data-label="Status">{{account.AccountStatus}}</td>
+                                        <td data-label="Available Balance" class="text-right">{{account.AccountAvailableBalance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="PaymentSource=='CreditCard'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Credit Card Number</th>
+                                        <th>Card Type</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Credit Limit</th>
+                                        <th class="text-right">Available Limit</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in creditcards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object1-'+$index}}" ng-model="selectedCard.CardId" value="{{card.CardId}}" />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Currency">{{card.Currency}}</td>
+                                        <td data-label="Credit Limit" class="text-right">{{card.CreditLimit}}</td>
+                                        <td data-label="Available Limit" class="text-right">{{card.AvailableLimit}}</td>
+                                        <td data-label="Due Date">{{card.DueDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>4</b> of 4</span>
+                        Payment type details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PaymentType">Payment Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="immediatePayment" id="Immediate" name="PaymentType" data-ng-model="PaymentType" checked="checked" />
+                                <label for="Immediate" class="radio">Immediate</label>
+                                <input type="radio" value="scheduledPayment" id="Scheduled" name="PaymentType" data-ng-model="PaymentType" />
+                                <label for="Scheduled" class="radio">Scheduled (for later date)</label>
+                                <input type="radio" value="recurringPayment" id="Recurring" name="PaymentType" data-ng-model="PaymentType" />
+                                <label for="Recurring" class="radio">Recurring</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="PaymentType=='immediatePayment'">
+                    </div>
+                    <div class="form-group" data-ng-show="PaymentType=='scheduledPayment'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ScheduleDate">Schedule Date</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group vb-dtp">
+                                <input type="text" class="form-control" id="ScheduleDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="PaymentType=='recurringPayment'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" value="None" name="PayFullAmount" id="PayFullAmount" data-ng-model="payFullAmount" />
+                                <label for="PayFullAmount" class="checkbox">Pay Full Amount</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PaymentFullAmount">Payment Amount ({{vbCurrency}})</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control text-right" placeholder="0.00" data-ng-readonly="payFullAmount" />
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="PaymentType=='recurringPayment'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="StartDate">Start Date</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group vb-dtp">
+                                <input type="text" class="form-control" id="startDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="EndDate">End Date</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group vb-dtp">
+                                <input type="text" class="form-control" id="endDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="PaymentType=='recurringPayment'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="PaymentFrequency">Payment Frequency</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="None" id="Weekly" name="PaymentFrequency" checked />
+                                <label for="Weekly" class="radio">Weekly</label>
+                                <input type="radio" value="None" id="Monthly" name="PaymentFrequency" />
+                                <label for="Monthly" class="radio">Monthly</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <a data-ng-href="#BillPayments" class="btn btn-vb-theme-cancel">Cancel</a>
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Please check the information entered. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Biller Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{PayNewBillForm.BillerName}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Biller Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{PayNewBillForm.BillerType}}</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Beneficiary Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{PayNewBillForm.BeneficiaryName}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mobile Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{PayNewBillForm.MobileNumber}}</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Account to Debit&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectAccountNumber.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{PayNewBillForm.PaymentCurrency}}</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Payment Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{PayNewBillForm.PaymentAmount}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your payment has been done successfully. Please note the below reference number for your records.</p>
+                </div> 
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Biller Name</td>
+                                <td>: <strong>{{PayNewBillForm.BillerName}}</strong></td>
+                                <td class="text-left">Biller Type</td>
+                                <td>: <strong>{{PayNewBillForm.BillerType}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Beneficiary Name</td>
+                                <td>: <strong>{{PayNewBillForm.BeneficiaryName}}</strong></td>
+                                <td class="text-left">Mobile Number</td>
+                                <td>: <strong>{{PayNewBillForm.MobileNumber}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Account Debited</td>
+                                <td>: <strong>{{selectAccountNumber.selected}}</strong></td>
+                                <td class="text-left">Currency</td>
+                                <td>: <strong>{{PayNewBillForm.PaymentCurrency}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Payment Amount ({{vbCurrency}})</td>
+                                <td>: <strong>{{PayNewBillForm.PaymentAmount}}</strong></td>
+                                <td class="text-left">Reference Number</td>
+                                <td>: <strong>VBIBR22201</strong></td>
+                            </tr> 
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                    <input type="submit" value="Tag this Transaction" class="btn btn-vb-theme" data-ng-click="TagTransaction();" />
+                </div> 
+                <div class="box widget" data-ng-show="TagTransactionSection">
+                    <h4> 
+                          Tag Your Transaction
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mark this transaction as</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Utility Payment</option>
+                                <option>Entertainment</option>
+                                <option>Food</option>
+                                <option>Grocery</option>
+                                <option>Medical</option>
+                                <option>Travelling</option>
+                                <option>Education</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center" data-ng-show="TagTransactionSection">
+                    <input type="button" name="Cancel" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="CancelTagTransaction();" />
+                    <input type="button" name="Add" value="Add" class="btn btn-vb-theme" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

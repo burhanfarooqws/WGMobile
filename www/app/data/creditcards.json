@@ -1,0 +1,339 @@
+{
+    "CreditCards": [{
+        "CardId": "0",
+        "CardNumber": "4578 **** **** 1001", 
+        "CardType": "Visa",
+        "ExpiryMonth": "07",
+        "ExpiryYear": "2018",
+        "FirstName": "Archie",
+        "LastName": "Andrews",
+        "CreditLimit": "10,000.00",
+        "AvailableLimit": "7,900.00",
+        "OutstandingBalance": "2,100.00",
+        "MinimumAmountDue": "325.00",
+        "CashLimit": "2,000.00",
+        "CardStatus": "Active", 
+        "SupplementaryCard": "Yes", 
+        "DueDate": "30 APR 2015",
+        "CardUsage": "21",
+        "CardWorth": "70",
+        "Currency": "GBP",
+
+        "Transactions": [{
+            "TransactionID": "1",
+            "TransactionDate": "06 APR 2016",
+            "PaymentDate": "06 APR 2016",
+            "ReferenceNumebr": "457889",
+            "Description": "louis vuitton - Neuer Wall Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "250.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "2",
+            "TransactionDate": "07 APR 2016",
+            "PaymentDate": "07 APR 2016",
+            "ReferenceNumebr": "878785",
+            "Description": "Groceries - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "200.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "3",
+            "TransactionDate": "08 APR 2016",
+            "PaymentDate": "08 APR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "1,000.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "4",
+            "TransactionDate": "09 APR 2016",
+            "PaymentDate": "09 APR 2016",
+            "ReferenceNumebr": "785842",
+            "Description": "Cenimas - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "150.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "5",
+            "TransactionDate": "10 APR 2016",
+            "PaymentDate": "10 APR 2016",
+            "ReferenceNumebr": "78545",
+            "Description": "Dinner- KFC at Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "50.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "6",
+            "TransactionDate": "11 APR 2016",
+            "PaymentDate": "11 APR 2016",
+            "ReferenceNumebr": "785452",
+            "Description": "Prada, Neuer Wall, Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "200.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "7",
+            "TransactionDate": "12 APR 2016",
+            "PaymentDate": "12 APR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "1,800.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "8",
+            "TransactionDate": "13 APR 2016",
+            "PaymentDate": "13 APR 2016",
+            "ReferenceNumebr": "457889",
+            "Description": "Gucci - Neuer Wall Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "250.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "9",
+            "TransactionDate": "13 APR 2016",
+            "PaymentDate": "13 APR 2016",
+            "ReferenceNumebr": "878785",
+            "Description": "Groceries - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "150.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "10",
+            "TransactionDate": "14 APR 2016",
+            "PaymentDate": "14 APR 2016",
+            "ReferenceNumebr": "785842",
+            "Description": "Cenimas - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "150.00",
+            "Currency": "GBP"
+        }]
+
+    }, {
+        "CardId": "1",
+        "CardNumber": "4578 **** **** 1002", 
+        "CardType": "Platinum",
+        "ExpiryMonth": "05",
+        "ExpiryYear": "2018",
+        "FirstName": "Archie",
+        "LastName": "Andrews",
+        "CreditLimit": "8,000.00",
+        "AvailableLimit": "5,600.00",
+        "OutstandingBalance": "2,400.00",
+        "MinimumAmountDue": "225.00",
+        "CashLimit": "2,000.00",
+        "CardStatus": "Active",
+        "SupplementaryCard": "No", 
+        "ExpiryDate": "20 MAR 2019",
+        "DueDate": "14 MAY 2016",
+        "CardUsage": "30",
+        "CardWorth": "70",
+        "Currency": "GBP",
+
+        "Transactions": [{
+            "TransactionID": "11",
+            "TransactionDate": "10 MAR 2016",
+            "PaymentDate": "10 MAR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "1,500.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "12",
+            "TransactionDate": "11 MAR 2016",
+            "PaymentDate": "111 MAR 2016",
+            "ReferenceNumebr": "785452",
+            "Description": "Prada, Neuer Wall, Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "120.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "13",
+            "TransactionDate": "12 MAR 2016",
+            "PaymentDate": "12 MAR 2016",
+            "ReferenceNumebr": "78545",
+            "Description": "Dinner- KFC at Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "40.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "14",
+            "TransactionDate": "13 MAR 2016",
+            "PaymentDate": "13 MAR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "2,00.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "15",
+            "TransactionDate": "14 MAR 2016",
+            "PaymentDate": "14 MAR 2016",
+            "ReferenceNumebr": "785842",
+            "Description": "Cenimas - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "80.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "16",
+            "TransactionDate": "15 MAR 2016",
+            "PaymentDate": "15 MAR 2016",
+            "ReferenceNumebr": "878785",
+            "Description": "Groceries - Tesco Hypermarkets",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "300.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "17",
+            "TransactionDate": "16 MAR 2016",
+            "PaymentDate": "16 MAR 2016",
+            "ReferenceNumebr": "457889",
+            "Description": "Gucci - Neuer Wall Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "200.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "18",
+            "TransactionDate": "17 MAR 2016",
+            "PaymentDate": "17 MAR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "1,200.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "19",
+            "TransactionDate": "18 MAR 2016",
+            "PaymentDate": "18 MAR 2016",
+            "ReferenceNumebr": "785452",
+            "Description": "Prada, Neuer Wall, Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "100.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "20",
+            "TransactionDate": "19 MAR 2016",
+            "PaymentDate": "19 MAR 2016",
+            "ReferenceNumebr": "78545",
+            "Description": "Dinner- KFC at Mall of Munich",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "30.00",
+            "Currency": "GBP"
+        }]
+    }, {
+        "CardId": "2",
+        "CardNumber": "4578 **** **** 1003", 
+        "CardType": "Visa Gold",
+        "ExpiryMonth": "09",
+        "ExpiryYear": "2018",
+        "FirstName": "Archie",
+        "LastName": "Andrews",
+        "CreditLimit": "7,000.00",
+        "AvailableLimit": "4,200.00",
+        "OutstandingBalance": "2,800.00",
+        "MinimumAmountDue": "180.00",
+        "CashLimit": "10,000.00",
+        "CardStatus": "Active",
+        "SupplementaryCard": "Yes", 
+        "ExpiryDate": "8 NOV 2018",
+        "DueDate": "20 APR 2016",
+        "CardUsage": "40",
+        "CardWorth": "70",
+        "Currency": "GBP",
+
+        "Transactions": [{
+            "TransactionID": "21",
+            "TransactionDate": "20 MAR 2016",
+            "PaymentDate": "20 MAR 2016",
+            "ReferenceNumebr": "457889",
+            "Description": "louis vuitton - Neuer Wall Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "300.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "22",
+            "TransactionDate": "21 MAR 2016",
+            "PaymentDate": "21 MAR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "1,300.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "23",
+            "TransactionDate": "22 MAR 2016",
+            "PaymentDate": "22 MAR 2016",
+            "ReferenceNumebr": "78545",
+            "Description": "Dinner- KFC at Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "40.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "24",
+            "TransactionDate": "23 MAR 2016",
+            "PaymentDate": "23 MAR 2016",
+            "ReferenceNumebr": "878785",
+            "Description": "Groceries - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "180.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "25",
+            "TransactionDate": "25 MAR 2016",
+            "PaymentDate": "25 MAR 2016",
+            "ReferenceNumebr": "741214",
+            "Description": "Banknet Transfer - Payment Received",
+            "DebitCredit": "Credit",
+            "TransactionAmount": "2,000.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "26",
+            "TransactionDate": "25 MAR 2016",
+            "PaymentDate": "25 MAR 2016",
+            "ReferenceNumebr": "457889",
+            "Description": "Gucci - Neuer Wall Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "125.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "27",
+            "TransactionDate": "26 MAR 2016",
+            "PaymentDate": "26 MAR 2016",
+            "ReferenceNumebr": "785842",
+            "Description": "Cenimas - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "100.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "28",
+            "TransactionDate": "27 MAR 2016",
+            "PaymentDate": "27 MAR 2016",
+            "ReferenceNumebr": "878785",
+            "Description": "Groceries - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "50.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "29",
+            "TransactionDate": "28 MAR 2016",
+            "PaymentDate": "28 MAR 2016",
+            "ReferenceNumebr": "785452",
+            "Description": "Prada, Neuer Wall, Hamburg",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "200.00",
+            "Currency": "GBP"
+        }, {
+            "TransactionID": "30",
+            "TransactionDate": "29 MAR 2016",
+            "PaymentDate": "29 MAR 2016",
+            "ReferenceNumebr": "785842",
+            "Description": "Cenimas - Munich Mall",
+            "DebitCredit": "Debit",
+            "TransactionAmount": "70.00",
+            "Currency": "GBP"
+        }]
+    }]
+}

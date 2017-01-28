@@ -1,0 +1,510 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Card Usage Filter
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="CardUsageFilter" ng-submit="submitForm(CardUsageFilter.$valid)" novalidate  action="" method="">
+                <!--<div class="alert vb-alert vb-alert-out" vbslimscroll-ll>
+                    <p>
+                        This is security feature that allows you to decide the type of transactions your VeriBank Debit Card / VeriBank Credit Card (Primary & Supplementary) can be used for. Your can also set financial add location limits as per your usage preferences.
+                    </p>
+                    <p>
+                        Filters on amount can be applied on any or all of the following levels
+                        <ul>
+                            <li>Usage over the Internet.</li>
+                            <li>Usage within UAE / GCC Region.</li>
+                            <li>Usage outside GCC Region.</li>
+                        </ul>
+                    </p>
+                    <p>
+                        Your preferences can be changed at any point through VeriBank Online Banking (or) VeriBank Phone Banking. Your saved instructions will come into effect immediately.
+                    </p>
+                    <p>
+                        Financial limits cannot be set for amounts more than your existing card limits prescribed as per VeriBank policy for Purchase / ATM Withdrawals
+                    </p>
+                    <p>
+                        Financial limits cannot be set for amounts more than your existing card limits prescribed as per VeriBank policy for Purchase / ATM Withdrawals
+                    </p>
+                    <p>
+                        You can have separate preferences set up for each active VeriBank Debit Card / Credit Card that you hold.
+                    </p>
+                    <p>
+                        SMS notification (if opted) will be sent if a transaction is declined against card due to filters set on it. This notification is not linked to the SMS Banking facility.
+                    </p>
+                    <p>
+                        To ensure you receive SMS notifications from us, you are advised to ensure that your mobile number is updated in your records. To know the mobile number available in our records, go to the <b>Services > Update Personal Information.</b> To update your mobile number, please visit any of VeriBank branch.
+                    </p>
+                </div>-->
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div> 
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 3</span>
+                        Please select your credit / debit card
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CardType">Card Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl"> 
+                                <input type="radio" value="DebitCards" id="DebitCards" name="CardType" data-ng-model="CardType" checked />
+                                <label for="DebitCards" class="radio">Debit Cards</label>
+                                <input type="radio" value="CreditCard" id="CreditCards" name="CardType" data-ng-model="CardType" />
+                                <label for="CreditCards" class="radio">Credit Cards</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='CreditCard'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th> 
+                                        <th class="text-right">Card Limit ({{vbCurrency}})</th> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards | limitTo:2">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object1-'+$index}}"  ng-model="selectedCard.CardId" value="{{card.CardId}}" ng-change="onTaskSelect1(card)" required />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td> 
+                                        <td data-label="Available Limit" class="text-right">&nbsp;{{card.AvailableLimit}}</td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='DebitCards'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th> 
+                                        <th>Card Expiry</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards | limitTo:1">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object2-'+$index}}"  ng-model="selectedCard.CardId" value="{{card.CardId}}" ng-change="onTaskSelect2(card)" required />
+                                                <label for="{{'object2-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Card Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td> 
+                                        <td data-label="Status">{{card.CardStatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 3</span> 
+                        Please specify usage limits
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FilterType">Filter Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" name="InternetUsage" id="InternetUsage" data-ng-model="InternetUsage" checked="checked" />
+                                <label for="InternetUsage" class="checkbox">Internet Usage</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LimitType">Limit Type <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" data-ng-disabled="!InternetUsage" name="LimitTypeLocal" data-ng-model="CardUsageFilterForm.LimitTypeLocal" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SMSNotification">SMS Noticiation</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Yes" name="SMSInternetUsage" id="IneternetYes" data-ng-disabled="!InternetUsage" data-ng-model="SMSInternetUsage.selected" />
+                                <label for="IneternetYes" class="radio">Yes</label>
+                                <input type="radio" value="No" name="SMSInternetUsage" id="IneternetNo" data-ng-disabled="!InternetUsage" data-ng-model="SMSInternetUsage.selected" />
+                                <label for="IneternetNo" class="radio">No</label> 
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LimitAmount">Limit Amount ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="LimitAmount" data-ng-model="CardUsageFilterForm.LimitAmount" vb-Amount data-ng-disabled="!InternetUsage" required />
+                            <p ng-show="CardUsageFilter.LimitAmount.$invalid && !CardUsageFilter.LimitAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FilterType">Filter Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" name="NationalUsage" id="NationalUsage" data-ng-model="NationalUsage" checked />
+                                <label for="NationalUsage" class="checkbox">National Usage</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LimitType">Limit Type <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <select name="select" class="form-control" data-ng-disabled="!NationalUsage" name="LimitTypeNational" data-ng-model="CardUsageFilterForm.LimitTypeNational" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SMSNotification">SMS Noticiation</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl"> 
+                                <input type="radio" value="Yes" name="SMSNational" id="NationalYes" data-ng-disabled="!NationalUsage" data-ng-model="SMSNational.selected" />
+                                <label for="NationalYes" class="radio">Yes</label>
+                                <input type="radio" value="No" name="SMSNational" id="NationalNo" data-ng-disabled="!NationalUsage" data-ng-model="SMSNational.selected" />
+                                <label for="NationalNo" class="radio">No</label> 
+                            </div>
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="POSPurchase">POS Purchase ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="POSPurchase" data-ng-model="CardUsageFilterForm.POSPurchase" vb-Amount data-ng-disabled="!NationalUsage" required />
+                            <p ng-show="CardUsageFilter.POSPurchase.$invalid && !CardUsageFilter.POSPurchase.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="VeriBankATM">VeriBank ATMs ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="VeriBankATM" data-ng-model="CardUsageFilterForm.VeriBankATM" vb-Amount data-ng-disabled="!NationalUsage" required />
+                            <p ng-show="CardUsageFilter.VeriBankATM.$invalid && !CardUsageFilter.VeriBankATM.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DomesticSwitch">Domestic Switch ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="DomesticSwitch" data-ng-model="CardUsageFilterForm.DomesticSwitch" vb-Amount data-ng-disabled="!NationalUsage" required />
+                            <p ng-show="CardUsageFilter.DomesticSwitch.$invalid && !CardUsageFilter.DomesticSwitch.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FilterType">Filter Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" name="InternationalUsage" id="InternationalUsage" data-ng-model="InternationalUsage" checked />
+                                <label for="InternationalUsage" class="checkbox">International Usage</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LimitType">Limit Type <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <select name="select" class="form-control" data-ng-disabled="!InternationalUsage" name="LimitTypeInternational" data-ng-model="CardUsageFilterForm.LimitTypeInternational" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SMSNotification">SMS Noticiation</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Yes" name="SMSInternational" id="InternationalYes" data-ng-disabled="!InternationalUsage" data-ng-model="SMSInternational.selected" />
+                                <label for="InternationalYes" class="radio">Yes</label>
+                                <input type="radio" value="No" name="SMSInternational" id="InternationalNo" data-ng-disabled="!InternationalUsage" data-ng-model="SMSInternational.selected" />
+                                <label for="InternationalNo" class="radio">No</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LimitAmount">Limit Amount ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="IntlSwitch" data-ng-model="CardUsageFilterForm.IntlSwitch" vb-Amount data-ng-disabled="!InternationalUsage" required />
+                            <p ng-show="CardUsageFilter.IntlSwitch.$invalid && !CardUsageFilter.IntlSwitch.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div> 
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 3</span> 
+                        Please specify country restrictions
+                    </h4> 
+                    <div class="form-group vb-multiselect">
+                        <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
+                            <label class="label-control"><b>Select Your Contries</b></label>
+                            <select size="5" multiple ng-model="available" ng-options="country as country.name for country in availablecountries" class="form-control" data-ng-disabled="!InternationalUsage"></select>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
+                            <input type="button" id="moveright" value=">" ng-click="moveItem(available[0], availablecountries,selectedcountries)" class="btn btn-vb-theme btn-block" data-ng-disabled="!InternationalUsage" />
+                            <input type="button" id="moverightall" value=">>" ng-click="moveAll(availablecountries,selectedcountries)" class="btn btn-vb-theme btn-block" data-ng-disabled="!InternationalUsage" />
+                            <input type="button" id="move left" value="<" ng-click="moveItem(selected[0], selectedcountries,availablecountries)" class="btn btn-vb-theme btn-block" data-ng-disabled="!InternationalUsage" />
+                            <input type="button" id="moveleftall" value="<<" ng-click="moveAll(selectedcountries,availablecountries)" class="btn btn-vb-theme btn-block" data-ng-disabled="!InternationalUsage" />
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
+                            <label class="label-control"><b>Countries Allowed</b></label>
+                            <select size="5" multiple data-ng-model="selectedcountries.selected" ng-options="country as country.name for country in selectedcountries" class="form-control" data-ng-disabled="!InternationalUsage"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+                        Please check the below information. To finish, press confirm.
+                    </h4> 
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Filter Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Internet Usage</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Limit Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.LimitTypeLocal}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">SMS Notification&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SMSInternetUsage.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Limit Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.LimitAmount}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div> 
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Filter Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">National Usage</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Limit Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.LimitTypeNational}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">SMS Notification&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SMSNational.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">POS Purchase ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.POSPurchase}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">VeriBank ATM ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.VeriBankATM}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Domestic Switch ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.DomesticSwitch}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Filter Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">International Usage</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Limit Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.LimitTypeInternational}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">SMS Notification&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{SMSInternational.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">VeriBank ATM ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CardUsageFilterForm.IntlSwitch}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Countries Allowed&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <label class="label-detail">Germany, United Kingdom</label> 
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Your card usage filter updated successfully. Please note that the below reference number for your record.</p>
+                </div>
+                <div class="box widget" id="vbPrintable">
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Filter Type</td>
+                                <td>: <strong>Internet Usage</strong></td>
+                                <td class="text-left">Limit Type</td>
+                                <td>: <strong>{{CardUsageFilterForm.LimitTypeLocal}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">SMS Notification</td>
+                                <td>: <strong>{{SMSInternetUsage.selected}}</strong></td>
+                                <td class="text-left">Limit Amount ({{vbCurrency}})</td>
+                                <td>: <strong>{{CardUsageFilterForm.LimitAmount}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><div class="form-group-seperator"></div></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Filter Type</td>
+                                <td>: <strong>National Usage</strong></td>
+                                <td class="text-left">Limit Type</td>
+                                <td>: <strong>{{CardUsageFilterForm.LimitTypeNational}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">SMS Notification</td>
+                                <td>: <strong>{{SMSNational.selected}}</strong></td>
+                                <td class="text-left">POS Purchase ({{vbCurrency}})</td>
+                                <td>: <strong>{{CardUsageFilterForm.POSPurchase}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">VeriBank ATM ({{vbCurrency}})</td>
+                                <td>: <strong>{{CardUsageFilterForm.VeriBankATM}}</strong></td>
+                                <td class="text-left">Domestic Switch ({{vbCurrency}})</td>
+                                <td>: <strong>{{CardUsageFilterForm.DomesticSwitch}}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td colspan="4"><div class="form-group-seperator"></div></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Filter Type</td>
+                                <td>: <strong>International Usage</strong></td>
+                                <td class="text-left">Limit Type</td>
+                                <td>: <strong>{{CardUsageFilterForm.LimitTypeInternational}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">SMS Notification</td>
+                                <td>: <strong>{{SMSInternational.selected}}</strong></td>
+                                <td class="text-left">VeriBank ATM ({{vbCurrency}})</td>
+                                <td>: <strong>{{CardUsageFilterForm.IntlSwitch }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Countries Allowed</td>
+                                <td colspan="3">: <strong>Germany, United Kingdom</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Rerefence Number</td>
+                                <td colspan="3">: <strong>VBPAY45245278</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div>  
+            </form>
+        </div>
+    </div>
+</section>

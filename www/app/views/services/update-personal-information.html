@@ -1,0 +1,418 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Update Personal Information
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="UpdatePersonalInfo" ng-submit="submitForm(UpdatePersonalInfo.$valid)" novalidate action="" method="">
+                <!--<div class="alert vb-alert vb-alert-out">
+                    <ol>
+                        <li>Your contact information's available in the bank's records are displayed below. You can update this informations at anytime.</li>
+                        <li>If you would like to update the mailing address for yoru Account / Card / Loan Relationship, Please visit your nearest VeriBank branch.</li>
+                        <li>To update your mobile number, Please visit your nearest VeriBank branch.</li>
+                    </ol>
+                </div>-->
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 4</span>
+                        Customer details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CIFNumebr">CIF Numebr</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="006245785850" class="form-control" disabled="disabled" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FirstName">First Name</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Archie" class="form-control" disabled="disabled" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="MiddleName">Middle Name</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="" class="form-control" disabled="disabled" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LastName">Last Name</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Andrews" class="form-control" disabled="disabled" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 4</span>
+                        Primary address
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AddressLine1">Address Line1 <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Flat No:57, Horizon Building" class="form-control" />
+                        </div>  
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AddressLine2">Address Line2 <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Hamilton Road" class="form-control" />
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AddressLine3">Address Line3 <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Germany" class="form-control" />
+                        </div>  
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Country">Country</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">  
+                                <option>Germany</option>
+                                <option>United Kingdom</option>
+                                <option>United States</option> 
+                                <option>Soudi Arabia</option>
+                                <option>Qatar</option>
+                            </select>
+                        </div> 
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 4</span>
+                        Mailing address
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AddressLine1">Address Line1 <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Flat No:57, Horizon Building" class="form-control" />
+                        </div>  
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AddressLine2">Address Line2 <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Hamilton Road" class="form-control" />
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AddressLine3">Address Line3 <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="Germany" class="form-control" />
+                        </div>  
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Country">Country</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control"> 
+                                <option>Germany</option>
+                                <option>United Kingdom</option>
+                                <option>United States</option> 
+                                <option>Soudi Arabia</option>
+                                <option>Qatar</option>
+                            </select>
+                        </div> 
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>4</b> of 4</span>
+                        Contact details
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Mobile">Mobile</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+49 151 852 4578" class="form-control" disabled="disabled" />
+                        </div>  
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="LandPhone">Land Phone <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="+49 151 852 4578" class="form-control" />
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Email">Email <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" value="aandrews@mail.com" class="form-control" />
+                        </div>  
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="ConfirmEmail">Confirm Email <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="email" class="form-control" placeholder="Enter your email" name="confirmEmail" data-ng-model="UpdatePersonalInfoForm.confirmEmail" required /> 
+                            <p ng-show="UpdatePersonalInfo.confirmEmail.$invalid && !UpdatePersonalInfo.confirmEmail.$pristine" class="help-block error">Please enter valid email</p> 
+                        </div>  
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <h5>
+                        Customer details
+                    </h5>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">CIF Numebr&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">006245785850</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">First Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Middle Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">John</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Last Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Andrews</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <h5>
+                        Primary address
+                    </h5>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address Line 1&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Flat No:57, Horizon Building</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address Line 2&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Hamilton Road</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address Line 3&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Germany</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Country&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Germany</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <h5>
+                        Mailing address
+                    </h5>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address Line 1&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Flat No:57, Horizon Building</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address Line 2&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Hamilton Road</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Address Line 3&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Germany</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Country&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Germany</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-seperator"></div>
+                    <h5>
+                        Contact details
+                    </h5>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mobile&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">+49 151 852 4578</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Land Phone&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">+49 151 852 4578</label>
+                        </div> 
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Email&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">aandrews@mail.com</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Confirm Email&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{UpdatePersonalInfoForm.confirmEmail}}</label>
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p> Your details updated successfully.You will receive a verification email from VeriBank to your registered email. Please click on the link provided in rder to activate your email address.</p>
+                </div>
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td colspan="4"><b>Customer details</b></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">CIF Numebr</td>
+                                <td>: <strong>006245785850</strong></td>
+                                <td class="text-left">First Name</td>
+                                <td>: <strong>Archie</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Middle Name</td>
+                                <td>: <strong>John</strong></td>
+                                <td class="text-left">Last Name</td>
+                                <td>: <strong>Andrews</strong></td>
+                            </tr> 
+                            <tr>
+                                <td colspan="4" class="form-group-seperator"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><b>Primary address</b></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Address Line 1</td>
+                                <td>: <strong>Flat No:57, Horizon Building</strong></td>
+                                <td class="text-left">Address Line 2</td>
+                                <td>: <strong>Hamilton Road</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Address Line 3</td>
+                                <td>: <strong>Germany</strong></td>
+                                <td class="text-left">Country</td>
+                                <td>: <strong>Germany</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="form-group-seperator"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><b>Mailing address</b></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Address Line 1</td>
+                                <td>: <strong>Flat No:57, Horizon Building</strong></td>
+                                <td class="text-left">Address Line 2</td>
+                                <td>: <strong>Hamilton Road</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Address Line 3</td>
+                                <td>: <strong>Germany</strong></td>
+                                <td class="text-left">Country</td>
+                                <td>: <strong>Germany</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="form-group-seperator"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><b>Contact details</b></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Mobile</td>
+                                <td>: <strong>+49 151 852 4578</strong></td>
+                                <td class="text-left">Land Phone</td>
+                                <td>: <strong>+49 151 852 4578</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Email</td>
+                                <td>: <strong>aandrews@mail.com</strong></td>
+                                <td class="text-left">Confirm Email</td>
+                                <td>: <strong>{{UpdatePersonalInfoForm.confirmEmail}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Rerefence Number</td>
+                                <td colspan="3">: <strong>VBCHEQUE000121</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>  
+                </div>
+                <div class="form-group-actions text-center"> 
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div>  
+            </form>
+        </div>
+    </div>
+</section>

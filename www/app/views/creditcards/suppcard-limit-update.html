@@ -1,0 +1,283 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Supplementary Card Limit Update
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "> 
+            <form class="form-horizontal" role="form" name="SupCardLimitUpdate" ng-submit="submitForm(SupCardLimitUpdate.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>  
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 3</span>
+                        Please select your credit card
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Credit Limit</th>
+                                        <th class="text-right">Outstanding Balance</th>
+                                        <th>Due Date</th>
+                                        <th class="text-right">Minimum Amount Due</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object1-'+$index}}" ng-model="selectedCard.CardId" value="{{card.CardId}}" ng-change="onTaskSelect1(card)" required />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Currency">{{card.Currency}}</td>
+                                        <td data-label="Credit Limit" class="text-right">{{card.CreditLimit}}</td>
+                                        <td data-label="Outstanding Balance" class="text-right">{{card.OutstandingBalance}}</td>
+                                        <td data-label="Due Date">{{card.DueDate}}</td>
+                                        <td data-label="Min. Amount Due" class="text-right">{{card.MinimumAmountDue}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 3</span>
+                        Please update the card limit
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Currency">Currency</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" value="{{vbCurrencyName}} ({{vbCurrency}})" disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Credit Limit">Credit Limit</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Same As Primary Card" id="SameAsPrimaryCard" name="CreditLimitType" data-ng-model="CreditLimitType.selected" />
+                                <label for="SameAsPrimaryCard" class="radio">Same as Primary Card</label>
+                                <input type="radio" value="Percentage" name="CreditLimitType" id="Percentage" data-ng-model="CreditLimitType.selected" />
+                                <label for="Percentage" class="radio">Percentage</label>
+                                <input type="radio" value="Amount" name="CreditLimitType" id="Amount" data-ng-model="CreditLimitType.selected" />
+                                <label for="Amount" class="radio">Amount</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Percentage'">
+                            <label class="control-label" for="Percentage">Percentage (%) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Percentage'"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="CreditLimitPercent" data-ng-model="SupCardLimitUpdateForm.CreditLimitPercent" vb-Amount /> 
+                            <p ng-show="SupCardLimitUpdate.CreditLimitPercent.$invalid && !SupCardLimitUpdate.CreditLimitPercent.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Amount'">
+                            <label class="control-label" for="Amount">Amount <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Amount'"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="CreditLimitAmount" data-ng-model="SupCardLimitUpdateForm.CreditLimitAmount" vb-Amount required /> 
+                            <p ng-show="SupCardLimitUpdate.CreditLimitAmount.$invalid && !SupCardLimitUpdate.CreditLimitAmount.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 3</span>
+                        Please update the cash limit
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Currency">Currency</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" value="{{vbCurrencyName}} ({{vbCurrency}})" disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Credit Limit">Cash Limit</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="SameAsPrimaryCard1" name="CashLimitType" id="SameAsPrimaryCard1" data-ng-model="CashLimitType.selected" />
+                                <label for="SameAsPrimaryCard1" class="radio">Same as Primary Card</label>
+                                <input type="radio" value="Percentage" name="CashLimitType" id="Percentage1" data-ng-model="CashLimitType.selected" />
+                                <label for="Percentage1" class="radio">Percentage</label>
+                                <input type="radio" value="Amount" name="CashLimitType" id="Amount1" data-ng-model="CashLimitType.selected" />
+                                <label for="Amount1" class="radio">Amount</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Percentage'">
+                            <label class="control-label" for="Percentage">Percentage (%) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Percentage'"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="CashLimitPercent" data-ng-model="SupCardLimitUpdateForm.CashLimitPercent" vb-Amount required /> 
+                            <p ng-show="SupCardLimitUpdate.CashLimitPercent.$invalid && !SupCardLimitUpdate.CashLimitPercent.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Amount'">
+                            <label class="control-label" for="Amount">Amount <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Amount'"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="CashLimitAmount" data-ng-model="SupCardLimitUpdateForm.CashLimitAmount" vb-Amount /> 
+                            <p ng-show="SupCardLimitUpdate.CashLimitAmount.$invalid && !SupCardLimitUpdate.CashLimitAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4> 
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Primary Card Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCardNumber.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Holder Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie Andrews</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Credit Limit Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CreditLimitType.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Percentage'">
+                            <label class="control-label">Percentage&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Percentage'">
+                            <label class="label-detail">{{SupCardLimitUpdateForm.CreditLimitPercent}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Amount'">
+                            <label class="control-label">Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CreditLimitType.selected=='Amount'">
+                            <label class="label-detail">{{SupCardLimitUpdateForm.CreditLimitAmount}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Cash Limit Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{CashLimitType.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Percentage'">
+                            <label class="control-label">Percentage&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Percentage'">
+                            <label class="label-detail">{{SupCardLimitUpdateForm.CashLimitPercent}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Amount'">
+                            <label class="control-label">Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="CashLimitType.selected=='Amount'">
+                            <label class="label-detail">{{SupCardLimitUpdateForm.CashLimitAmount}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details"> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">VBDSAFD78545</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your request done successfully. The process would take 1 working days. Please note that the below reference for your record.</p>
+                </div> 
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Primary Card Number</td>
+                                <td>: <strong>{{selectCardNumber.selected}}</strong></td>
+                                <td class="text-left">Card Holder Name</td>
+                                <td>: <strong>Archie Andrews</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Credit Limit Type</td>
+                                <td>: <strong>{{CreditLimitType.selected}}</strong></td>
+                                <td class="text-left" data-ng-show="CreditLimitType.selected=='Percentage'">Percentage</td>
+                                <td data-ng-show="CreditLimitType.selected=='Percentage'">: <strong>{{SupCardLimitUpdateForm.CreditLimitPercent}}</strong></td>
+                                <td class="text-left" data-ng-show="CreditLimitType.selected=='Amount'">Amount</td>
+                                <td data-ng-show="CreditLimitType.selected=='Amount'">: <strong>{{SupCardLimitUpdateForm.CreditLimitAmount}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Cash Limit Type</td>
+                                <td>: <strong>{{CashLimitType.selected}}</strong></td>
+                                <td class="text-left" data-ng-show="CashLimitType.selected=='Percentage'">Percentage</td>
+                                <td data-ng-show="CashLimitType.selected=='Percentage'">: <strong>{{SupCardLimitUpdateForm.CashLimitPercent}}</strong></td>
+                                <td class="text-left" data-ng-show="CashLimitType.selected=='Amount'">Amount</td>
+                                <td data-ng-show="CashLimitType.selected=='Amount'">: <strong>{{SupCardLimitUpdateForm.CashLimitAmount}}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="text-left">Reference Number</td>
+                                <td>: <strong>VBHJKI457852</strong></td>
+                                <td class="text-left">CRM Reference Number</td>
+                                <td>: <strong>VBHJYU7858585</strong></td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="form-group-actions text-center hidden-xs hidden-sm hidden-md">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div>  
+            </form>
+        </div>
+    </div>
+</section>

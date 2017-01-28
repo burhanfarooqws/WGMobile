@@ -1,0 +1,160 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Schedule An Appointment
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal RM-Selection" role="form" action="" method=""> 
+                <div class="alert vb-alert-success vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! Your appointment has beed scheduled as per given details<br>Relationship manager would be ready to give necessary assistance.</p> 
+                </div>
+                <div class="box widget"> 
+                    <h4>
+                        Schedule an appointment with nearest branch
+                    </h4>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Select Branch <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" data-ng-model="FundTransferForm.FromAccount" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Head Office Branch">Head Office Branch</option>
+                                <option value="Stratford Center Branch">Stratford Center Branch</option>
+                                <option value="The Liverpool Mall Branch">The Liverpool Mall Branch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <br>
+                            <label class="control-label" for="AutomaticAccountStatement">Select Relationship Manager <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                            <img src="~/../themes/imgs/thumb-RM-01.png" id="RM1" alt="Peter" class="rm-select">
+                            <span class="rm-name">&nbsp;&nbsp;&nbsp;Peter</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                            <img src="~/../themes/imgs/thumb-RM-02.png" id="RM2" alt="Rita" class="rm-select">
+                            <span class="rm-name">&nbsp;&nbsp;&nbsp;Rita</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                            <img src="~/../themes/imgs/thumb-RM-03.png" id="RM3" alt="Jennifer" class="rm-select">
+                            <span class="rm-name">&nbsp;&nbsp;Jennifer</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                            <img src="~/../themes/imgs/thumb-RM-04.png" id="RM4" alt="Clara" class="rm-select">
+                            <span class="rm-name">&nbsp;&nbsp;&nbsp;Archie</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                            <img src="~/../themes/imgs/thumb-RM-05.png" id="RM5" alt="Anna" class="rm-select">
+                            <span class="rm-name">&nbsp;&nbsp;&nbsp;Andrew</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FirstName">Select Date <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group vb-dtp">
+                                <input type="text" class="form-control" id="startDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                            <label class="control-label" for="LastName">Select Time <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                        	<div class="input-group hhmm">
+                            	<input type="text" value="HH" class="form-control" />
+                            	<input type="text" value="MM" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="OwnAccounts" id="MyOwnAccounts" name="CreditSource" data-ng-model="CreditSource" checked />
+                                <label for="MyOwnAccounts" class="radio">AM</label>
+                                <input type="radio" value="Beneficiaries" id="MyBeneficiaries" name="CreditSource" data-ng-model="CreditSource" />
+                                <label for="MyBeneficiaries" class="radio">PM</label>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">RM Available Time <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                        	<div class="row">
+                            	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot1" id="TimeSlot1" checked="">
+                                        <label for="TimeSlot1" class="checkbox">09:00 AM - 10:00 AM</label>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot2" id="TimeSlot2">
+                                        <label for="TimeSlot2" class="checkbox">11:00 AM - 12:00 PM</label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot3" id="TimeSlot3">
+                                        <label for="TimeSlot3" class="checkbox">02:00 PM - 03:00 PM</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="vb-checkbox-ctrl">
+                                        <input type="checkbox" value="None" name="TimeSlot4" id="TimeSlot4">
+                                        <label for="TimeSlot4" class="checkbox">04:00 PM - 05:00 PM</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Description">Note / Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea class="form-control ng-pristine ng-valid" rows="3" placeholder="Enter your description" name="Description"></textarea>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Schedule" class="btn btn-vb-theme" data-ng-click="SuccessMessageAction()" />
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>
+
+<script>
+	$("img.rm-select").click(function() 
+	{
+		document.getElementById("RM1").className = "rm-select";
+		document.getElementById("RM2").className = "rm-select";
+		document.getElementById("RM3").className = "rm-select";
+		document.getElementById("RM4").className = "rm-select";
+		document.getElementById("RM5").className = "rm-select";
+		
+		$(this).addClass( "selected" );
+	});
+</script>

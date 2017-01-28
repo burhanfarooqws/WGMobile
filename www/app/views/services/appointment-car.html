@@ -1,0 +1,354 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Schedule An Appointment for Car Loan
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal RM-Selection" role="form" action="" method=""> 
+                <div class="alert vb-alert-success vb-alert-out" data-ng-show="SucessMessage">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>Congratulations! Your appointment has beed scheduled as per given details<br>Relationship manager would be ready to give necessary assistance.</p> 
+                </div>
+                <div class="box widget"> 
+                    <h4>
+                        Schedule an appointment with any branch
+                    </h4>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Select Branch <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" data-ng-model="AppointmentForm.SelectRM" required>
+                                <option value="-1" ng-selected="true">Please Select</option>
+                                <option value="1">Head Office Branch</option>
+                                <option value="2">Stratford Center Branch</option>
+                                <option value="3">The Liverpool Mall Branch</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="AutomaticAccountStatement">Reason of Visiting <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option value="-1">Please Select</option>
+                                <option value="1">Personal Finance</option>
+                                <option value="2" ng-selected="true" selected>Car Finance</option>
+                                <option value="3">Mortgage Loan</option>
+                                <option value="4">Debit / Credit Card</option>
+                            </select>
+                        </div>
+                    </div>                  
+                    <div class="form-group" ng-show="AppointmentForm.SelectRM > 0">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <br>
+                            <label class="control-label" for="AutomaticAccountStatement">Select Relationship Manager <span class="mandatory">*</span></label>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                        	<div class="row" ng-show="AppointmentForm.SelectRM == 1">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM1" ng-click="ShowTime1Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-01.png" alt="Peter" class="">
+                                    	<span class="rm-name">Peter</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Relationship Management</span><br>
+                                        Years in Bank: <span>5 Years</span><br>
+                                        Languages: <span>English / Arabic / French</span><br>
+                                        Hobbies: <span>Football, Running, Hiking, Fitness</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM2" ng-click="ShowTime2Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-02.png" alt="Rita" class="">
+                            			<span class="rm-name">Rita</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Personal Loan</span><br>
+                                        Years in Bank: <span>3.5 Years</span><br>
+                                        Languages: <span>English / Arabic / Turkish</span><br>
+                                        Hobbies: <span>Reading, Running, Cycling</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM3" ng-click="ShowTime3Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-05.png" alt="Anna" class="">
+                            			<span class="rm-name">Andrew</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Personal Loan</span><br>
+                                        Years in Bank: <span>4 Years</span><br>
+                                        Languages: <span>English / Dutch</span><br>
+                                        Hobbies: <span>Camping, Swimming</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="AppointmentForm.SelectRM == 2">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM4" ng-click="ShowTime4Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-03.png" alt="Jennifer" class="">
+                            			<span class="rm-name">Jennifer</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>Bachlor of Commerce</span><br>
+                                        Expertise: <span>Car Finance</span><br>
+                                        Years in Bank: <span>4 Years</span><br>
+                                        Languages: <span>English / French</span><br>
+                                        Hobbies: <span>Reading, Running, Cycling</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM5" ng-click="ShowTime5Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-04.png" alt="Clara" class="">
+                            			<span class="rm-name">Archie</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Car Finance</span><br>
+                                        Years in Bank: <span>5 Years</span><br>
+                                        Languages: <span>English / Arabic</span><br>
+                                        Hobbies: <span>Football, Running, Hiking, Fitness</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="AppointmentForm.SelectRM == 3">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM6" ng-click="ShowTime3Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-05.png" alt="Anna" class="">
+                            			<span class="rm-name">Andrew</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Mortgage Loan</span><br>
+                                        Years in Bank: <span>4 Years</span><br>
+                                        Languages: <span>English / Arabic</span><br>
+                                        Hobbies: <span>Camping, Swimming, Gym</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="row" ng-show="AppointmentForm.SelectRM == 4">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM7" ng-click="ShowTime3Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-05.png" alt="Anna" class="">
+                            			<span class="rm-name">Andrew</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Mortgage Loan</span><br>
+                                        Years in Bank: <span>4 Years</span><br>
+                                        Languages: <span>English / Arabic</span><br>
+                                        Hobbies: <span>Camping, Swimming, Gym</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="well rm-select" id="RM8" ng-click="ShowTime1Click()">
+                                    	<img src="~/../themes/imgs/thumb-RM-01.png" alt="Peter" class="">
+                                    	<span class="rm-name">Peter</span>
+                                        School: <span>Gems School</span><br>
+                                        Education: <span>MBA Finance</span><br>
+                                        Expertise: <span>Relationship Management</span><br>
+                                        Years in Bank: <span>5 Years</span><br>
+                                        Languages: <span>English / Arabic / French</span><br>
+                                        Hobbies: <span>Football, Running, Hiking, Fitness</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" ng-show="showDate">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FirstName">Select Date <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group vb-dtp">
+                                <input type="text" class="form-control" id="startDate" >
+                                <!--<input type="text" class="form-control" id="startDate" data-ng-model="DateSelected.SelectedDate" ng-click="ShowTimeClick()" >-->
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div class="form-group" ng-show="showTime1">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<label class="control-label" for="AutomaticAccountStatement">Available Time <span class="mandatory">*</span></label>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot1" id="TimeSlot1">
+										<label for="TimeSlot1" class="checkbox">09:00 AM - 10:00 AM</label>
+
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot2" id="TimeSlot2">
+										<label for="TimeSlot2" class="checkbox">11:00 AM - 12:00 PM</label>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot3" id="TimeSlot3">
+										<label for="TimeSlot3" class="checkbox">02:00 PM - 03:00 PM</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot4" id="TimeSlot4">
+										<label for="TimeSlot4" class="checkbox">04:00 PM - 05:00 PM</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                  	
+                  	<div class="form-group" ng-show="showTime2">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<label class="control-label" for="AutomaticAccountStatement">Available Time <span class="mandatory">*</span></label>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot5" id="TimeSlot5">
+										<label for="TimeSlot5" class="checkbox">11:00 AM - 12:00 PM</label>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot6" id="TimeSlot6">
+										<label for="TimeSlot6" class="checkbox">02:00 PM - 03:00 PM</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                  	
+                  	<div class="form-group" ng-show="showTime3">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<label class="control-label" for="AutomaticAccountStatement">Available Time <span class="mandatory">*</span></label>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot7" id="TimeSlot7">
+										<label for="TimeSlot7" class="checkbox">09:30 AM - 10:30 AM</label>
+
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot8" id="TimeSlot8">
+										<label for="TimeSlot8" class="checkbox">03:00 PM - 04:00 PM</label>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot9" id="TimeSlot9">
+										<label for="TimeSlot9" class="checkbox">04:00 PM - 05:00 PM</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                  	
+                  	<div class="form-group" ng-show="showTime4">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<label class="control-label" for="AutomaticAccountStatement">Available Time <span class="mandatory">*</span></label>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot10" id="TimeSlot10">
+										<label for="TimeSlot10" class="checkbox">10:00 AM - 11:00 AM</label>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot11" id="TimeSlot11">
+										<label for="TimeSlot11" class="checkbox">12:00 PM - 01:00 PM</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                  	
+                  	<div class="form-group" ng-show="showTime5">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<label class="control-label" for="AutomaticAccountStatement">Available Time <span class="mandatory">*</span></label>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot12" id="TimeSlot12">
+										<label for="TimeSlot12" class="checkbox">09:30 AM - 10:30 AM</label>
+
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot13" id="TimeSlot13">
+										<label for="TimeSlot13" class="checkbox">02:30 PM - 03:30 PM</label>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+									<div class="vb-checkbox-ctrl">
+										<input type="checkbox" value="None" name="TimeSlot14" id="TimeSlot14">
+										<label for="TimeSlot14" class="checkbox">04:30 PM - 05:30 PM</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                   
+                    <div class="form-group" ng-show="showDescription">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Description">Note / Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea class="form-control ng-pristine ng-valid" rows="3" placeholder="Enter your description" name="Description"></textarea>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group-actions text-center" ng-show="showDescription">
+                    <input type="submit" value="Schedule Appointment" class="btn btn-vb-theme" data-ng-click="SuccessMessageAction()" />
+                </div>
+            </form>
+        </div>
+    </div> 
+</section>
+
+<script>
+	$("div.rm-select").click(function() 
+	{
+		document.getElementById("RM1").className = "well rm-select";
+		document.getElementById("RM2").className = "well rm-select";
+		document.getElementById("RM3").className = "well rm-select";
+		document.getElementById("RM4").className = "well rm-select";
+		document.getElementById("RM5").className = "well rm-select";
+		document.getElementById("RM6").className = "well rm-select";
+		document.getElementById("RM7").className = "well rm-select";
+		document.getElementById("RM8").className = "well rm-select";
+		
+		$(this).addClass( "selected" );
+	});
+</script>

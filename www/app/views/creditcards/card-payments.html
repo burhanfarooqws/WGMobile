@@ -1,0 +1,293 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Card Payments
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="CardPayments" ng-submit="submitForm(CardPayments.$valid)" novalidate  action="" method="">
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>1</b> of 3</span>
+                        Please select your debit account
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Account Number</th>
+                                        <th>Account Type</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Current Balance</th>
+                                        <th class="text-right">Available Balance</th>
+                                        <th>Joint</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="account in Accounts">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object-'+$index}}" ng-model="selectedAccount.AccountId" value="{{account.AccountId}}" ng-change="onTaskSelect(account)" required />
+                                                <label for="{{'object-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Account Number">{{account.AccountNumber}}</td>
+                                        <td data-label="Account Type">{{account.AccountType}}</td>
+                                        <td data-label="Currency">{{account.AccountCurrency}}</td>
+                                        <td data-label="Current Balance" class="text-right">{{account.AccountCurrentBalance}}</td>
+                                        <td data-label="Available Balance" class="text-right">{{account.AccountAvailableBalance}}</td>
+                                        <td data-label="Joint">{{account.JointAccount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>2</b> of 3</span>
+                        Please select your card you want to pay
+                    </h4>
+                    <div class="vb-grid-container-body">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Card Limit</th>
+                                        <th class="text-right">Last Statement Balance</th>
+                                        <th>Due Date</th>
+                                        <th class="text-right">Minimum Amount Due</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards | limitTo:2">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object1-'+$index}}" ng-model="selectedCard.CardId" value="{{card.CardId}}" ng-change="onTaskSelect1(card)" required />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Currency">{{card.Currency}}</td>
+                                        <td data-label="Card Limit" class="text-right">{{card.CreditLimit}}</td>
+                                        <td data-label="Outstanding Balance" class="text-right">{{card.OutstandingBalance}}</td>
+                                        <td data-label="Due Date">{{card.DueDate}}</td>
+                                        <td data-label="Min. Amount Due" class="text-right">{{card.MinimumAmountDue}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 3</span>
+                        Please specify payment amount
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mobile-hide">
+                            <label class="control-label" for="">Payment Amount</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="paymentoptions" value="MinimumAmount" id="MinimumAmount" data-ng-model="paymentoptions" />
+                                <label for="MinimumAmount" class="radio">Minimum Amount</label>
+                                <input type="radio" name="paymentoptions" value="LastStatementBalance" id="LastStatementBalance" data-ng-model="paymentoptions" />
+                                <label for="LastStatementBalance" class="radio">Last Statement Balance</label>
+                                <input type="radio" name="paymentoptions" value="OtherAmount" id="OtherAmount" data-ng-model="paymentoptions" />
+                                <label for="OtherAmount" class="radio">Other Amount</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="paymentoptions=='MinimumAmount'">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{vbCurrency}}</span>
+                                <input type="text" class="form-control text-right" value="325.00" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="paymentoptions=='LastStatementBalance'">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{vbCurrency}}</span>
+                                <input type="text" class="form-control text-right" value="2,100.00" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" data-ng-show="paymentoptions=='OtherAmount'">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{vbCurrency}}</span>
+                                <input type="text" class="form-control text-right" value="0.00" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Number&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCardNumber.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Holder Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie Andrews</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Limit&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCreditLimit.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Payment Due Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectDueDate.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{vbCurrency}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Billed Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">1,550.00</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Minimum Amount Due&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectMinimumAmountDue.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Other Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">1,325.00</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Your card payment has been done successfully. Please note that the below reference number for your record.</p>
+                </div>
+                <div class="box widget" id="vbPrintable">
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Card Number</td>
+                                <td>: <strong>{{selectCardNumber.selected}}</strong></td>
+                                <td class="text-left">Card Holder Name</td>
+                                <td>: <strong>Archie Andrews</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Card Limit</td>
+                                <td>: <strong>{{selectCreditLimit.selected}}</strong></td>
+                                <td class="text-left">Payment Due Date</td>
+                                <td>: <strong>{{selectDueDate.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Currency</td>
+                                <td>: <strong>{{vbCurrency}}</strong></td>
+                                <td class="text-left">Billed Amount</td>
+                                <td>: <strong>1,550.00</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Minimum Amount Due</td>
+                                <td>: <strong>{{selectMinimumAmountDue.selected}}</strong></td>
+                                <td class="text-left">Other Amount</td>
+                                <td>: <strong>1,325.00</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Rerefence Number</td>
+                                <td colspan="3">: <strong>VBPAY45245278</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                    <input type="submit" value="Tag this Transaction" class="btn btn-vb-theme" data-ng-click="TagTransaction();" />
+                </div>
+                <div class="box widget" data-ng-show="TagTransactionSection">
+                    <h4> 
+                          Tag Your Transaction
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mark this transaction as</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Utility Payment</option>
+                                <option>Entertainment</option>
+                                <option>Food</option>
+                                <option>Grocery</option>
+                                <option>Medical</option>
+                                <option>Travelling</option>
+                                <option>Education</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center" data-ng-show="TagTransactionSection">
+                    <input type="button" name="Cancel" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="CancelTagTransaction();" />
+                    <input type="button" name="Add" value="Add" class="btn btn-vb-theme" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

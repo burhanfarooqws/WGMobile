@@ -1,0 +1,154 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Change Card PIN
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="ChangeCardPIN" ng-submit="submitForm(ChangeCardPIN.$valid)" novalidate  action="" method="">
+                <div class="alert vb-alert vb-alert-out" data-ng-show="SucessMessage">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Congratulations! Your card PIN updated successfully.</p> 
+                </div>
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields.</p>
+                </div>
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="SamePassword">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>New PIN and Confirm PIN are not equal.</p>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        <span class="step-control"><b>1</b> of 2</span>
+                        Please select your credit / debit card
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CardType">Card Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">  
+                                <input type="radio" value="CreditCard" id="CreditCards" name="CardType" data-ng-model="CardType"checked />
+                                <label for="CreditCards" class="radio">Credit Cards</label>
+                                <input type="radio" value="DebitCards" id="DebitCards" name="CardType" data-ng-model="CardType" />
+                                <label for="DebitCards" class="radio">Debit Cards</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='CreditCard'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th>
+                                        <th>Supplementary Card</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Available Limit</th>
+                                        <th class="text-right">Outstanding Balance</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td>
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object1-'+$index}}" ng-model="selectedCard.CardId" value="{{card.CardId}}" />
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Supplementary Card">{{card.SupplementaryCard}}</td>
+                                        <td data-label="Currency">{{card.Currency}}</td>
+                                        <td data-label="Available Limit" class="text-right">{{card.AvailableLimit}}</td>
+                                        <td data-label="Outstanding Balance" class="text-right">{{card.OutstandingBalance}}</td>
+                                        <td data-label="Status">{{card.CardStatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='DebitCards'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object-'+$index}}" ng-model="selectedCard1.CardId" value="{{card.CardId}}" />
+                                                <label for="{{'object-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td>
+                                        <td data-label="Status">{{card.CardStatus}}</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        <span class="step-control"><b>2</b> of 2</span>
+                        Please enter your old / new PIN
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Old Pin">Old PIN <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="password" class="form-control" placeholder="XXXX" name="OldPIN" data-ng-model="ChangeCardPINForm.OldPIN" minlength="1" maxlength="4" vb-Amount required /> 
+                            <p ng-show="ChangeCardPIN.OldPIN.$invalid && !ChangeCardPIN.OldPIN.$pristine" class="help-block error">Please enter only digits</p>  
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="New Pin">New PIN <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="password" class="form-control" placeholder="XXXX" name="NewPIN" data-ng-model="ChangeCardPINForm.NewPIN" minlength="1" maxlength="4" vb-Amount required />
+                            <p ng-show="ChangeCardPIN.NewPIN.$invalid && !ChangeCardPIN.NewPIN.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Confirm Pin">Confirm PIN <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="password" class="form-control" placeholder="XXXX" name="ConfirmPIN" data-ng-model="ChangeCardPINForm.ConfirmPIN" minlength="1" maxlength="4" vb-Amount required />
+                            <p ng-show="ChangeCardPIN.ConfirmPIN.$invalid && !ChangeCardPIN.ConfirmPIN.$pristine" class="help-block error">Please enter only digits</p>
+                        </div>
+                    </div> 
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Update" class="btn btn-vb-theme" data-ng-click="UpdateCardPIN()" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

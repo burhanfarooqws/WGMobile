@@ -1,0 +1,375 @@
+/* 
+ VeriBranch Form styles
+ */
+
+
+/* default form styles */
+
+label,
+input,
+select,
+textarea {
+    font-weight: normal;
+    font-size: .8125em;
+    @include OpenSans-Regular-webfont;
+}
+
+input[type=radio],
+input[type=checkbox] {
+    visibility: $vb-hidden;
+    @include mobile() {
+        position: $vb-absolute;
+    }
+}
+
+.hightLightControl {
+    background: #f0f0f0;
+    text-align: $vb-right;
+    label {
+        font-size: 1.2em;
+        color: $vb-green;
+        font-weight: $vb-bold;
+    }
+}
+
+
+/* for file upload */
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+}
+
+.vb-form {
+    .widget-title {
+        h4 {
+            padding: 0;
+        }
+    }
+    .widget {
+        h4 {
+            /*text-transform: capitalize;*/
+        }
+    }
+    h4 {
+        padding: 0 20px;
+        font-size: 1.125em;
+        .step-control {
+            background-color: $vb-blue;
+            font-size: .6125em;
+            color: #9fcee6;
+            padding: 5px;
+            @include border-radius(4px);
+            b {
+                @include OpenSans-Semibold-webfont;
+                font-weight: $vb-bold;
+                color: $vb-white;
+            }
+        }
+        @include mobile () {
+            line-height: 25px;
+        }
+    }
+    h5 {
+        padding: 0 20px;
+        font-size: 1em;
+    }
+    form {
+        h4 {
+            margin: 20px 0;
+        }
+    }
+    .vb-grid-container-title {
+        h4 {
+            margin-top: 0;
+        }
+    }
+    .form-group {
+        margin-right: 5px;
+        margin-left: 5px; 
+        @include mobile () {
+            .col-xs-12 {
+                &:nth-child(even) {
+                    margin-bottom: 15px;
+                }
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+            .control-label {
+                font-weight: $vb-bold;
+            }
+        }
+        @include tablet () {
+            .col-xs-12 {
+                &:nth-child(2) {
+                    margin-bottom: 15px;
+                }
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        .mobile-hide {
+            @include mobile {
+                display: $vb-none;
+            }
+        }
+    }
+    .form-group-details {
+        overflow: $vb-hidden;
+        .control-label,
+        .label-detail {
+            display: $vb-block;
+        }
+        .label-detail {
+            font-weight: $vb-bold;
+            padding-top: 7px;
+        }
+        @include mobile () {
+            margin-bottom: 15px;
+            .label-detail {
+                padding-top: 0;
+                margin-bottom: 15px;
+            }
+            > div:last-child {
+                .label-detail {
+                    margin-bottom: 0;
+                }
+            }
+            .control-label {
+                font-weight: $vb-normal;
+                margin-bottom: 0;
+            }
+        }
+        @include tablet () {
+            margin-bottom: 15px;
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &:last-child {
+            margin-bottom: 10px;
+        }
+    }
+    .form-group-actions {
+        /*overflow: $vb-hidden;*/
+        margin-bottom: 20px;
+    }
+    .form-group-seperator {
+        margin: 15px 25px;
+        height: 1px;
+        border-bottom: 1px dotted $vb-lightgrey;
+    }
+    .box {
+        padding: 5px 0;
+        &.myaccount {
+            padding-top: 0;
+        }
+    }
+    .box.mycards {padding: 0px;}
+    .vb-alert {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .vb-alert-out {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .goal {
+        .goal-item {
+            margin-bottom: 0;
+            h4 {
+                padding-left: 15px;
+            }
+            .goal-slider {
+                margin-top: 30px;
+            }
+            .goal-slider,
+            .goal-slider-info,
+            .goal-info {
+                padding: 0 15px;
+            }
+        }
+    }
+}
+
+
+/* custom radio controls */
+
+.vb-radio-ctrl {
+    margin-left: -15px;
+    label {
+        &.radio {
+            cursor: $vb-pointer;
+            text-indent: 30px;
+            overflow: $vb-visible;
+            display: $vb-inlineblock;
+            position: $vb-relative;
+            &:before {
+                background: $vb-white;
+                content: '';
+                position: $vb-absolute;
+                top: 6px;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                border-radius: 100%;
+                border: 2px solid $vb-green;
+            }
+            &:after {
+                opacity: 0;
+                content: '';
+                position: $vb-absolute;
+                width: 10px;
+                height: 5px;
+                background: $vb-transparent;
+                top: 13px;
+                left: 5px;
+                border: 2px solid $vb-green;
+                border-top: $vb-none;
+                border-right: $vb-none;
+                @include rotate(-45deg)
+            }
+        }
+        @include mobile() {
+            margin-right: 20px;
+        }
+    }
+    input[type=radio]:checked + label:after {
+        opacity: 1;
+    }
+    @include mobile() {
+        margin-left: 0 !important;
+    }
+}
+
+
+/* custom checkbox controls */
+
+.vb-checkbox-ctrl {
+    margin-left: -15px;
+    label {
+        &.checkbox {
+            cursor: $vb-pointer;
+            text-indent: 30px;
+            overflow: $vb-visible;
+            display: $vb-inlineblock;
+            position: $vb-relative;
+            &:before {
+                background: $vb-white;
+                content: '';
+                position: $vb-absolute;
+                top: 6px;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                border: 2px solid $vb-green;
+            }
+            &:after {
+                opacity: 0;
+                content: '';
+                position: $vb-absolute;
+                width: 10px;
+                height: 5px;
+                background: $vb-transparent;
+                top: 13px;
+                left: 5px;
+                border: 2px solid $vb-green;
+                border-top: $vb-none;
+                border-right: $vb-none;
+                @include rotate(-45deg)
+            }
+        }
+    }
+    input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+    @include mobile() {
+        margin-left: 0 !important;
+    }
+}
+
+
+/* custom radio control for transfer amounts */
+
+.vb-radio-ctrl-amt {
+    label {
+        z-index: 1;
+        color: $vb-white;
+        font-size: 1em;
+        margin: 0 5px;
+        text-align: $vb-center;
+        &.radio-amt {
+            cursor: $vb-pointer;
+            overflow: $vb-visible;
+            display: $vb-inlineblock;
+            position: $vb-relative;
+            &:before {
+                background: $vb-green;
+                content: '';
+                position: $vb-absolute;
+                top: -10px;
+                left: -25px;
+                width: 80px;
+                height: 40px;
+                @include border-radius(4px);
+                border: 1px solid $vb-darkgreen;
+                z-index: -1;
+            }
+            &:after {
+                opacity: 0;
+                content: '';
+                position: $vb-absolute;
+                width: 10px;
+                height: 5px;
+                background: $vb-transparent;
+                top: 13px;
+                left: 5px;
+                border: 1px solid $vb-white;
+                border-top: $vb-none;
+                border-right: $vb-none;
+                @include rotate(-45deg);
+                z-index: -1;
+            }
+        }
+    }
+    input[type=radio] {
+        margin: 0 10px;
+    }
+    input[type=radio]:checked + label:before {
+        background: $vb-red;
+        border: 1px solid #e22d2c;
+    }
+    input[type=radio]:checked + label:after {
+        opacity: 1;
+    }
+}
+
+
+/* form validations */
+.mandatory {
+    color: #f00;
+    font-weight: $vb-bold;
+}
+.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+} 
+.ng-valid.ng-dirty {
+    border-color: #78FA89;
+}
+.help-block.error{
+    color: #f00;
+    font-size: .8125em;
+}

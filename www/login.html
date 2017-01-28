@@ -1,0 +1,253 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VeriChannel - Omni Channel Delivery Solution for More Sales, Less Cost, and Enhanced Customer Experience for Banking Industries</title>
+    <meta name="description" content="Omni-Channel Delivery Solution for More Sales, Less Cost, and Enhanced Customer Experience Banking">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- For favicon.ico from the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- For apple touch icon from the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- CSS includes -->
+    <!-- Normalize (A modern, HTML5-ready alternative to CSS resets) -->
+    <link rel="stylesheet" href="themes/css/normalize.css">
+    <!-- For Bootstrap -->
+    <link rel="stylesheet" href="themes/css/bootstrap.min.css">
+    <!-- For Font Awesome -->
+    <link rel="stylesheet" href="themes/css/font-awesome.min.css">
+    <!-- For jquery Keyboard --> 
+    <link rel="stylesheet" href="themes/css/plugins/jqueryKeyboard/jkeyboard.css">
+    <!-- For VeriBank Custom Styles -->
+    <link rel="stylesheet" href="themes/css/vb-theme.min.css">
+    <!-- Intro Demo Plugin -->
+    <link rel="stylesheet" href="themes/css/introjs.css">
+    <!-- Modernizr (Respond to user’s browser features.) -->
+    <script src="themes/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="lang-ar loginpage">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container">
+        <div class="login">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="vblogin-logo">
+                    <img src="themes/imgs/logo.png" alt="Veribank - Omni Channel Banking Application" title="Veribank - Omni Channel Banking Application" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="vblogin-header">
+                    <h3>Sign in with Your Mobile Banking</h3>
+                </div>
+                <div class="vblogin-body">
+                    <div class="box widget">
+                        <div class="widget-title">
+                            <a href="" id="UserBasedLogin" class="active"><span class="selection-indicator userbased"></span> User Based Login</a>
+                            <a href="" id="CardBasedLogin"><span class="selection-indicator cardbased"></span> Card Based Login</a>
+                        </div>
+                        <div class="login-form">
+                            <form role="form" name="loginform-userbased" class="userbasedForm" action="login-otp.html" method="">
+                                <!-- Intro Demo Plugin -->
+                                <div class="row" data-intro="Specify your User ID and Password - User Based Login">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <span class="fa fa-user"></span>
+                                            </div>
+                                            <input type="text" class="form-control" maxlength="12" placeholder="User Name" value="demo" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <span class="fa fa-key"></span>
+                                            </div>
+                                            <input type="password" class="form-control" id="password" maxlength="8" placeholder="Password" value="12345678" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="vb-checkbox-ctrl">
+                                            <input type="checkbox" name="loginKeyboard" id="loginKeyboard" />
+                                            <label for="loginKeyboard" class="checkbox">Recommend to use virtual keyboard for password. </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="submit" value="Login" class="btn btn-vb-theme pull-right" />
+                                    </div>
+                                </div>
+                            </form>
+                            <form role="form" name="loginform-cardbased" class="cardBasedForm" action="login-otp.html" method="">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <label for="favoriteplace" class="label-control">Debit / Credit Card Number</label>
+                                        </div>
+                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                            <input type="text" class="form-control input-card numericOnly" size="4" maxlength="4" placeholder="XXXX" required />
+                                        </div>
+                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                            <input type="text" class="form-control input-card numericOnly" size="4" maxlength="4" placeholder="XXXX" required />
+                                        </div>
+                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                            <input type="text" class="form-control input-card numericOnly" size="4" maxlength="4" placeholder="XXXX" required />
+                                        </div>
+                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                            <input type="text" class="form-control input-card numericOnly" size="4" maxlength="4" placeholder="XXXX" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label for="favoriteplace" class="label-control">PIN Number</label>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <input type="password" class="form-control" size="4" maxlength="4" placeholder="XXXX" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label class="label-control">Date of Birth (DD-MM-YYYY)</label>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" class="form-control input-dd numericOnly" size="2" maxlength="2" placeholder="DD" required />
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" class="form-control input-mm numericOnly" size="2" maxlength="2" placeholder="MM" required />
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" class="form-control input-yy numericOnly" size="4" maxlength="4" placeholder="YYYY" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                                        <div class="vb-checkbox-ctrl">
+                                            <input type="checkbox" name="loginKeyboard" id="loginKeyboard" />
+                                            <label for="loginKeyboard" class="checkbox">Recommend to use virtual keyboard for password. </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        <input type="submit" value="Login" class="btn btn-vb-theme pull-right" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="vblogin-keyboard"> 
+                    <div id="vbKeyboard"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="row">
+                	<!-- Intro Demo Plugin -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data--intro="Don't have any account? Signup for a new Internet Banking account, click on ""Creat Account"" ">
+                    	<div class="vblogin-header">
+                            <h3>Create an Account</h3>
+                        </div>
+                        <div class="vblogin-body">
+                            <p>You can create your own VeriBank account to avail the smart internet banking facilty. You may use for your debit card details to avail the same.</p>  
+                            <input type="button" value="Create Account" class="btn btn-vb-theme" onclick="location.href='createanaccount.html'" />
+                        </div>
+                	</div>
+                </div>
+                <div class="row">
+                	<!-- Intro Demo Plugin -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" data--intro="If you are facing trouble during login, you can Reset your login credentials here">
+                    	<div class="vblogin-header">
+                            <h3>Trouble signing in?</h3>
+                        </div>
+                        <div class="vblogin-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+                                    <input type="button" value="Reset Security Questions" class="btn btn-vb-theme btn-block"  onclick="location.href='resetquestions.html'" />
+                                    <input type="button" value="Forgot your User ID / Password? " class="btn btn-vb-theme btn-block" onclick="location.href='forgotpassword.html'" />
+                                </div>
+                                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 security-sign">
+                                    <img src="themes/imgs/vb-secured.png" alt="VeriBank Secured" />
+                                </div>
+                            </div>
+                        </div>
+                	</div>
+                </div>
+                
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vblogin-signborad">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <span class="sign-arrow">
+                            <i class="fa fa-long-arrow-right"></i>
+                        </span>
+                        <div class="board text-center active">
+                            <i class="fa fa-tasks"></i>
+                            <h4>Sign-In</h4>
+                            <p>Login based on your User ID (or) Card.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <span class="sign-arrow">
+                            <i class="fa fa-long-arrow-right"></i>
+                        </span>
+                        <div class="board text-center">
+                            <i class="fa fa-mobile"></i>
+                            <h4>Security Question</h4>
+                            <p>Provide the answer of your security question.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="board text-center">
+                            <i class="fa fa-desktop"></i>
+                            <h4>Dashboard</h4>
+                            <p>You will be redirected to your dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <footer>
+                    <!--<p>&copy; 2016 VeriBank. All rights reserved.</p>-->
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- JS includes -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="themes/js/vendor/jquery-2.1.4.min.js"></script>
+    <!-- For Bootstrap -->
+    <script src="themes/js/bootstrap.min.js"></script>
+    <!-- For jQuery UI drag & drop -->
+    <script src="themes/js/vendor/jquery-ui-1.10.3.js"></script>
+    <!-- For jQuery touch events -->
+    <script src="themes/js/vendor/jquery.ui.touch-punch.min.js"></script>
+    <!-- For jquery Keyboard -->
+    <script src="themes/js/plugins/jqueryKeyboard/jkeyboard.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed-->
+    <script src="themes/js/vb-theme.min.js"></script>
+    <!-- Intro Demo Plugin -->
+	<script src="themes/js/intro.js"></script>
+    <script> 
+		/* for jquery keyboard */  
+		$('#vbKeyboard').jkeyboard({
+			layout: "english",
+			input: $('#password'),
+		}); 
+		
+		introJs().start();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Stop Lost Card
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="StopCard" ng-submit="submitForm(StopCard.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4>
+                    	<span class="step-control"><b>1</b> of 3</span>
+                        Please select the card to be blocked
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="CardType">Card Type</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">  
+                                <input type="radio" value="CreditCard" id="CreditCards" name="CardType" data-ng-model="CardType" />
+                                <label for="CreditCards" class="radio">Credit Cards</label>
+                                <input type="radio" value="DebitCards" id="DebitCards" name="CardType" data-ng-model="CardType" />
+                                <label for="DebitCards" class="radio">Debit Cards</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='CreditCard'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th> 
+                                        <th class="text-right">Card Limit ({{vbCurrency}})</th> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="dccList" id="{{'object1-'+$index}}"  ng-model="selectedCard.CardId" value="{{card.CardId}}" ng-change="onTaskSelect1(card)" required /> 
+                                                <label for="{{'object1-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td> 
+                                        <td data-label="Available Limit" class="text-right">&nbsp;{{card.AvailableLimit}}</td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="vb-grid-container-body" data-ng-show="CardType=='DebitCards'">
+                        <div class="vb-grid-responsive table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Card Number</th>
+                                        <th>Card Holder Name</th>
+                                        <th>Product Type</th> 
+                                        <th>Card Expiry</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="card in CreditCards">
+                                        <td class="text-center">
+                                            <div class="vb-radio-ctrl">
+                                                <input type="radio" name="ccList" id="{{'object2-'+$index}}" ng-model="selectedCard1.CardId" value="{{card.CardId}}" />
+                                                <label for="{{'object2-'+$index}}" class="radio">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td data-label="Card Number">{{card.CardNumber}}</td>
+                                        <td data-label="Card Holder Name">{{card.FirstName}}&nbsp;{{card.LastName}}</td>
+                                        <td data-label="Card Type">{{card.CardType}}</td>
+                                        <td data-label="Card Expiry">{{card.ExpiryMonth}}&nbsp;/&nbsp;{{card.ExpiryYear}}</td> 
+                                        <td data-label="Status">{{card.CardStatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="box widget">
+                    <h4>
+                    	<span class="step-control"><b>2</b> of 3</span>
+                        Please fill the blocking reasons
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Reason">Reasons for Blocking </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Lost" id="Lost" name="BlockReason"  data-ng-model="BlockReason.selected" required />
+                                <label for="Lost" class="radio">Lost</label>
+                                <input type="radio" value="Stolen" id="Stolen" name="BlockReason"  data-ng-model="BlockReason.selected" required />
+                                <label for="Stolen" class="radio">Stolen</label>
+                                <input type="radio" value="Captured By ATM" id="CapturedByATM" name="BlockReason"  data-ng-model="BlockReason.selected" required />
+                                <label for="CapturedByATM" class="radio">Captured By ATM</label>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                    	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Comments">Comments</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea rows="3" class="form-control" placeholder="Enter your comments" name="Comments" data-ng-model="StopCardForm.Comments" required></textarea>
+                        </div>  
+                    </div>  
+                </div>
+                <div class="box widget">
+                    <h4>
+                        <span class="step-control"><b>3</b> of 3</span>
+                        Please fill the replacement card  and delivery details
+                    </h4> 
+                    <div class="form-group"> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="NickName">Do You Need Replace Card?</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" value="Yes" name="ReplaceCard" id="Yes" data-ng-model="ReplaceCard.selected" required />
+                                <label for="Yes" class="radio">Yes</label>
+                                <input type="radio" value="No" name="ReplaceCard" id="No" data-ng-model="ReplaceCard.selected" required />
+                                <label for="No" class="radio">No</label>
+                            </div>
+                        </div> 
+                    </div> 
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DeliveryOptions">Delivery Options </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl"> 
+                                <input type="radio" value="To Home Branch" id="ToHomeBranch" name="DeliveryOptions" data-ng-model="DeliveryOptions.selected" required />
+                                <label for="ToHomeBranch" class="radio">To Home Branch</label>
+                                <input type="radio" value="To Another Branch" id="ToAnotherBranch" name="DeliveryOptions"data-ng-model="DeliveryOptions.selected" required />
+                                <label for="ToAnotherBranch" class="radio">To Another Branch</label>
+                                <input type="radio" value="To Home Address" id="ToHomeAddress" name="DeliveryOptions" data-ng-model="DeliveryOptions.selected" required />
+                                <label for="ToHomeAddress" class="radio">To My Home Address</label> 
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Another Branch'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SelectYourBranch">Select Your Branch <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="AnotherBranch" data-ng-model="StopCardForm.AnotherBranch" required>
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option>Munich Branch</option>
+                                <option>Berlin Branch</option>
+                                <option>Hamburg Branch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Home Address'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="HomeAddress">Home Address </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea rows="3" class="form-control">Flat No:507, St. Peters Tower, Hamilton Road, London, United Kingdom</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Home Address'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" value="None" name="delivernewaddress" id="delivernewaddress" data-ng-model="delivernewaddress" />
+                                <label for="delivernewaddress" class="checkbox">Do You Want to Deliver New Address?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="DeliveryOptions.selected=='To Home Address'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea rows="3" class="form-control" data-ng-readonly="!delivernewaddress"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Continue" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Please check the below information. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{todaysDate | date:'dd MMM yyyy' | uppercase}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Holder Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Archie Andrews</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Numberdsafdsaf&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCardNumber.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reason for Block&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{BlockReason.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Comments&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{StopCardForm.Comments}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Do You Need Replace Card?&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{ReplaceCard.selected}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Deliver To&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{DeliveryOptions.selected}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Branch Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{StopCardForm.AnotherBranch}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Your Card is blocked with immediate effect. Please note that the below reference for your record.</p>
+                </div> 
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Date</td>
+                                <td>: <strong>{{todaysDate | date:'dd MMM yyyy' | uppercase}}</strong></td>
+                                <td class="text-left">Card Holder Name</td>
+                                <td>: <strong>Archie Andrews</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Card Number</td>
+                                <td>: <strong>{{selectCardNumber.selected}}</strong></td>
+                                <td class="text-left">Reason for Block</td>
+                                <td>: <strong>{{BlockReason.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Comments</td>
+                                <td>: <strong>{{StopCardForm.Comments}}</strong></td>
+                                <td class="text-left">Do You Need Replace Card?</td>
+                                <td>: <strong>{{ReplaceCard.selected}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Deliver To</td>
+                                <td>: <strong>{{DeliveryOptions.selected}}</strong></td>
+                                <td class="text-left">Branch Name</td>
+                                <td>: <strong>{{StopCardForm.AnotherBranch}}</strong></td>
+                            </tr>
+                            <tr> 
+                                <td class="text-left">Reference Number</td>
+                                <td colspan="3">: <strong>VBCAN457855222</strong></td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="form-group-actions text-center hidden-xs hidden-sm hidden-md">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                </div> 
+            </form>
+        </div>
+    </div>
+</section>

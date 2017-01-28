@@ -1,0 +1,1007 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                My Cards
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="CardGraphSection">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="box widget mycards">
+                <div class="widget-header">
+                    <div class="pull-left">
+                        <div class="widget-title">
+                            <h4><i class="fa fa-credit-card"></i>{{selectCC.CardType}}</h4>
+                        </div>
+                        <div class="widget-info">
+                            <span>Credit Card Number</span>
+                            <span>  
+                                <!--<i class="arrow arrow-down dropdown"></i>-->
+                                <select class="acc-dropwdown down-arrow" data-ng-model="selectCC" data-ng-options="CreditCard as CreditCard.CardNumber for CreditCard in CreditCards">
+                                </select>  
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="widget-info">
+                            <span>Outstanding Balance</span>
+                            <span>{{vbCurrency}} <b>{{selectCC.OutstandingBalance}}</b></span>
+                        </div>
+                        <div class="widget-info">
+                            <span>Available Limit</span>
+                            <span>{{vbCurrency}} <b>{{selectCC.AvailableLimit}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-body-title">
+                        <span>  
+                            Credit Card Usage :
+                        </span>
+                        <span class="widget-body-title-info pull-right">
+                            <span>Payment Due Date:</span>
+                        <span>{{selectCC.DueDate}}</span>
+                        </span>
+                    </div>
+                    <div class="widget-body-content text-center">
+                        <input type="text" knob data-ng-model="selectCC.CardUsage" data-width="170" data-height="170" data-fgColor="#00c7ab" data-bgColor="#e8e8e8" data-readonly="true" />
+                        <div class="chart-indicators">
+                            <span class="usedamt">
+                                <i></i>Used Amount ({{vbCurrency}})
+                            </span>
+                            <span class="avllimit">
+                                <i></i>Available Limit
+                            </span>
+                        </div>
+                        <div class="chart-actions">
+                            <a href="" class="btn btn-vb-theme" data-ng-click="showMoreDetails();">More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-ng-show="CardDetailsSection">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Card Details
+                        <span class="close pull-right" data-ng-click="hideMoreDetails();"><i class="glyphicon glyphicon-remove"></i></span>
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Holder Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.FirstName}} {{selectCC.LastName}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Card Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.CardType}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Currency&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.Currency}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Total Credit Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.CreditLimit}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Available Credit Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.AvailableLimit}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Total Cash Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.CashLimit}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Available Cash Limit ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.CashLimit}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Total Amount Due ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.OutstandingBalance}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Minimum Amount Due ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{selectCC.MinimumAmountDue}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Pending Transactions ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">0.00</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Last Payment Received&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">25 MAR 2015</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Last Statement Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">08 APR 2015</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Total Current Points&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">1800</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="TransactionDetailsSection">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  Transaction Details </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">06 FEB 2016</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Posting Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">28 FEB 2016</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Desciption&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Dinner, KFC - Frankfurt City Center</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Debit</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">20.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">457852254</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">&nbsp;</div>
+                    <div class="form-group-actions text-center">
+                        <input type="button" class="btn btn-vb-theme" value="Back" data-ng-click="hideTransactionDetails();" />
+                        <input type="button" class="btn btn-vb-theme" value="Dispute Transaction" data-ng-click="desputeTransaction();" />
+                        <input type="button" class="btn btn-vb-theme" value="Block & Dispute" data-ng-click="blockanddespute();" />
+                    </div>
+                    <div class="form-group" data-ng-show="desputeReason">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reason&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="applyNewCard">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reason&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="applyNewCard">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="vb-checkbox-ctrl">
+                                <input type="checkbox" value="None" name="applyNewCard" id="applyNewCard" checked="checked">
+                                <label for="applyNewCard" class="checkbox">Renew the card please</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center" data-ng-show="desputeReason">
+                    <input type="button" value="Continue" class="btn btn-vb-theme" data-ng-click="goToExecution()" />
+                </div>
+                <div class="form-group-actions text-center" data-ng-show="applyNewCard">
+                    <input type="button" value="Continue" class="btn btn-vb-theme" data-ng-click="goToExecution()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="TransactionDetailsExecuteSection">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  Transaction Details </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">06 FEB 2016</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Posting Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">28 FEB 2016</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Desciption&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Dinner, KFC - Frankfurt City Center</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Debit</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">20.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">457852254</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reason&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Do you need to renew the card?&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Yes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="Submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="goToConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="TransactionDetailsConfirmSection">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert  vb-alert vb-alert-out">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <p>The process would take 3 working days. Please note that the below reference for your record.</p>
+                </div>
+                <div class="box widget">
+                    <h4>  Transaction Details </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">06 FEB 2016</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Posting Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">28 FEB 2016</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Desciption&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Dinner, KFC - Frankfurt City Center</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Type&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Debit</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transaction Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">20.00</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reference&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">457852254</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Reason&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">&nbsp;</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Do you need to renew the card?&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Yes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Print Receipt" class="btn btn-vb-theme" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="TransactionSection">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="box widget vb-grid-container">
+                <div class="vb-grid-container-title">
+                    <h4>  
+                        Last 5 Transactions
+                    </h4>
+                    <select class="btn btn-responsive btn-vb-theme" data-ng-model="selectStatement" data-ng-options="CreditCard as CreditCard.CardNumber for CreditCard in CreditCards" data-ng-change="refreshLastTransactions();">
+                    </select>
+                    <span class="vb-grid-title-actions pull-right">
+                        <a href="" class="btn btn-vb-theme" data-ng-click="goToStatementBilled();">Billed</a>
+                        <a href="" class="btn btn-vb-theme" data-ng-click="goToStatementUnbilled();">Unbilled</a>
+                        <a href="" class="btn btn-vb-theme" data-ng-click="goToStatementPending();">Pending</a>
+                        <!--<a href="" class="btn btn-vb-theme" data-ng-click="viewAllTransactions();">View All</a>-->
+                    </span>
+                </div>
+                <div class="vb-grid-container-body">
+                    <div class="vb-grid table-responsive">
+                        <table class="table table-striped table-hover dt-responsive vbDataGrid transaction">
+                            <thead>
+                                <tr>
+                                    <th>Transaction Date</th>
+                                    <th>Posting Date</th>
+                                    <th>Ref. Number</th>
+                                    <th>Description</th>
+                                    <th>Debit/Credit</th>
+                                    <th>Currency</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="transaction in selectStatement.Transactions | limitTo:last5transactions" data-ng-click="showTransactionDetails();">
+                                    <td>{{transaction.TransactionDate}}</td>
+                                    <td>{{transaction.PaymentDate}}</td>
+                                    <td>{{transaction.ReferenceNumebr}}</td>
+                                    <td>{{transaction.Description}}</td>
+                                    <td>{{transaction.DebitCredit}}</td>
+                                    <td>{{transaction.Currency}}</td>
+                                    <td class="text-right">{{transaction.TransactionAmount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="box widget vb-grid-container">
+                <div class="vb-grid-container-title">
+                    <h4>  
+                        Credit Card Statement
+                    </h4>
+                    <select class="btn btn-responsive btn-vb-theme" data-ng-model="selectTransactions" data-ng-options="CreditCard as CreditCard.CardNumber for CreditCard in CreditCards" data-ng-change="refreshCardStatement();">
+                    </select>
+                    <span class="vb-grid-title-actions pull-right">  
+                        <a href="" class="btn btn-vb-theme" data-ng-click="AdvancedSearch()">Advanced Search</a>
+                    </span>
+                </div>
+                <div class="vb-grid-container-body">
+                    <div class="row" data-ng-show="IsVisible">
+                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                            <div class="vb-grid-slider">
+                                <h5>
+                                    Select Period
+                                </h5>
+                                <div class="vb-grid-slider-control">
+                                    <input type="hidden" value="20" class="vb-range-slider" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                            <div class="vb-grid-daterange">
+                                <h5>
+                                    Date Range
+                                </h5>
+                                <div class="vb-grid-daterange-control">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="fromdate">From</label>
+                                            <div class="input-group vb-dtp">
+                                                <input type="text" class="form-control" id="fromdate">
+                                                <div class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="todate">To</label>
+                                            <div class="input-group vb-dtp">
+                                                <input type="text" class="form-control" id="todate">
+                                                <div class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="todate">&nbsp;</label>
+                                            <button type="submit" class="btn btn-block btn-vb-theme">Show</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vb-grid table-responsive">
+                        <table class="table table-striped table-hover dt-responsive nowrap vbDataGrid cardStatement tagging">
+                            <thead>
+                                <tr>
+                                    <th>Transaction Date</th>
+                                    <th>Posting Date</th>
+                                    <th>Ref. Number</th>
+                                    <th>Description</th>
+                                    <th>Debit/Credit</th>
+                                    <th>Currency</th>
+                                    <th class="text-right">Amount</th>
+                                    <th>Tag Transaction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="transaction in selectTransactions.Transactions" -data-ng-click="showTransactionDetails();">
+                                    <td>{{transaction.TransactionDate}}</td>
+                                    <td>{{transaction.PaymentDate}}</td>
+                                    <td>{{transaction.ReferenceNumebr}}</td>
+                                    <td>{{transaction.Description}}</td>
+                                    <td>{{transaction.DebitCredit}}</td>
+                                    <td>{{transaction.Currency}}</td>
+                                    <td class="text-right">{{transaction.TransactionAmount}}</td>
+                                    <td data-label="Tag">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <label class="control-label" for="FirstName">House Rent</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <label class="control-label" for="LastName">Utilities</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <label class="control-label" for="LastName">Food</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <label class="control-label" for="FirstName">Education</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <label class="control-label" for="LastName">Medical</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <label class="control-label" for="LastName">Shopping</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                                                    <input type="text" value="120.000" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-ng-show="StatementDetailSection_Billed">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget vb-grid-container">
+                    <div class="vb-grid-container-title">
+                        <h4>  
+                            Billed Transaction Statement
+                        </h4> 
+                        <span class="vb-grid-title-actions pull-right">  
+                            <a href="" class="btn btn-vb-theme" data-ng-click="AdvancedSearch()">Advanced Search</a>
+                        </span>
+                    </div>
+                    <div class="vb-grid-container-body">
+                        <div class="row" data-ng-show="IsVisible">
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                <div class="vb-grid-slider">
+                                    <h5>
+                                        Select Period
+                                    </h5>
+                                    <div class="vb-grid-slider-control">
+                                        <input type="hidden" value="20" class="vb-range-slider" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="vb-grid-daterange">
+                                    <h5>
+                                        Date Range
+                                    </h5>
+                                    <div class="vb-grid-daterange-control">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="fromdate">From</label>
+                                                <div class="input-group vb-dtp">
+                                                    <input type="text" class="form-control" id="fromdate">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="todate">To</label>
+                                                <div class="input-group vb-dtp">
+                                                    <input type="text" class="form-control" id="todate">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="todate">&nbsp;</label>
+                                                <button type="submit" class="btn btn-block btn-vb-theme">Show</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover dt-responsive nowrap vbDataGrid cardStatement">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Transaction Date</th>
+                                        <th>Posting Date</th>
+                                        <th>Ref. Number</th>
+                                        <th>Description</th>
+                                        <th>Debit/Credit</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="transaction in selectTransactions.Transactions | orderBy: '-DebitCredit' | limitTo:5">
+                                        <td>
+                                            <div class="vb-checkbox-ctrl">
+                                                <input type="checkbox" value="None" name="billedTransaction" id="{{transaction.TransactionID}}" ng-checked="transactionSelected" />
+                                                <label for="{{transaction.TransactionID}}" class="checkbox">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>{{transaction.TransactionDate}}</td>
+                                        <td>{{transaction.PaymentDate}}</td>
+                                        <td>{{transaction.ReferenceNumebr}}</td>
+                                        <td>{{transaction.Description}}</td>
+                                        <td>{{transaction.DebitCredit}}</td>
+                                        <td>{{transaction.Currency}}</td>
+                                        <td class="text-right">{{transaction.TransactionAmount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <small class="statement pull-right">
+                                    Download Statement as : 
+                                    <a href="" title="PDF"><i class="fa fa-file-pdf-o"></i></a>&nbsp;&nbsp;
+                                    <a href="" title="CSV"><i class="fa fa-file-excel-o"></i></a>
+                                </small>
+                            </div>
+                        </div>
+                    </div> 
+                </div>  
+                <div class="form-group-actions text-center">
+                    <input type="button" class="btn btn-vb-theme" value="Back" data-ng-click="hideTransactionDetails();" />
+                    <input type="button" class="btn btn-vb-theme" value="Select and Tag the Transaction" data-ng-click="TagTransaction();" />
+                    <input type="button" class="btn btn-vb-theme" value="Print Statement" /> 
+                </div>
+                <div class="box widget" data-ng-show="TagTransactionSection">
+                    <h4> 
+                          Tag Your Transaction
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mark this transaction as</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Utility Payment</option>
+                                <option>Entertainment</option>
+                                <option>Food</option>
+                                <option>Grocery</option>
+                                <option>Medical</option>
+                                <option>Travelling</option>
+                                <option>Education</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group-actions text-center" data-ng-show="TagTransactionSection">
+                        <input type="button" name="Cancel" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="CancelTagTransaction();" />
+                        <input type="button" name="Add" value="Add" class="btn btn-vb-theme" />
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="StatementDetailSection_UnBilled">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget vb-grid-container">
+                    <div class="vb-grid-container-title">
+                        <h4>  
+                            Unbilled Transaction Statement
+                        </h4> 
+                        <span class="vb-grid-title-actions pull-right">  
+                            <a href="" class="btn btn-vb-theme" data-ng-click="AdvancedSearch()">Advanced Search</a>
+                        </span>
+                    </div>
+                    <div class="vb-grid-container-body">
+                        <div class="row" data-ng-show="IsVisible">
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                <div class="vb-grid-slider">
+                                    <h5>
+                                        Select Period
+                                    </h5>
+                                    <div class="vb-grid-slider-control">
+                                        <input type="hidden" value="20" class="vb-range-slider" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="vb-grid-daterange">
+                                    <h5>
+                                        Date Range
+                                    </h5>
+                                    <div class="vb-grid-daterange-control">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="fromdate">From</label>
+                                                <div class="input-group vb-dtp">
+                                                    <input type="text" class="form-control" id="fromdate">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="todate">To</label>
+                                                <div class="input-group vb-dtp">
+                                                    <input type="text" class="form-control" id="todate">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="todate">&nbsp;</label>
+                                                <button type="submit" class="btn btn-block btn-vb-theme">Show</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover dt-responsive nowrap vbDataGrid cardStatement">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Transaction Date</th>
+                                        <th>Posting Date</th>
+                                        <th>Ref. Number</th>
+                                        <th>Description</th>
+                                        <th>Debit/Credit</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="transaction in selectTransactions.Transactions | orderBy: 'TransactionAmount' | limitTo:5">
+                                        <td>
+                                            <div class="vb-checkbox-ctrl">
+                                                <input type="checkbox" value="None" name="unbilledTransaction" id="{{transaction.TransactionID}}" ng-checked="transactionSelected" />
+                                                <label for="{{transaction.TransactionID}}" class="checkbox">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>{{transaction.TransactionDate}}</td>
+                                        <td>{{transaction.PaymentDate}}</td>
+                                        <td>{{transaction.ReferenceNumebr}}</td>
+                                        <td>{{transaction.Description}}</td>
+                                        <td>{{transaction.DebitCredit}}</td>
+                                        <td>{{transaction.Currency}}</td>
+                                        <td class="text-right">{{transaction.TransactionAmount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <small class="statement pull-right">
+                                    Download Statement as : 
+                                    <a href="" title="PDF"><i class="fa fa-file-pdf-o"></i></a>&nbsp;&nbsp;
+                                    <a href="" title="CSV"><i class="fa fa-file-excel-o"></i></a>
+                                </small>
+                            </div>
+                        </div>
+                    </div> 
+                </div>  
+                <div class="form-group-actions text-center">
+                    <input type="button" class="btn btn-vb-theme" value="Back" data-ng-click="hideTransactionDetails();" />
+                    <input type="button" class="btn btn-vb-theme" value="Select and Tag the Transaction" data-ng-click="TagTransaction();" />
+                    <input type="button" class="btn btn-vb-theme" value="Print Statement" /> 
+                </div>
+                <div class="box widget" data-ng-show="TagTransactionSection">
+                    <h4> 
+                          Tag Your Transaction
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mark this transaction as</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Utility Payment</option>
+                                <option>Entertainment</option>
+                                <option>Food</option>
+                                <option>Grocery</option>
+                                <option>Medical</option>
+                                <option>Travelling</option>
+                                <option>Education</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group-actions text-center" data-ng-show="TagTransactionSection">
+                        <input type="button" name="Cancel" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="CancelTagTransaction();" />
+                        <input type="button" name="Add" value="Add" class="btn btn-vb-theme" />
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="StatementDetailSection_Pending">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget vb-grid-container">
+                    <div class="vb-grid-container-title">
+                        <h4>  
+                            Pending Transaction Statement
+                        </h4> 
+                        <span class="vb-grid-title-actions pull-right">  
+                            <a href="" class="btn btn-vb-theme" data-ng-click="AdvancedSearch()">Advanced Search</a>
+                        </span>
+                    </div>
+                    <div class="vb-grid-container-body">
+                        <div class="row" data-ng-show="IsVisible">
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                <div class="vb-grid-slider">
+                                    <h5>
+                                        Select Period
+                                    </h5>
+                                    <div class="vb-grid-slider-control">
+                                        <input type="hidden" value="20" class="vb-range-slider" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="vb-grid-daterange">
+                                    <h5>
+                                        Date Range
+                                    </h5>
+                                    <div class="vb-grid-daterange-control">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="fromdate">From</label>
+                                                <div class="input-group vb-dtp">
+                                                    <input type="text" class="form-control" id="fromdate">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="todate">To</label>
+                                                <div class="input-group vb-dtp">
+                                                    <input type="text" class="form-control" id="todate">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="todate">&nbsp;</label>
+                                                <button type="submit" class="btn btn-block btn-vb-theme">Show</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vb-grid table-responsive">
+                            <table class="table table-striped table-hover dt-responsive nowrap vbDataGrid cardStatement">
+                                <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Transaction Date</th>
+                                        <th>Posting Date</th>
+                                        <th>Ref. Number</th>
+                                        <th>Description</th>
+                                        <th>Debit/Credit</th>
+                                        <th>Currency</th>
+                                        <th class="text-right">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="transaction in selectTransactions.Transactions | orderBy: 'ReferenceNumebr' | limitTo:5">
+                                        <td>
+                                            <div class="vb-checkbox-ctrl">
+                                                <input type="checkbox" value="None" name="pendingTransaction" id="{{transaction.TransactionID}}" ng-checked="transactionSelected" />
+                                                <label for="{{transaction.TransactionID}}" class="checkbox">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>{{transaction.TransactionDate}}</td>
+                                        <td>{{transaction.PaymentDate}}</td>
+                                        <td>{{transaction.ReferenceNumebr}}</td>
+                                        <td>{{transaction.Description}}</td>
+                                        <td>{{transaction.DebitCredit}}</td>
+                                        <td>{{transaction.Currency}}</td>
+                                        <td class="text-right">{{transaction.TransactionAmount}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <small class="statement pull-right">
+                                    Download Statement as : 
+                                    <a href="" title="PDF"><i class="fa fa-file-pdf-o"></i></a>&nbsp;&nbsp;
+                                    <a href="" title="CSV"><i class="fa fa-file-excel-o"></i></a>
+                                </small>
+                            </div>
+                        </div>
+                    </div> 
+                </div>  
+                <div class="form-group-actions text-center">
+                    <input type="button" class="btn btn-vb-theme" value="Back" data-ng-click="hideTransactionDetails();" />
+                    <input type="button" class="btn btn-vb-theme" value="Select and Tag the Transaction" data-ng-click="TagTransaction();" />
+                    <input type="button" class="btn btn-vb-theme" value="Print Statement" /> 
+                </div>
+                <div class="box widget" data-ng-show="TagTransactionSection">
+                    <h4> 
+                          Tag Your Transaction
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Mark this transaction as</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control">
+                                <option>Utility Payment</option>
+                                <option>Entertainment</option>
+                                <option>Food</option>
+                                <option>Grocery</option>
+                                <option>Medical</option>
+                                <option>Travelling</option>
+                                <option>Education</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Description</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group-actions text-center" data-ng-show="TagTransactionSection">
+                        <input type="button" name="Cancel" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="CancelTagTransaction();" />
+                        <input type="button" name="Add" value="Add" class="btn btn-vb-theme" />
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</section>

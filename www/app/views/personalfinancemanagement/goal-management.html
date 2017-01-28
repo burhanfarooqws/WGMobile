@@ -1,0 +1,497 @@
+<section class="content-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <h1 class="page-title">
+                Goal Management
+            </h1>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <!-- to include the application header -->
+            <ng-include src="'app/views/includes/relationship-manager.html'"></ng-include>
+        </div>
+    </div>
+</section>
+<section class="content vb-form">
+    <div class="row" data-ng-show="VBFormSteps"> 
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="box widget goal">
+                <div class="goal-item">
+                    <h4>
+                        <i class="fa fa-car"></i> Car - BMW X6 
+                        <a href="" class="pull-right"><i class="fa fa-edit"></i></a> 
+                    </h4>
+                    <div class="goal-slider">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%
+                                <span class="sr-only">50% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-slider-info text-right">
+                        <span>Target Amount ({{vbCurrency}}) : 50,000.00</span>
+                        <!--<span>Target Date : 31 JAN 2017</span>-->
+                    </div>
+                    <div class="goal-info">
+                        <div>
+                            <span>Start Date:</span>
+                            <span class="text-right">01 APR 2014</span>
+                        </div>
+                        <div>
+                            <span>End Date:</span>
+                            <span class="text-right">31 MAR 2018</span>
+                        </div>
+                        <div>
+                            <span>Remaining Amount ({{vbCurrency}}) :</span>
+                            <span class="text-right">25,000.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 padding-right-15">
+            <div class="box widget goal">
+                <div class="goal-item">
+                    <h4>
+                        <i class="fa fa-home"></i> Home Mortgage
+                        <a href="" class="pull-right"><i class="fa fa-edit"></i></a>
+                    </h4>
+                    <div class="goal-slider">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" data-transitiongoal="75" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%
+                                <span class="sr-only">75% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-slider-info text-right">
+                        <span>Target Amount  ({{vbCurrency}}) : 800,000.00</span>
+                        <!--<span>3Target Date : 1 JAN 2025</span>-->
+                    </div>
+                    <div class="goal-info">
+                        <div>
+                            <span>Start Date:</span>
+                            <span class="text-right">15 MAR 2012</span>
+                        </div>
+                        <div>
+                            <span>End Date:</span>
+                            <span class="text-right">31 JAN 2017</span>
+                        </div>
+                        <div>
+                            <span>Remaining Amount ({{vbCurrency}}) :</span>
+                            <span class="text-right">{{vbCurrency}} 200,000.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <form class="form-horizontal" role="form" name="AddNewGoal" ng-submit="submitForm(AddNewGoal.$valid)" novalidate action="" method=""> 
+                <div  class="alert vb-alert vb-alert-out" data-ng-show="validationError">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    <p>Please fill the mandatory fields</p>
+                </div>
+                <div class="box widget">
+                    <h4> 
+                        Add Goal
+                    </h4>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="GoalName">Goal Name <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <input type="text" class="form-control" placeholder="Enter your goal name" name="goalName" data-ng-model="AddNewGoalForm.goalName" required /> 
+                            <p ng-show="AddNewGoal.goalName.$invalid && !AddNewGoal.goalName.$pristine" class="help-block error">Goal name should not be empty</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="TargetAmount">Target Amount ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="targetAmount" data-ng-model="AddNewGoalForm.targetAmount" vb-Amount required />
+                            <p ng-show="AddNewGoal.targetAmount.$invalid && !AddNewGoal.targetAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="StartDate">Start Date <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control vb-dtp" name="startDate" data-ng-model="AddNewGoalForm.startDate" required />
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div> 
+                            <p ng-show="AddNewGoalForm.StartDate.$invalid && !AddNewGoalForm.StartDate.$pristine" class="help-block error">Please select your start date</p> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="EndDate">End Date <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control vb-dtp" name="endDate" data-ng-model="AddNewGoalForm.endDate" required />
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                            <p ng-show="AddNewGoalForm.endDate.$invalid && !AddNewGoalForm.endDate.$pristine" class="help-block error">Please select your start date</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="GoalCategory">Goal Category <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vbGoal-Category">
+                                <a href=""><i class="fa fa-home" title="Home"></i></a>
+                                <a href="" class="active"><i class="fa fa-car" title="Car"></i></a>
+                                <a href=""><i class="fa fa-plane" title="Travel"></i></a>
+                                <a href=""><i class="fa fa-graduation-cap" title="Education"></i></a>
+                                <a href=""><i class="fa fa-diamond" title="Diomand"></i></a>
+                                <a href=""><i class="fa fa-tablet" title="Tablet"></i></a>
+                                <a href=""><i class="fa fa-laptop" title="Laptop"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="FromAmount">From Account <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="fromAccount" data-ng-model="AddNewGoalForm.fromAccount">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="0313015192584501">0313015192584501</option>
+                                <option value="0313015192584502">0313015192584502</option>
+                                <option value="0313015192584503">0313015192584503</option>
+                            </select>
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="TransferAmount">Transfer Amount ({{vbCurrency}}) <span class="mandatory">*</span></label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+                            <input type="text" class="form-control text-right" placeholder="0.00" name="transferAmount" data-ng-model="AddNewGoalForm.transferAmount" vb-Amount required />
+                            <p ng-show="AddNewGoal.transferAmount.$invalid && !AddNewGoal.transferAmount.$pristine" class="help-block error">Please enter only digits</p> 
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="Frequency">Frequency </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+                            <div class="vb-radio-ctrl">
+                                <input type="radio" name="GoalFrequency" id="Weekly" value="Weekly" data-ng-model="GoalFrequency" checked="checked" />
+                                <label for="Weekly" class="radio">Weekly</label>
+                                <input type="radio" name="GoalFrequency" id="Monthly" value="Monthly" data-ng-model="GoalFrequency" />
+                                <label for="Monthly" class="radio">Monthly</label>
+                                <input type="radio" name="GoalFrequency" id="Quaterly" value="Quaterly" data-ng-model="GoalFrequency" />
+                                <label for="Quaterly" class="radio">Quaterly</label>
+                                <input type="radio" name="GoalFrequency" id="HalfYearly" value="HalfYearly" data-ng-model="GoalFrequency" />
+                                <label for="HalfYearly" class="radio">Half Yearly</label>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="form-group" data-ng-show="GoalFrequency=='Weekly'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DayofMonth">Day of the Week </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="dayOfWeek" data-ng-model="AddNewGoalForm.dayOfWeek">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="Sunday">Sunday</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="GoalFrequency=='Monthly'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DayofMonth">Day of Month </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="dayOfMonth" data-ng-model="AddNewGoalForm.dayOfMonth">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="GoalFrequency=='Quaterly'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SelectMonth">Select Month </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="SelectMonth" data-ng-model="AddNewGoalForm.SelectMonth">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="Augest">Augest</option>
+                                <option value="Septemper">Septemper</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DayofMonth1">Day of Month </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="dayOfMonth1" data-ng-model="AddNewGoalForm.dayOfMonth1">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" data-ng-show="GoalFrequency=='HalfYearly'">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="SelectMonth1">Select Month </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="SelectMonth1" data-ng-model="AddNewGoalForm.SelectMonth1">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="Augest">Augest</option>
+                                <option value="Septemper">Septemper</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label" for="DayofMonth2">Day of Month </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <select name="select" class="form-control" name="dayOfMonth2" data-ng-model="AddNewGoalForm.dayOfMonth2">
+                                <option value="PleaseSelect" ng-selected="true">Please Select</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group-actions text-center">
+                    <input type="submit" value="Add Goal" class="btn btn-vb-theme" data-ng-click="GoVBFormConfirmation()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormConfirmation">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="box widget">
+                    <h4>  
+                        Please check the goal informations. To finish, press confirm.
+                    </h4>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Goal Name&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AddNewGoalForm.goalName}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Target Amount ({{vbCurrency}})&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AddNewGoalForm.targetAmount}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Start Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AddNewGoalForm.startDate}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">End Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AddNewGoalForm.endDate}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Goal Category&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">Car</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">From Account&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AddNewGoalForm.fromAccount}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group-details">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Transfer Amount&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{AddNewGoalForm.transferAmount}}</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="control-label">Amount Debit Date&nbsp;&nbsp;:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <label class="label-detail">{{todaysDate  | date:'dd MMM yyyy' | uppercase}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Back" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="button" value="Cancel" class="btn btn-vb-theme-cancel" data-ng-click="BackVBFormFormSteps()" />
+                    <input type="submit" value="Confirm" class="btn btn-vb-theme" data-ng-click="GoVBFormReceipt()" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" data-ng-show="VBFormReceipt">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal" role="form" action="" method="">
+                <div class="alert vb-alert vb-alert-out">
+                    <p>Congratulations! Your goal added successfully. Please note the below reference number for your records.</p>
+                </div> 
+                <div class="box widget" id="vbPrintable"> 
+                    <table width="100%" cellspacing="0" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Goal Name</td>
+                                <td>: <strong>{{AddNewGoalForm.goalName}}</strong></td>
+                                <td class="text-left">Target Amount ({{vbCurrency}})</td>
+                                <td>: <strong>{{AddNewGoalForm.targetAmount}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Start Date</td>
+                                <td>: <strong>{{AddNewGoalForm.startDate}}</strong></td>
+                                <td class="text-left">End Date</td>
+                                <td>: <strong>{{AddNewGoalForm.endDate}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Goal Category</td>
+                                <td>: <strong>Car</strong></td>
+                                <td class="text-left">From Account</td>
+                                <td>: <strong>{{AddNewGoalForm.fromAccount}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Transfer Amount</td>
+                                <td>: <strong>{{AddNewGoalForm.transferAmount}}</strong></td>
+                                <td class="text-left">Amount Debit Date</td>
+                                <td>: <strong>{{todaysDate  | date:'dd MMM yyyy' | uppercase}}</strong></td>
+                            </tr>
+                            <tr> 
+                                <td class="text-left">Reference Number</td>
+                                <td colspan="3">: <strong>VB1245852001</strong></td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="form-group-actions text-center">
+                    <input type="button" value="Print e-Receipt" class="btn btn-vb-theme" data-ng-click="vbPrintConfirmation('vbPrintable');" />
+                     <input type="button" value="Add Another Goal" class="btn btn-vb-theme" data-ng-click="BackVBFormFormSteps()" />
+                </div> 
+            </form>
+        </div>
+    </div>
+</section>

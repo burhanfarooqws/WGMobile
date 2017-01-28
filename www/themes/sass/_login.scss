@@ -1,0 +1,340 @@
+.login {
+    margin: 50px auto;
+    .vblogin-header {
+        margin-top: 48px;
+        h3 {
+            font-size: 1.5em;
+            color: $vb-black;
+            @include OpenSans-Light-webfont;
+			
+			@include mobile(){
+				font-size: 1.2em;
+				@include OpenSans-Regular-webfont;
+			}
+        }
+    }
+    .bcc-login-header {
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 48px;
+        text-align: center;
+        h3 {
+            font-size: 1.5em;
+            color: $vb-black;
+            @include OpenSans-Light-webfont;
+        }
+    }
+    .bcc-login-btn {text-align: center;}
+    .vblogin-body {
+        overflow: $vb-hidden;
+        p {
+            font-size: .75em;
+            margin-bottom: 10px;
+
+            &.otp-desc{
+                margin-bottom: 0px;
+            }
+        }
+        .security-img {
+            border: 8px solid #bbbbbb;
+            border-bottom: 7px solid #bbbbbb;
+            @include border-radius(100px 100px 0 0);
+        }
+        .security-msg {
+            width: 70%;
+            margin: -7px auto 13px;
+            padding: 10px;
+            border: 7px solid #bbbbbb;
+            background: $vb-white;
+            @include border-radius(6px);
+            color: $vb-black;
+            font-size: .875em;
+            @include OpenSans-Regular-webfont;
+        }
+        .security-sign{
+            text-align: $vb-right;
+			
+			img {
+				width:85px;
+			}
+
+            @include mobile(){
+                text-align: $vb-center;
+            }
+            @include tablet(){
+                text-align: $vb-center;
+            }
+        }
+        .cardBasedForm{ 
+            div{
+                label{
+                    margin-bottom: 8px;
+                    &.label-control{
+                        font-size: .8125em;
+                    }
+                }
+                &.form-group{
+                    overflow: $vb-hidden;
+                    &:first-child{
+                        > div {
+                            @include mobile(){
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
+                        } 
+                    }
+                    &:last-child{
+                        > div{ 
+                            &.col-xs-12{
+                                padding-left: 0px;
+                                padding-right: 0px;
+                            }
+                        }
+                    } 
+                }
+            } 
+        }
+        .form-group{
+            label{
+                margin-bottom: 8px;
+                &.label-control{
+                    font-size: 18px;
+					
+					@include mobile(){
+						font-size: 14px;
+					}
+                }
+            }
+        } 
+    }
+    .bcc-login-body {
+        width: 320px;
+        margin: 0 auto;
+        overflow: $vb-hidden;
+        p {
+            font-size: .75em;
+            margin-bottom: 10px;
+
+            &.otp-desc{
+                margin-bottom: 0px;
+            }
+        }
+        .security-img {
+            border: 8px solid #bbbbbb;
+            border-bottom: 7px solid #bbbbbb;
+            @include border-radius(100px 100px 0 0);
+        }
+        .security-msg {
+            width: 70%;
+            margin: -7px auto 13px;
+            padding: 10px;
+            border: 7px solid #bbbbbb;
+            background: $vb-white;
+            @include border-radius(6px);
+            color: $vb-black;
+            font-size: .875em;
+            @include OpenSans-Regular-webfont;
+        }
+        .security-sign{
+            text-align: $vb-right;
+			
+			img {
+				width:85px;
+			}
+
+            @include mobile(){
+                text-align: $vb-center;
+            }
+            @include tablet(){
+                text-align: $vb-center;
+            }
+        }
+        .form-group{
+            label{
+                margin-bottom: 8px;
+                &.label-control{
+                    font-size: 18px;
+                }
+            }
+            .form-control{
+                .input-card, .input-dd, .input-mm, .input-yy { 
+                    display: $vb-inlineblock; 
+                    width: 60px;
+                    margin-right: 2px; 
+                }
+                .input-yy {  
+                    width: 126px; 
+                }
+                &:last-child { 
+                    margin-right: 0px; 
+                } 
+            } 
+        } 
+    }
+    .widget {
+        background: $vb-white;
+        @include border-radius(4px);
+        .widget-title {
+            font-size: 1.125em;
+            color: $vb-black;
+            @include OpenSans-Regular-webfont;
+            background-color: $vb-blue;
+            @include border-radius(4px 4px 0 0);
+            padding: 0 15px;
+            a {
+                font-size: .75em;
+                color: #90daff;
+                @include OpenSans-Semibold-webfont;
+                display: $vb-inlineblock;
+                text-decoration: $vb-none;
+                padding: 15px 10px;
+                &:hover {
+                    color: $vb-white;
+                }
+                &.active {
+                    color: $vb-white !important;
+                }
+                .selection-indicator {
+                    width: 0;
+                    height: 0;
+                    position: $vb-absolute; 
+                    margin: 10px;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-bottom: 10px solid $vb-white; 
+
+                    &.userbased{
+                        margin: 25px 0 0 44px;
+                    }
+                    &.cardbased{
+                        margin: 25px 0 0 40px;
+                    }
+                }
+            }
+        }
+        .widget-footer {
+            font-size: .75em;
+            @include OpenSans-Semibold-webfont;
+            background-color: $vb-blue;
+            @include border-radius(0 0 4px 4px);
+            padding: 15px;
+            margin-top: 40px;
+            a {
+                color: $vb-white;
+                text-decoration: $vb-none;
+                display: $vb-block;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .login-form {
+            padding: 30px 30px 20px;
+        }
+    }
+    .vblogin-keyboard {
+        margin-top: 30px;
+    }
+    .vb-checkbox-ctrl {
+        margin-left: 0;
+        input[type=checkbox] {
+            display: $vb-none;
+        }
+        label {
+            @include OpenSans-Semibold-webfont;
+            &.checkbox {
+                &:before {
+                    top: 0px;
+                }
+                &:after {
+                    top: 7px;
+                }
+            }
+        }
+    }
+    .vblogin-logo {
+        
+		@include mobile() {
+            text-align: $vb-center;
+        }
+        @include tablet() {
+            text-align: $vb-center;
+        }
+		img {
+			width:232px;
+		}
+    }
+    .bcc-login-logo {
+        width: 320px;
+        margin: 0 auto;
+        text-align: center;
+        @include mobile() {
+            text-align: $vb-center;
+        }
+        @include tablet() {
+            text-align: $vb-center;
+        }
+    }
+    @include mobile() {
+        margin: 30px auto;
+    }
+    @include tablet() {
+        margin: 30px auto;
+    }
+    .vblogin-signborad {
+        background-color: rgba(255,255,255,0.4);
+        padding: 20px;
+        text-align: $vb-center;
+        margin-top: 30px;
+        @include border-radius(5px);
+        .board {
+            i {
+                font-size: 5em;
+                color: $vb-lightgrey;
+            }
+            h4 {
+                font-size: 1.4em;
+                color: $vb-disableblack;
+                @include OpenSans-Light-webfont;
+            }
+            p {
+                font-size: 1em;
+                color: $vb-disablegrey;
+            }
+
+            &.active{
+                i {
+                    color: $vb-yellow;
+                }
+                h4{
+                    color: $vb-black;
+                    font-weight: vb-bold;
+                }
+                p{
+                    color: $vb-activegrey;
+                }
+            }
+        }
+        .sign-arrow {
+            position: $vb-absolute;
+            margin: 15px 0 0 150px;
+            i {
+                font-size: 3em;
+                color: $vb-lightgrey;
+            }
+
+            @include tabletPT(){
+                 margin: 15px 0 0 100px !important;
+            }
+            @include tabletLS(){
+                 margin: 15px 0 0 140px;
+            }
+        }
+        @include mobile() {
+            display: $vb-none;
+        }
+    }
+    footer{
+        background: transparent;
+    }  
+}

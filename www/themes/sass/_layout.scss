@@ -1,0 +1,215 @@
+/*
+ VeriBank common layout styles
+ */ 
+
+body {
+	background: #e4e9ec;
+	font-size: 16px; 
+}
+.container {
+	@include mobile() {
+        padding-right:0;
+        padding-left:0;
+    } 
+    @include tablet() {
+        padding-right:0;
+        padding-left:0;
+        width: 100%;
+    }
+    @include tabletLS() {
+        padding-right:0;
+        padding-left:0;
+        width: 100%;
+    }
+}
+
+/* to fix the two column layout */
+main{ 
+	overflow: hidden; 
+
+	> aside {
+		margin-bottom: -99999px;
+  		padding-bottom: 99999px;
+
+  		@include mobile (){
+  			margin-bottom: 0;
+  			padding-bottom: 0;
+  		}
+  		@include tablet(){
+  			margin-bottom: -999px;
+  			padding-bottom: 999px;
+  		}
+  		@include tabletLS(){
+  			margin-bottom: -999px;
+  			padding-bottom: 999px;
+  		}
+	}
+} 
+
+.content-wrapper {
+	display: $vb-block;  
+	overflow: $vb-hidden; 
+	margin-left: 70px;
+
+	@include mobile(){
+		width: 100%;
+		margin-left: 0;
+	}
+	@include tablet(){
+		width: 100%;
+		margin-left: 0;
+	}
+	@include tabletLS(){
+		width: 100%;
+		margin-left: 0;
+	}
+
+	section > .row {
+		@include mobile() {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    }
+
+	    @include tablet() {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    }
+
+	    @include tabletLS() {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    }
+
+		@include desktop() {
+	    	margin-left: 10px;
+	    }
+
+	    > div[class^="col-"]{
+    		padding: 0 10px;
+    	}
+		
+    	> div[class^="col-"]:last-child{
+    		padding: 0 15px 0 10px;
+
+    		@include mobile(){
+    			padding: 0 10px;
+    		}
+    		@include tablet(){
+    			padding: 0 10px;
+    		} 
+    		@include tabletLS(){
+    			padding: 0 10px;
+    		}
+    	} 
+	}
+
+	/* page title styles */
+	.content-header {
+		position: $vb-relative; 
+		padding-top: 20px;
+		overflow: $vb-hidden;
+	    
+	    h1 {
+	    	font-size: 1.875em;
+	    	color: $vb-black;
+	    	margin: 0 0 20px 0;
+	    	padding: 10px 0;  
+	    	@include OpenSans-Light-webfont;
+			
+			@include mobile(){
+				font-size: 1.2em;
+				@include OpenSans-Regular-webfont;
+			}
+	    } 
+
+	    .row {
+	    	> div[class^="col-"]:not(:first-child){
+		    	padding: 0 10px;
+
+		    	@include mobile() {
+			        padding:0 10px;
+			    }
+			    @include tablet() {
+			        padding:0 10px;
+			    }
+			    @include tabletLS() {
+			        padding:0 10px;
+			    } 
+			}
+		    > div[class^="col-"]:last-child{
+	    		padding: 0 15px 0 10px;
+
+	    		@include mobile(){
+	    			padding: 0 15px 0 10px !important;
+	    		}
+	    		@include tablet(){
+	    			padding: 0 15px 0 10px !important;
+	    		}
+	    		@include tabletLS(){
+	    			padding: 0 15px 0 10px !important;
+	    		}
+	    	} 
+	    } 
+	} 
+
+	/* page content styles */
+	.content { 
+		.box {
+		 	position: $vb-relative;  
+		 	margin-bottom: 20px; 
+		 	width: 100%; 
+		 	/*overflow: $vb-hidden;*/  
+		} 
+		.widget { 
+		 	background: f$vb-white;
+		 	@include border-radius(4px);
+		 	/*@include box-shadow(0px 1px 3px $vb-lightgrey);*/
+
+		 	h4{
+				font-size: 1.125em;
+				color: $vb-black;
+				@include OpenSans-Regular-webfont;
+				padding: 7px 20px; 
+			}
+			h5{
+				font-size: 1em;
+				color: $vb-black;
+				@include OpenSans-Regular-webfont; 
+			}
+		}
+	} 
+} 
+.content-wrapper-login { 
+	margin-left: 0px !important;
+	.row{
+		@include mobile() {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    } 
+	    @include tablet() {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    } 
+	    @include tabletLS() {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    }
+		@include desktop() {
+	    	margin-left: 0px !important;
+	    }
+	}
+}
+
+/* footer styles */
+footer{
+	float: clear-both;
+	background-color: $vb-white;
+	padding: 20px 0;
+	@include OpenSans-Semibold-webfont;
+	font-size: .75em;
+	color: $vb-darkgrey;
+	text-align: $vb-center; 
+	p{
+		margin: 0;
+	}
+}

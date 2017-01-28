@@ -1,0 +1,137 @@
+/*
+ Header Styles
+ */
+header{ 
+	height: 60px;
+	background-color: $vb-white; 
+
+	a{
+		display: block; 
+		float: left;  
+
+		&.navbar-btn{
+			width: 70px;
+			height: 60px;
+			background-color: $vb-green;
+			margin: 0;
+			padding: 20px 0; 
+
+			.icon-bar {
+				display: block;
+			    height: 5px;
+			    margin: 1px auto;
+			    background-color: $vb-white;
+			    @include border-radius(1px); 
+
+			    &.sml {
+			    	width: 18px; 
+			    	-webkit-transition: width .3s;
+    				transition: width .3s;
+			    }
+			    &.lrg {
+			    	width: 24px;
+			    	-webkit-transition: width .3s;
+    				transition: width .3s;
+			    } 
+			}
+			span{
+				text-align: center !important;
+				margin-top: 5px;
+			}
+			.icon-home{
+				display: block; 
+			    i{
+			    	color: #fff;
+			    	font-size: 2em;
+			    }
+			}
+
+			&:hover{
+				.icon-bar {
+					&.sml {
+				    	width: 24px;
+				    }
+				    &.lrg {
+				    	width: 18px;
+				    }
+				}
+			}
+		}
+
+		&.logo{
+			height: 60px;
+			padding-left: 16px; 
+			text-decoration: $vb-none;
+
+			&:before {
+		        content: ' ';
+				display: inline-block;
+				vertical-align: middle;
+				height: 100%;
+		    }
+			img { 
+				vertical-align: middle;
+	  			display: inline-block;
+			}
+		}
+	}  
+	.user-details{
+		display: $vb-block; 
+
+		.user-photo{
+			padding-left: 10px;
+			img{
+				width: 40px;
+				height: 40px;
+				padding: 2px;
+				border: 2px solid $vb-green;
+			}  
+		}
+		.user-info{ 
+			margin-top: 10px;
+			font-size: 0.75em;
+
+			> div {
+				span{
+					padding:3px 0;
+				}
+			} 
+
+			.user-login-time{
+				color: $vb-red; 
+			}
+			.user-name{
+				display: $vb-block;
+				font-weight: $vb-semibold;
+				text-align: $vb-right;
+				color: $vb-black;
+			}
+
+			@include mobile(){
+				display: $vb-none;
+			} 
+		}
+		.user-menu{ 
+			> a{
+				width: 60px;
+				height: 60px;
+				display: $vb-block; 
+				text-align: $vb-center;
+				//color: $vb-green;
+				&:hover, &:active, &:focus { text-decoration: none; }
+				&:before {
+			        content: ' ';
+					display: $vb-inlineblock;
+					vertical-align: $vb-middle;
+					height: 100%;
+			    }
+				i{ 
+					display: $vb-inlineblock;
+					vertical-align: $vb-middle;
+					font-size: 2em;
+				}
+			}  
+		}
+	}
+
+} 
